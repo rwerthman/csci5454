@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\begin{document}
+\title{CSCI 5454: PS1}
+\author{Robert Werthman}
+\date{}
+\maketitle
+
+\section*{1.}
+
+\subsection*{}
+Let's say these algorithms solve an array sorting problem.\\
+\begin{itemize}
+\item Let algorithm $A$ be bubblesort with a worst-case runtime of $n^2$.\\
+\item Let algorithm $B$ be mergesort with a worst-case runtime of $n*log(n)$.\\
+\item Let $C$ be the newly designed sorting algorithm with a worst-case runtime of $h(n)$.\\
+\end{itemize}
+In this case, $O(min(f(n),g(n)))$ will become $O(n*log(n))$ because it is the smaller of the two runtimes.\\
+If $h(n)$ is $log(n)$ then $h(n)$ achieves the running time $O(min(f(n),g(n)))$ because $log(n)$ does not grow faster than $n*log(n)$ and is therefore bounded above by it.\\
+
+\subsection*{}
+Yes, you can achieve a running time exactly $min(f(n),g(n))$. Algorithm $C$ would need to be designed in such a way that its running was equal to $min(f(n),g(n))$.\\
+
+\section*{2.}
+
+\subsection*{}
+\textbf{Proposition/Claim: } For any real constants $a$ and $b$, where $b > 0$, the asymptotic relation $(n+a)^b = \Theta(n^b)$ is true.\\
+\\
+\textbf{Theorem: }The asymptotic relation $(n+a)^b = \Theta(n^b)$ is true iff:
+\begin{itemize}
+\item There exists positive constants $c_1, c_2, n_0$ s
+uch that $0 \le c_1(n^b) \le (n+a)^b \le c_2(n^b)$ for all $n \ge n_0$.
+\end{itemize}In order to prove the proposition above we must find some constants $c_1, c_2, n_0$ to satisfy the above bulleted sentence.\\
+\\
+\textbf{Proof: }\\
+First we want to find the floor and ceiling of $n+a$ so we can create an inequality similar to the one in the theorem above.
+\begin{enumerate}
+\item If $|a| \le n$ then we can say that $n+a \le n+|a| \le 2n$ (Ceiling of $n+a$).
+\item If $|a| \le \frac{1}{2}n$ then we can say that $n+a \ge n-|a| \ge \frac{1}{2}n$ (Floor of $n+a$). 
+\end{enumerate}
+Now if $2|a| \le n$ then we can combine the floor and ceilings into an compound inequality that holds true :
+$$
+0 \le \frac{1}{2}n \le n+a \le 2n
+$$
+The only thing missing from this new equation is a power of $b$.  Raising the new equation to a power of $b$ gives:
+$$
+0 \le (\frac{1}{2}n)^b \le (n+a)^b \le (2n)^b \Rightarrow 0 \le (\frac{1}{2})^bn^b \le (n+a)^b \le (2)^bn^b
+$$  
+Extracting the constants $c_1,c_2,n_0$ from this equation yields $c_1 = (\frac{1}{2})^b$, $c_2 = 2^b$, and $n_0 = 2|a|$ since $n \ge 2|a|$.  These represent one solution.
+\section*{3.}
+$f(n) = \Omega{g(n)}$ means that for all values to the right of some $n_0$ the value of $f(n)$ is on or above $cg(n)$.\\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$n!$&$e^n$&$(\frac{3}{2})^n$&$(lg\,n)!$&$n^2$&$n\,lg\,n$&$lg(n!)$&n&$(\sqrt{2})^{lg\,n}$&$2^{lg*n}$&$n^{1/lg\,n}$&1\\
+\hline
+\end{tabular}
+\end{center}
+\subsection*{Equivalence Classes}
+$lg(n!) = \Theta(n\,lg\,n)$\\
+$n^{1/lg\,n} = \Theta(1)$
+\end{document}  
