@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{tikz}
 \begin{document}
 \title{CSCI 5454: PS1}
 \author{Robert Werthman}
@@ -58,4 +60,42 @@ $n!$&$e^n$&$(\frac{3}{2})^n$&$(lg\,n)!$&$n^2$&$n\,lg\,n$&$lg(n!)$&n&$(\sqrt{2})^
 \subsection*{Equivalence Classes}
 $lg(n!) = \Theta(n\,lg\,n)$\\
 $n^{1/lg\,n} = \Theta(1)$
+
+\section*{4.}
+\subsection*{a.} $T(n) = T(n-1)+n,\,T(1) = 1$\\
+I will a recurrence tree to solve this recurrence relation.\\
+\begin{center}
+\begin{tikzpicture}
+\node (z) {$n$}
+child {node (a) {$n-1$} 
+child {node (b) {$n-2$}
+child {node (c) {$2$}
+child {node (d) {$\vdots$}
+child {node (e) {$1$}}
+}
+}
+}
+};
+\end{tikzpicture}
+\end{center}
+The height of the tree is $n$ and the cost at the root starts at $n$ and decreases by 1 each level in the tree.\\
+This means that the total cost of the tree is $n$.\\
+So $T(n) = O(cost*depth) = O(n^2)$.
+\subsection*{b.} $T(n) = 2T(n/2)+n^3,\,T(1) = 1$\\
+I will use the master method to solve this recurrence relation.\\
+$a=2, b=2, f(n)=n^3$\\
+so $n^{\log_{b} a} = n^{\log_{2} 2} = n$\\
+This tells us that the first 2 rules of the master theorem do not apply.
+\begin{enumerate}
+\item $f(n) \ne O(n^{1-\epsilon})$
+\item $f(n) \ne \Theta{(n)}$
+\end{enumerate}
+This leaves the 3rd rule of the master theorem as the solution.\\
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item $f(n) = n^3 = \Omega{(n^{1+\epsilon})}$ if $\epsilon = 1$.  And $2f(n/2) \le cf(n) \Rightarrow 2(n/2)^3 \le cn^3$ if $c=\frac{1}{2}$ and $n \ge 1$.
+\end{enumerate}
+Therefore, $T(n) = \Theta{(n^3)}$.
+
+\section*{5.}
 \end{document}  
