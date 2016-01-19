@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{tikz}
+\usepackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
 \begin{document}
 \title{CSCI 5454: PS1}
 \author{Robert Werthman}
@@ -63,7 +64,7 @@ $n^{1/lg\,n} = \Theta(1)$
 
 \section*{4.}
 \subsection*{a.} $T(n) = T(n-1)+n,\,T(1) = 1$\\
-I will a recurrence tree to solve this recurrence relation.\\
+I will use a recurrence tree to solve this recurrence relation.\\
 \begin{center}
 \begin{tikzpicture}
 \node (z) {$n$}
@@ -98,4 +99,79 @@ This leaves the 3rd rule of the master theorem as the solution.\\
 Therefore, $T(n) = \Theta{(n^3)}$.
 
 \section*{5.}
+\subsection*{a.}
+\begin{algorithm}
+\KwData{Nearly sorted array of size n integers}
+\KwResult{Completely sorted array}
+\BlankLine
+\For {j = 2 to A.length}{
+	key = A[j]\;
+	i = j - 1\;
+	\While {i $>$ 0 and A[i] $>$ key}{
+		A[i+1] = A[i]\;
+		i = i - 1\;
+	}
+	A[i+1] = key\;
+}
+\caption{Insertion-Sort(A)}
+\end{algorithm}
+\textbf{Analysis: }In order to figure out the running time of Insertion Sort we need to add up the cost of each statement in the algorithm.\\
+\begin{itemize}
+\item If the array is of size n then the statement \textbf{for j = 2 to A.length} will execute $n$ times with a cost of $c_1$.\\
+\item The statements \textbf{key = A[j]} (inserting into an array) and \textbf{i=j-1} (setting a variable) will execute $n-1$ times each with a cost of $c_2$ and $c_3$ respectively.\\
+\item Since $k$ elements are unsorted in this array than any unsorted element is no more than $k$ places away from its sorted position.  This means that the statement \textbf{while i $>$ 0 and A[i] $>$ key} could be executed in the worst case $\sum_{j=2}^{n} k$ times with a cost of $c_4$.\\
+\item The statements \textbf{A[i+1] = A[i]} (inserting into an array) and \textbf{i = i + 1} (setting a variable) are executed $\sum_{j=2}^{n} k - 1$ times with a cost of $c_5$ and $c_6$ respectively.\\
+\item Finally, the statement \textbf{A[i+1] = key} (inserting into an array) is executed $n-1$ times with a cost of $c_7$.\\
+\end{itemize}
+Therefore, the equation for the runtime, $T(n)$, of insertion-sort is:\\
+\begin{align*}
+T(n)  & = c_1n + c_2(n-1) + c_3(n-1) + c_4(\sum_{j=2}^{n} k) + c_5(\sum_{j=2}^{n} k - 1) + c_6(\sum_{j=2}^{n} k - 1) + c_7(n-1)\\
+	& = c_1n + c_2(n-1) + c_3(n-1) + c_4(k(n-1)) + c_5(\sum_{j=2}^{n} k - 1) + c_6(\sum_{j=2}^{n} k - 1) + c_7(n-1)
+\end{align*}
+Since $k < n$ further reduction of $T(n)$ would yield a linear function of $n$ so we can say the runtime would turn out to be $O(n)$.
+
+\subsection*{b.}
+The sorting algorithm I suggest to get a $O(n)$ runtime is Counting Sort.
+\begin{algorithm}
+\KwData{A is the input array of length $n$}
+\KwData{B is the sorted array of length $n$}
+\KwData{$k$ is the highest integer in A}
+\BlankLine
+let $C[0..k]$ be a new array\\
+\For{$i=0$ to $k$}{
+	$C[i] = 0$\\
+}
+\For{$j=1$ to $A.length$}{
+	$C[A[j]] = C[A[j]+1$\\
+}
+\For{$i=1$ to $k$}{
+	$C[A[j]] = C[i] + C[i-1]$\\
+}
+\For{$j = A.length$ downto 1}{
+	$B[C[A[j]]] = A[j]$\\
+	$C[A[j]] = C[A[j]] - 1$\\
+}
+\caption{Counting-Sort(A, B, $k$)}
+\end{algorithm}
+\\
+\textbf{Analysis: }
+\begin{itemize}
+\item Initializing $C[0..k]$ takes $k+1$ time to execute and costs $c_0$.
+\item The statement \textbf{for i = 0 to k} take $k+1$ times to execute and cost $c_1$.
+\item The statements \textbf{for j = 1 to A.length} and \textbf{j = A.length downto 1} take $n$ times to execute and cost $c_3$ and $c_4$ respectively.
+\item The statement \textbf{i = 1 to k} takes $k$ times to execute and costs $c_2$.
+\end{itemize}
+The equation for the runtime, $T(n)$, of Counting Sort is:\\
+$$
+T(n) = c_0(k+1) + c_1(k+1) + c_3n + c_4n + c_2k\ldots
+$$
+
+Reducing $T(n)$ further would show that the runtime of Counting Sort is a linear function of $n$ that runs in a linear time of $O(k+n)$.
+If $k=O(n)$ then the running time is $\Theta(n)$.
+
+\subsection*{c.}
+(b) doesn't contradict the $\Omega{(n\,log\,n)}$ lower bound given on page 59 of the textbook because the algorithm is not a comparison sorting algorithm.\\
+It has been proven that any comparison sort must make $\Omega{n\,log\,n)}$ comparisons in the worst case to sort $n$ elements.  Since counting sort is not a comparison sorting algorithm its runtime is not bounded by $\Omega{(n\,log\,n)}$.
+
+
 \end{document}  
