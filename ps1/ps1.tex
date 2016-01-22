@@ -79,9 +79,10 @@ child {node (e) {$1$}}
 };
 \end{tikzpicture}
 \end{center}
-The height of the tree is $n$ and the cost at the root starts at $n$ and decreases by 1 each level in the tree.\\
-This means that the total cost of the tree is $n$.\\
-So $T(n) = O(cost*depth) = O(n^2)$.
+Tree depth = n\\
+Cost per level = i\\
+So $T(n) = \sum_{i = 1}^{n} i = \frac{n(n+1)}{2} = \frac{n^2}{2} + \frac{n}{2}$\\
+Therefore, it can be said that $T(n) =  O(n^2)$\\
 \subsection*{b.} $T(n) = 2T(n/2)+n^3,\,T(1) = 1$\\
 I will use the master method to solve this recurrence relation.\\
 $a=2, b=2, f(n)=n^3$\\
@@ -94,7 +95,8 @@ This tells us that the first 2 rules of the master theorem do not apply.
 This leaves the 3rd rule of the master theorem as the solution.\\
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item $f(n) = n^3 = \Omega{(n^{1+\epsilon})}$ if $\epsilon = 1$.  And $2f(n/2) \le cf(n) \Rightarrow 2(n/2)^3 \le cn^3$ if $c=\frac{1}{2}$ and $n \ge 1$.
+\item $f(n) = n^3 = \Omega{(n^{1+\epsilon})}$ if $\epsilon = 1$. \\ 
+And $2f(n/2) \le cf(n) \Rightarrow 2(n/2)^3 \le cn^3$ if $c=\frac{1}{2}$ and $n \ge 1$.\\
 \end{enumerate}
 Therefore, $T(n) = \Theta{(n^3)}$.
 
@@ -157,7 +159,7 @@ let $C[0..k]$ be a new array\\
 \textbf{Analysis: }
 \begin{itemize}
 \item Initializing $C[0..k]$ takes $k+1$ time to execute and costs $c_0$.
-\item The statement \textbf{for i = 0 to k} take $k+1$ times to execute and cost $c_1$.
+\item The statement \textbf{for i = 0 to k} takes $k+1$ times to execute and costs $c_1$.
 \item The statements \textbf{for j = 1 to A.length} and \textbf{j = A.length downto 1} take $n$ times to execute and cost $c_3$ and $c_4$ respectively.
 \item The statement \textbf{i = 1 to k} takes $k$ times to execute and costs $c_2$.
 \end{itemize}
@@ -166,6 +168,7 @@ $$
 T(n) = c_0(k+1) + c_1(k+1) + c_3n + c_4n + c_2k\ldots
 $$
 
+\noindent
 Reducing $T(n)$ further would show that the runtime of Counting Sort is a linear function of $n$ that runs in a linear time of $O(k+n)$.
 If $k=O(n)$ then the running time is $\Theta(n)$.
 
@@ -173,5 +176,76 @@ If $k=O(n)$ then the running time is $\Theta(n)$.
 (b) doesn't contradict the $\Omega{(n\,log\,n)}$ lower bound given on page 59 of the textbook because the algorithm is not a comparison sorting algorithm.\\
 It has been proven that any comparison sort must make $\Omega{n\,log\,n)}$ comparisons in the worst case to sort $n$ elements.  Since counting sort is not a comparison sorting algorithm its runtime is not bounded by $\Omega{(n\,log\,n)}$.
 
+\section*{6}
+\textbf{Lemma 1: }  A good minion tells the truth.\\
+\textbf{Lemma 2: } A bad minion could be telling the truth or could be lying.\\
+\\
+Let $g$ be the number of good minions, $b$ be the number of bad minions, and $n$ be the total number of minions.\\
+\\
+\subsection*{a.}
+\textbf{Proposition/Claim :} 
+If $n/2$ or more minions are bad, Gru cannot necessarily determine which minions are good.\\
+\\
+\textbf{Proof: }  This claim is proven by analyzing the cases.\\
+\\
+The comparison in the chamber can be between two good minions, two bad minions, or one good and one bad minion.\\
+\\
+The claim assumes that $b \ge n/2$.\\
+\\
+\textbf{Case 1: } Two good minions size each other up.\\
+The result of that comparison would be:\\
+\begin{center}
+\begin{tabular}{c|c}
+Minion A & Minion B\\
+\hline
+good & good\\
+\end{tabular}
+\end{center}
+\textbf{Case 2: } Two bad minions size each other up.\\
+The result of the comparison could be:
+\begin{center}
+\begin{tabular}{c|c}
+Minion A & Minion B\\
+\hline
+good & good\\
+bad & bad\\
+good & bad\\
+bad & good\\
+\end{tabular}
+\end{center}
+\textbf{Case 3: } One good minion and one bad minion size each other up.\\
+The result of the comparison if A was good and B was bad could be: 
+\begin{center}
+\begin{tabular}{c|c}
+Minion A & Minion B\\
+\hline
+good & bad\\
+bad & bad\\
+\end{tabular}
+\end{center}
+The result of the comparison if A was bad and B was good could be: 
+
+\begin{center}
+\begin{tabular}{c|c}
+Minion A & Minion B\\
+\hline
+bad & good\\
+bad & bad\\
+\end{tabular}
+\end{center}
+
+\noindent
+\textbf{Analysis: }As can be seen from the cases above, two bad minions sizing each other up in the chamber 
+can lead to the same results as two good minions or one good minion and one bad minion sizing each other up in the chamber.
+\\
+Gru has no way to tell if the results he is seeing in the chamber are from two good minions, two bad minions, or one bad and one good minion. 
+
+\subsection*{b.}
+\textbf{Proposition/Claim :} 
+$n/2$ pairwise tests are sufficient to reduce the problem of finding a single good minion to one of nearly half the size.\\
+\\
+The claim assumes that $g > n/2$.\\
+\\
+\textbf{Proof: }This claim is proven by analyzing the cases.\\
 
 \end{document}  

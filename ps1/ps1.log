@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 JAN 2016 21:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  21 JAN 2016 18:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -594,27 +594,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--86
+
+ []
+
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
@@ -630,21 +630,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 124--125
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
 
-Overfull \hbox (86.45552pt too wide) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+Overfull \hbox (86.45552pt too wide) in paragraph at lines 132--132
 [] 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
-[6] [7] (./ps1.aux) ) 
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--197
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 244--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--250
+
+ []
+
+[8] (./ps1.aux) ) 
 Here is how much of TeX's memory you used:
  13348 strings out of 493089
  258758 string characters out of 6134842
@@ -653,23 +718,23 @@ Here is how much of TeX's memory you used:
  10589 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,16n,54p,452b,1564s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6
-.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ps1.pdf (7 pages, 144352 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on ps1.pdf (8 pages, 147784 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
