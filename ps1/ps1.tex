@@ -246,6 +246,32 @@ $n/2$ pairwise tests are sufficient to reduce the problem of finding a single go
 \\
 The claim assumes that $g > n/2$.\\
 \\
-\textbf{Proof: }This claim is proven by analyzing the cases.\\
+\textbf{Proof: }\\
+$n/2$ pairwise tests means that if $n$ is even, like the number 50, then all minions are tested against another minion.  For example, if there are 50 minions then they would be split into 25 ($50/2$) pairs of minions that will be sent to the chamber to be tested. 
+If $n$ is odd, like the number 51, then one minion will be left out of the initial $n/2$ pairwise tests.  For example, if there are 51 minions they would be split into 25 ($50/2$) pairs of minions with one minion left over and not being paired up.\\
+\\
+In order to reduce the problem by nearly half the size we will have to get rid of minions and to do that we need to look at the four possible outcomes of a test.
+Of the four possible outcomes of minions sizing up each other in the chamber, three have the conclusion that at least one minion in the chamber is bad.
+With this in mind, only keeping the minions from the outcome that resulted in minion A saying "good" and minion B saying "good" would result in at most one good minion and at least one bad minion being removed for each of the tests that resulted in the other outcomes.
+Because we are getting rid of the minions of 3/4 of the possible outcomes of a test the size of the problem, the number of minions, is reduced by at least half if a good minions are tested with bad minions.
+Additionally, since we get rid of one bad minion with every good minion and more than $n/2$ of the minions are good we know that there will be at least one good minion in the remaining group after the pairwise tests.
 
+\subsection*{c.} 
+\textbf{Proposition/Claim: } 
+Good minions can be identified with $\Theta{(n)}$ pairwise tests, assuming more than $n/2$ of the minions are good.\\
+\\
+\textbf{Proof: }
+The problem can be categorized as a recurrence starting with $n$ as the initial size of the problem which is the initial number of minions.  $n$ is then continuously divided by 2 each pairwise test iteration as section b states above.  We can then create a recurrence equation below which describes this minion testing procedure below:
+\begin{equation}
+T(n) = T(n/2) + n
+\end{equation}
+
+\noindent
+Part 3 of the master method can be used to solve this recurrence relation.
+$f(n) = n, b = 2, a = 1$
+\begin{itemize}
+\item $f(n) = n = \Omega{(n^{0+\epsilon})}$ where $\epsilon$ is .5
+\item $n/2 \le cn$ where $c = .9$ and all sufficiently large n
+\end{itemize}
+Therefore, $T(n) = \Theta{(n)}$ which proves that a minion can be identified with $\Theta{(n)}$ pairwise tests.
 \end{document}  
