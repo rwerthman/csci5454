@@ -276,6 +276,7 @@ $f(n) = n, b = 2, a = 1$
 Therefore, $T(n) = \Theta{(n)}$ which proves that the minion testing procedure from b which finds a good minion will only need $\Theta{(n)}$ pairwise tests to do so.
 
 \section*{7}
+The algorithm I propose for this problem is a divide-and-conquer algorithm.
 \begin{algorithm}
 \KwData{$A$, half of table initially covered with n tiles which are all face-up}
 \KwData{$B$, half of table initially empty that holds face-down tiles}
@@ -334,5 +335,36 @@ This means that we expect at least half of the of the tiles that are spilled ont
 A recursive call to Tile-Flip repeats the Tile-Flip algorithm again.\\   
 \subsubsection*{Termination}
 Termination of the algorithm occurs at line 3 of the pseudocode.  At that point $A$ has no tiles and all the tiles that it did have were moved to $B$ as face-down tiles (line 7-8).  Termination depends on the probability of there being face-down tiles on the table after a bag has been dumped out.  That way $A$ will eventually have not tiles and $B$ will have only face-down tiles which would pass the check on line 2 of the pseudocode and start the return the recursive function calls.  As was shown in the \textbf{Maintenance} section above this will eventually happen.  Therefore, the algorithm will terminate while maintaining the loop invariants.
+
+\subsection*{b. Algorithm Proof of Runtime}
+
+\subsubsection*{Divide}
+The divide step in Tile-Flip is line 7-8 of the pseudocode where the tiles are gathered, spilled on the table, and then removed.  The size of $A$ is divided by 2 at that point since we assume that $n/2$ tiles will be face-down and will be moved to $B$.
+Gathering $k$ tiles and then spilling or moving them onto the table takes $n/k$ time where $n$ is the size of $A$.  This time applies to the initial gathering and spilling and then the gathering and moving to $B$ of the the face-down tiles.  This means that runtime for 
+\begin{itemize}
+\item Line 7 is 
+\begin{align*}
+n/n + (n/2)/(n/2) + (n/4)/(n/4) +...+ 1 &= 1+1+1+...+1 \\
+						       &=  \sum_{i=1}^{lg(n)} 1\\
+						       &=lg(n)\\
+\end{align*}
+\item Line 8 is 
+\begin{align*}
+n/(n/2) + (n/2)/(n/4) + (n/4)/(n/8) +..+2 &= 2+2+2+...+2\\
+							  &= \sum_{i=1}^{lg(n)} 2\\
+							  &=2lg(n)\\
+\end{align*}
+\end{itemize}  
+Adding the runtime of each of these lines together produces $3lg(n)$ for the total runtime of the divide part of this algorithm.\\
+\subsubsection*{Conquer}
+We recursively solve the single subproblem created by the divide part of this algorithm when calling Tile-Flip again at line 9 of the pseudocode.  The size of each subproblem is $n/2$ where $n$ is the size of $A$ when it enters the function\\.   
+\subsubsection*{Combine}
+The moving of the face-down tiles together onto the $B$ half of the table is the combine part of this algorithm.  This happens at line 8 of the pseudocode has the runtime of $2lg(n)$.\\
+
+Putting together the times from the divide, conquer, and combine part of Tile-Flip into a recurrence, we get the following equation:
+$$
+T(n) = T(n/2) + 3lg(n) = T(n/2) + \Theta{(lg(n))}
+$$
+
 
 \end{document}  
