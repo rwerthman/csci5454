@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 JAN 2016 22:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 JAN 2016 22:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -750,32 +750,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 358--359
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 362--366
+Underfull \hbox (badness 10000) in paragraph at lines 362--364
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--364
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 368--382
+Underfull \hbox (badness 10000) in paragraph at lines 369--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--382
+Underfull \hbox (badness 10000) in paragraph at lines 369--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--382
+Underfull \hbox (badness 10000) in paragraph at lines 369--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--382
+Underfull \hbox (badness 10000) in paragraph at lines 369--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--382
+Underfull \hbox (badness 10000) in paragraph at lines 369--383
 
  []
 
@@ -801,7 +806,7 @@ b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ps1.pdf (14 pages, 162446 bytes).
+Output written on ps1.pdf (14 pages, 162467 bytes).
 PDF statistics:
  105 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
