@@ -70,8 +70,8 @@ I will use a recurrence tree to solve this recurrence relation.\\
 \node (z) {$n$}
 child {node (a) {$n-1$} 
 child {node (b) {$n-2$}
-child {node (c) {$2$}
-child {node (d) {$\vdots$}
+child {node (c) {$\vdots$}
+child {node (d) {$2$}
 child {node (e) {$1$}}
 }
 }
@@ -360,11 +360,25 @@ Adding the runtime of each of these lines together produces $3lg(n)$ for the tot
 We recursively solve the single subproblem created by the divide part of this algorithm when calling Tile-Flip again at line 9 of the pseudocode.  The size of each subproblem is $n/2$ where $n$ is the size of $A$ when it enters the function\\.   
 \subsubsection*{Combine}
 The moving of the face-down tiles together onto the $B$ half of the table is the combine part of this algorithm.  This happens at line 8 of the pseudocode has the runtime of $2lg(n)$.\\
-
+\\
+\noindent
 Putting together the times from the divide, conquer, and combine part of Tile-Flip into a recurrence, we get the following equation:
 $$
 T(n) = T(n/2) + 3lg(n) = T(n/2) + \Theta{(lg(n))}
 $$
+The master theorem cannot be used to solve this recurrence because none of the rules of the master theorem apply to this recurrence.\\
+\\
+$a=1, b=2, f(n) = lg(n)$\\
+$n^{\log_{b} a} = n^{\log_{2} 1} = n^0$\\
+\\
+There is however a solution that I took out the book Introduction to Algorithms 3rd Edition:\\
+\\
+If $f(n) = \Theta{(n^{\log_{b} a}lg^k n)}$, where $k \ge 0$ then $T(n) = \Theta{(n^{\log_{b} a}lg^{k+1} n)}$\\
+If $k=1$ then we have $f(n) = \Theta{(n^0lg(n))} = \Theta{(lg(n))}$.  Since $f(n) = lg(n)$ this statement is true.\\
+\\
+This means that $T(n) = \Theta{(n^{\log_{b} a}lg^{k+1} n)} = \Theta{(lg^{2} n)}$\\
+\\
+This also means that $T(n)$ which is $ \Theta{(lg^{2} n)}$ of Tile-Flip is $o(n)$ because any positive polynomial function ($n$) grows faster than any polylogrithmic function ($lg^2 n$).
 
 
 \end{document}  
