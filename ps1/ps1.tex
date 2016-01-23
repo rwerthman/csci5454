@@ -273,5 +273,66 @@ $f(n) = n, b = 2, a = 1$
 \item $f(n) = n = \Omega{(n^{0+\epsilon})}$ where $\epsilon$ is .5
 \item $n/2 \le cn$ where $c = .9$ and all sufficiently large n
 \end{itemize}
-Therefore, $T(n) = \Theta{(n)}$ which proves that a minion can be identified with $\Theta{(n)}$ pairwise tests.
+Therefore, $T(n) = \Theta{(n)}$ which proves that the minion testing procedure from b which finds a good minion will only need $\Theta{(n)}$ pairwise tests to do so.
+
+\section*{7}
+\begin{algorithm}
+\KwData{$A$, half of table initially covered with n tiles which are all face-up}
+\KwData{$B$, half of table initially empty that holds face-down tiles}
+\BlankLine
+\KwResult{$n$ tiles on B part of table which are all face-down}
+\BlankLine
+// If there are no tiles left on $A$\\
+\If{size of $A == 0$}{
+return\\
+}
+// If we have more than one tile on A\\
+\If{size of $A > 0$}{
+gather all of tiles on A into bag and spill them onto the table\\
+find and gather tiles that are face-down and move them to $B$\\
+return Tile-Flip($A$, $B$)\\
+}
+\caption{Tile-Flip($A$, $B$)}
+\end{algorithm}
+\noindent
+\subsection*{a. Algorithm Proof of Correctness: }
+\subsubsection*{Loop Invariant}
+At the start of each call to this method:
+\begin{itemize}
+\item The first half of the table, $A$, will contain either tiles that are face-up or no tiles at all.
+\item The second half of the table, $B$, will contain either tiles that are face-down or no tiles at all.
+\end{itemize}
+At the end of each call to this method:
+\begin{itemize}
+\item $B$ will have grown in size by (size of $A$)/2 due the expected value of the probability of flipping a tile.
+\end{itemize}
+\subsubsection*{Initialization}
+Prior to the first ever call to Tile-Flip, $A$ initially consists of $n$ tiles that are all face-up and $B$ is initially empty.  The part of the algorithm where probability affects what is in $B$ and $A$ has
+not been reached.  All loop invariants are initially maintained.\\  
+\subsubsection*{Maintenance}
+To see that consecutive calls to Tile-Flip maintain the loop invariants, we need to look at lines 6-10 of the pseudocode above.  Lines 1-5 do not change $B$ or $A$ and so do not affect the loop variants.\\
+\\
+Suppose that there are more than 0 tiles remaining on $A$ (the check at line 6).  In that case, all the tiles on $A$ will be placed into a bag and spilled onto the table (line 7).  If any tiles are found to be face-down then they are removed from $A$ and moved to $B$ (line 9).  If no tiles are found to be face-down then nothing changes with $A$ or $B$ (line 9).  For both cases, the first two of the loop invariants are maintained. \\
+\\
+How the third loop invariant is maintained needs more explanation.  The probability of flipping a tile from face-down to face-up or face-up to face-down when dumping the bag onto the table is 1/2.  Let $X$ be the random variable that represents the number of face-down tiles in the $n$ tiles that were dumped onto the table, so that 
+$$
+X = \sum_{i=1}^{n} X_i
+$$
+We wish to find the \textbf{expected number} of tiles dumped on the table that ended up face-down because these tiles would be removed from $A$ and put in $B$ reducing the original problem.\\
+\\
+In order to do this we take the expectation of both sides of the equation above and solve.
+Keep in mind that the expected value of a random variable (in this case the number of face-down tiles) associated with an event (in this case flipping) is equal to the probability that the event occurs.  The probability that the flipping of a tile occurs is 1/2. So $E[X] = 1/2$.
+\begin{align*}
+E[X]  &= E[\sum_{i=1}^{n} X_i]\\
+	&= \sum_{i=1}^{n} E[X_i]\\
+	&= \sum_{i=1}^{n} 1/2\\ 
+	&=n/2\\
+\end{align*}
+\noindent
+This means that we expect at least half of the of the tiles that are spilled onto the table to be face-down.  So those tiles for be moved from $A$ to $B$ and $B$ would have grown by (size of $A$)/2.  This satisfies the third part of the loop invariant so the entire loop invariant is maintained.\\
+\\
+A recursive call to Tile-Flip repeats the Tile-Flip algorithm again.\\   
+\subsubsection*{Termination}
+Termination of the algorithm occurs at line 3 of the pseudocode.  At that point $A$ has no tiles and all the tiles that it did have were moved to $B$ as face-down tiles (line 7-8).  Termination depends on the probability of there being face-down tiles on the table after a bag has been dumped out.  That way $A$ will eventually have not tiles and $B$ will have only face-down tiles which would pass the check on line 2 of the pseudocode and start the return the recursive function calls.  As was shown in the \textbf{Maintenance} section above this will eventually happen.  Therefore, the algorithm will terminate while maintaining the loop invariants.
+
 \end{document}  
