@@ -381,5 +381,44 @@ This means that $T(n) = \Theta{(n^{\log_{b} a}lg^{k+1} n)} = \Theta{(lg^{2} n)}$
 \\
 This also means that $T(n)$ which is $ \Theta{(lg^{2} n)}$ of Tile-Flip is $o(n)$ because any positive polynomial function ($n$) grows faster than any polylogrithmic function ($lg^2 n$).
 
+\section*{8}
+{\fontfamily{pcr}\selectfont
+\textbf{Algorithm}\\
+\\
+\textbf{Input:} A strongly connected directed graph $G=(V,E)$ with $w(u,v) \ge 0$ for each edge $(u,v) \in E$ and node $n_0 \in V$\\
+\\
+\textbf{Output:} A matrix $M$ that contains the shortest paths between all pairs of nodes while passing through $v_0$.\\
+\\
+Find-Shortest-Path-To-All-Pairs-Of-Nodes-Through-Single-Vertex($G$,$v_0$)
+\begin{enumerate}
+\item Run the subroutine Dijkstra($G$, $w$, $v_0$) to find the $\delta{(v_0,v)}$ (shortest paths) from $v_0$ to all vertices $v \in V$\\
+\item Transpose $G=(V,E)$ to $G^T = (V,E^T)$, where $E^T = \{(v,u) \in VxV:(u,v)\in E \}$.  In other words, reverse the edges of all the vertices in $G$.
+\item Run the subroutine Dijkstra($G^T$, $w$, $v_0$) to find the $\delta{(v, v_0)}$ (shortest paths) from all vertices $v \in V$ to $v_0$\\
+\item For all vertices $v \in V$ and $u \in V$ combine the shortest path from $v$ to $v_0$ and $v_0$ to $u$ into a matrix $M$ such that $M_{v,u}$ is the shortest path from vertex $v$ to vertex $u$ that goes through $v_0$.\\ 
+\end{enumerate}
+}
+
+\subsection*{Proof Of Correctness}
+\subsubsection*{Invariant}
+The algorithm above returns a matrix that contains the shortest paths between all vertices in the graph $G$ that go through some vertex $v_0$.\\
+\subsubsection*{Initialization}
+Initially we have a strongly connected graph $G$ which means that for every pair of vertices $u$ and $v$ there is an edge from $u \rightarrow v$ and an edge from $v \rightarrow u$.
+One vertex $v_0$ is chosen from $G$ where every shortest path from each vertex in $G$ must go through.  The invariant does not really apply yet.
+\subsubsection*{Maintenance}
+
+\subsubsection*{Termination}
+
+\subsection*{Proof of Runtime}
+The runtime for each line of the pseudocode is as follows:
+\begin{itemize}
+\item Line 1: Assuming a binary heap is used to implement the the priority queue of dijkstra it will have a runtime of $O((|V|+|E|)log|V|)$
+\item Line 2: It takes $O(|V|+|E|)$ to reverse $G=(V,E)$ since we have to visit each vertex and reverse each edge of that vertex.
+\item Line 3: Assuming a binary heap is used to implement the the priority queue of dijkstra it will have a runtime of $O((|V|+|E|)log|V|)$
+\item Line 4: Creating and inserting values into a matrix $M$ of $|V|x|V|$ size takes $O(|V|^2)$ time.
+\end{itemize}
+So, $T(n)$ (the runtime) of this algorithm is:
+$$
+T(n) = O((|V|+|E|)log|V| + (|V|+|E|) + |V|^2)
+$$
 
 \end{document}  
