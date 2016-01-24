@@ -403,11 +403,16 @@ Find-Shortest-Path-To-All-Pairs-Of-Nodes-Through-Single-Vertex($G$,$v_0$)
 The algorithm above returns a matrix that contains the shortest paths between all vertices in the graph $G$ that go through some vertex $v_0$.\\
 \subsubsection*{Initialization}
 Initially we have a strongly connected graph $G$ which means that for every pair of vertices $u$ and $v$ there is an edge from $u \rightarrow v$ and an edge from $v \rightarrow u$.
-One vertex $v_0$ is chosen from $G$ where every shortest path from each vertex in $G$ must go through.  The invariant does not really apply yet.
+One vertex $v_0$ is chosen from $G$ where every shortest path from each vertex in $G$ must go through.  The invariant is trivially satisfied.
 \subsubsection*{Maintenance}
-
+We assume the correctness of the Dijkstra algorithm and that it returns the shortest paths from a source vertex $s$ to all the vertices a graph.  The first call to Dijkstra returns the shortest paths from $v_0$ to all vertices
+in $G$.  Since the $G$ is strongly connected we know that if we reverse/transpose $G$ (line 2) and then run Dijkstra on $v_0$ again we can find the shortest paths from all vertices $v$ to the vertex $v_0$.  The invariant is satisfied because the paths found with Dijkstra will be later be used to complete shortest path matrix.\\
 \subsubsection*{Termination}
-
+Our goal is to create a matrix that contains the shortest path from one vertex to another but the path has to run through a single vertex, $v_0$.  Each shortest path for each vertex is found by combining the two outputs of Dijkstra giving shortest paths that look like the following:
+$$
+v \rightarrow v_0 \rightarrow u\;(u,v) \in V
+$$
+The shortest paths for all pairs of vertices are added to a matrix $M$ where element $M_{v,u}$ is the shortest path from vertex $v$ to vertex $u$.  This matrix is returned and satisfies the invariant state above.
 \subsection*{Proof of Runtime}
 The runtime for each line of the pseudocode is as follows:
 \begin{itemize}
@@ -420,5 +425,30 @@ So, $T(n)$ (the runtime) of this algorithm is:
 $$
 T(n) = O((|V|+|E|)log|V| + (|V|+|E|) + |V|^2)
 $$
+
+\section*{9}
+\section*{8}
+{\fontfamily{pcr}\selectfont
+\textbf{Algorithm}\\
+\\
+\textbf{Input:} A directed graph $G=(V,E)$; positive edge lengths $l_e$ and positive vertex costs $c_v$;a starting vertex $s \in V$\\
+\\
+\textbf{Output:} An array $cost[]$ such that for every vertex $u$, $cost[u]$ is the least cost of any path from $s$ to $u$ (i.e., the cost of the cheapest path).\\
+\\
+}
+
+\subsection*{Proof Of Correctness}
+\subsubsection*{Invariant}
+\subsubsection*{Initialization}
+\subsubsection*{Maintenance}
+\subsubsection*{Termination}
+
+\subsection*{Proof of Runtime}
+The runtime for each line of the pseudocode is as follows:\\
+So, $T(n)$ (the runtime) of this algorithm is:\\
+$$
+T(n) = 
+$$
+
 
 \end{document}  

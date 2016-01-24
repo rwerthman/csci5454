@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 JAN 2016 15:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 JAN 2016 16:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -890,7 +890,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[15] [16] (./ps1.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 432--439
+
+ []
+
+
+Overfull \hbox (11.98009pt too wide) in paragraph at lines 432--439
+\OT1/pcr/b/n/12 Input: \OT1/pcr/m/n/12 A directed graph $\OML/cmm/m/it/12 G \OT
+1/cmr/m/n/12 = (\OML/cmm/m/it/12 V; E\OT1/cmr/m/n/12 )$\OT1/pcr/m/n/12 ; positi
+ve edge lengths
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 432--439
+
+ []
+
+
+Overfull \hbox (22.9963pt too wide) in paragraph at lines 432--439
+\OT1/pcr/b/n/12 Output: \OT1/pcr/m/n/12 An array $\OML/cmm/m/it/12 cost\OT1/cmr
+/m/n/12 []$ \OT1/pcr/m/n/12 such that for every vertex $\OML/cmm/m/it/12 u$\OT1
+/pcr/m/n/12 , $\OML/cmm/m/it/12 cost\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 u\OT1/cmr
+/m/n/12 ]$
+ []
+
+
+Overfull \hbox (18.22194pt too wide) in paragraph at lines 432--439
+\OT1/pcr/m/n/12 is the least cost of any path from $\OML/cmm/m/it/12 s$ \OT1/pc
+r/m/n/12 to $\OML/cmm/m/it/12 u$ \OT1/pcr/m/n/12 (i.e., the cost
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 432--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 432--439
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 447--449
+
+ []
+
+[17] (./ps1.aux) ) 
 Here is how much of TeX's memory you used:
  13388 strings out of 493089
  259360 string characters out of 6134842
@@ -899,26 +950,26 @@ Here is how much of TeX's memory you used:
  11619 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,16n,54p,678b,1564s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base
-/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8
-.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on ps1.pdf (16 pages, 190667 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.e
+nc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on ps1.pdf (17 pages, 193509 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 123 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
