@@ -13,11 +13,12 @@
 \subsection*{}
 Let's say these algorithms solve an array sorting problem.\\
 \begin{itemize}
-\item Let algorithm $A$ be bubblesort with a worst-case runtime of $n^2$.\\
-\item Let algorithm $B$ be mergesort with a worst-case runtime of $n*log(n)$.\\
+\item Let algorithm $A$ be bubblesort with a worst-case runtime of $f(n) = n^2$.\\
+\item Let algorithm $B$ be mergesort with a worst-case runtime of $g(n) = n*log(n)$.\\
 \item Let $C$ be the newly designed sorting algorithm with a worst-case runtime of $h(n)$.\\
 \end{itemize}
 In this case, $O(min(f(n),g(n)))$ will become $O(n*log(n))$ because it is the smaller of the two runtimes.\\
+\\
 If $h(n)$ is $log(n)$ then $h(n)$ achieves the running time $O(min(f(n),g(n)))$ because $log(n)$ does not grow faster than $n*log(n)$ and is therefore bounded above by it.\\
 
 \subsection*{}
@@ -48,7 +49,7 @@ The only thing missing from this new equation is a power of $b$.  Raising the ne
 $$
 0 \le (\frac{1}{2}n)^b \le (n+a)^b \le (2n)^b \Rightarrow 0 \le (\frac{1}{2})^bn^b \le (n+a)^b \le (2)^bn^b
 $$  
-Extracting the constants $c_1,c_2,n_0$ from this equation yields $c_1 = (\frac{1}{2})^b$, $c_2 = 2^b$, and $n_0 = 2|a|$ since $n \ge 2|a|$.  These represent one solution.
+Extracting the constants $c_1,c_2,n_0$ from this equation yields $c_1 = (\frac{1}{2})^b$, $c_2 = 2^b$, and $n_0 = 2|a|$ since $n \ge 2|a|$.  Since we found constants that satisfy the Theorem, the asymptotic relation $(n+a)^b = \Theta(n^b)$ is true.
 \section*{3.}
 $f(n) = \Omega{g(n)}$ means that for all values to the right of some $n_0$ the value of $f(n)$ is on or above $cg(n)$.\\
 \begin{center}
@@ -85,6 +86,7 @@ So $T(n) = \sum_{i = 1}^{n} i = \frac{n(n+1)}{2} = \frac{n^2}{2} + \frac{n}{2}$\
 Therefore, it can be said that $T(n) =  O(n^2)$\\
 \subsection*{b.} $T(n) = 2T(n/2)+n^3,\,T(1) = 1$\\
 I will use the master method to solve this recurrence relation.\\
+\\
 $a=2, b=2, f(n)=n^3$\\
 so $n^{\log_{b} a} = n^{\log_{2} 2} = n$\\
 This tells us that the first 2 rules of the master theorem do not apply.
@@ -99,7 +101,6 @@ This leaves the 3rd rule of the master theorem as the solution.\\
 And $2f(n/2) \le cf(n) \Rightarrow 2(n/2)^3 \le cn^3$ if $c=\frac{1}{2}$ and $n \ge 1$.\\
 \end{enumerate}
 Therefore, $T(n) = \Theta{(n^3)}$.
-
 \section*{5.}
 \subsection*{a.}
 \begin{algorithm}
@@ -117,7 +118,7 @@ Therefore, $T(n) = \Theta{(n^3)}$.
 }
 \caption{Insertion-Sort(A)}
 \end{algorithm}
-\textbf{Analysis: }In order to figure out the running time of Insertion Sort we need to add up the cost of each statement in the algorithm.\\
+\textbf{Runtime Analysis: }In order to figure out the running time of Insertion Sort we need to add up the cost of each statement in the algorithm.\\
 \begin{itemize}
 \item If the array is of size n then the statement \textbf{for j = 2 to A.length} will execute $n$ times with a cost of $c_1$.\\
 \item The statements \textbf{key = A[j]} (inserting into an array) and \textbf{i=j-1} (setting a variable) will execute $n-1$ times each with a cost of $c_2$ and $c_3$ respectively.\\
@@ -252,8 +253,9 @@ If $n$ is odd, like the number 51, then one minion will be left out of the initi
 \\
 In order to reduce the problem by nearly half the size we will have to get rid of minions and to do that we need to look at the four possible outcomes of a test.
 Of the four possible outcomes of minions sizing up each other in the chamber, three have the conclusion that at least one minion in the chamber is bad.
-With this in mind, only keeping the minions from the outcome that resulted in minion A saying "good" and minion B saying "good" would result in at most one good minion and at least one bad minion being removed for each of the tests that resulted in the other outcomes.
-Because we are getting rid of the minions of 3/4 of the possible outcomes of a test the size of the problem, the number of minions, is reduced by at least half if a good minions are tested with bad minions.
+With this in mind, only keeping the minions from the outcome that resulted in minion A saying "good" and minion B saying "good" would result in at most one good minion and at least one bad minion being removed for each of the tests that resulted in the other outcomes.\\
+\\
+Because we are getting rid of the minions of 3/4 of the possible outcomes of a test the size of the problem, the number of minions, is reduced by at least half if all good minions are tested with bad minions.
 Additionally, since we get rid of one bad minion with every good minion and more than $n/2$ of the minions are good we know that there will be at least one good minion in the remaining group after the pairwise tests.
 
 \subsection*{c.} 
@@ -313,7 +315,7 @@ not been reached.  All loop invariants are initially maintained.\\
 \subsubsection*{Maintenance}
 To see that consecutive calls to Tile-Flip maintain the loop invariants, we need to look at lines 6-10 of the pseudocode above.  Lines 1-5 do not change $B$ or $A$ and so do not affect the loop variants.\\
 \\
-Suppose that there are more than 0 tiles remaining on $A$ (the check at line 6).  In that case, all the tiles on $A$ will be placed into a bag and spilled onto the table (line 7).  If any tiles are found to be face-down then they are removed from $A$ and moved to $B$ (line 9).  If no tiles are found to be face-down then nothing changes with $A$ or $B$ (line 9).  For both cases, the first two of the loop invariants are maintained. \\
+Suppose that there are more than 0 tiles remaining on $A$ (the check at line 6).  In that case, all the tiles on $A$ will be placed into a bag and spilled onto the table (line 7).  If any tiles are found to be face-down they are removed from $A$ and moved to $B$ (line 9).  If no tiles are found to be face-down then nothing changes with $A$ or $B$ (line 9).  For both cases, the first two of the loop invariants are maintained. \\
 \\
 How the third loop invariant is maintained needs more explanation.  The probability of flipping a tile from face-down to face-up or face-up to face-down when dumping the bag onto the table is 1/2.  Let $X$ be the random variable that represents the number of face-down tiles in the $n$ tiles that were dumped onto the table, so that 
 $$
@@ -330,11 +332,11 @@ E[X]  &= E[\sum_{i=1}^{n} X_i]\\
 	&=n/2\\
 \end{align*}
 \noindent
-This means that we expect at least half of the of the tiles that are spilled onto the table to be face-down.  So those tiles for be moved from $A$ to $B$ and $B$ would have grown by (size of $A$)/2.  This satisfies the third part of the loop invariant so the entire loop invariant is maintained.\\
+This means that we expect to find at least half of the tiles that are spilled onto the table to be face-down.  Those face-down tiles are moved from $A$ to $B$ and $B$ grows in size by (size of $A$)/2.  This satisfies the third part of the loop invariant so the entire loop invariant is maintained.\\
 \\
-A recursive call to Tile-Flip repeats the Tile-Flip algorithm again.\\   
+A recursive call to Tile-Flip repeats the Tile-Flip algorithm.\\   
 \subsubsection*{Termination}
-Termination of the algorithm occurs at line 3 of the pseudocode.  At that point $A$ has no tiles and all the tiles that it did have were moved to $B$ as face-down tiles (line 7-8).  Termination depends on the probability of there being face-down tiles on the table after a bag has been dumped out.  That way $A$ will eventually have not tiles and $B$ will have only face-down tiles which would pass the check on line 2 of the pseudocode and start the return the recursive function calls.  As was shown in the \textbf{Maintenance} section above this will eventually happen.  Therefore, the algorithm will terminate while maintaining the loop invariants.
+Termination of the algorithm occurs at line 3 of the pseudocode.  At that point $A$ has no tiles and all the tiles that it did have were moved to $B$ as face-down tiles (line 7-8).  Termination depends on the probability of there being face-down tiles on the table after a bag has been dumped out.  That way $A$ will eventually have not tiles and $B$ will have only face-down tiles which would pass the check on line 2 of the pseudocode and start the return of the rest of the recursive function calls.  As was shown in the \textbf{Maintenance} section above this will eventually happen.  Therefore, the algorithm will always (relying on probability) terminate while maintaining the loop invariants.
 
 \subsection*{b. Algorithm Proof of Runtime}
 
@@ -357,7 +359,7 @@ n/(n/2) + (n/2)/(n/4) + (n/4)/(n/8) +..+2 &= 2+2+2+...+2\\
 \end{itemize}  
 Adding the runtime of each of these lines together produces $3lg(n)$ for the total runtime of the divide part of this algorithm.\\
 \subsubsection*{Conquer}
-We recursively solve the single subproblem created by the divide part of this algorithm when calling Tile-Flip again at line 9 of the pseudocode.  The size of each subproblem is $n/2$ where $n$ is the size of $A$ when it enters the function\\.   
+We recursively solve the single subproblem created by the divide part of this algorithm when calling Tile-Flip again at line 9 of the pseudocode.  The size of each subproblem is $n/2$ where $n$ is the size of $A$ when it enters the function.\\   
 \subsubsection*{Combine}
 The moving of the face-down tiles together onto the $B$ half of the table is the combine part of this algorithm.  This happens at line 8 of the pseudocode has the runtime of $2lg(n)$.\\
 \\
@@ -372,9 +374,10 @@ The master theorem cannot be used to solve this recurrence because none of the r
 $a=1, b=2, f(n) = lg(n)$\\
 $n^{\log_{b} a} = n^{\log_{2} 1} = n^0$\\
 \\
-There is however a solution that I took out the book Introduction to Algorithms 3rd Edition:\\
+There is however a solution that I took out the book \underline{Introduction to Algorithms, 3rd Edition}:\\
 \\
 If $f(n) = \Theta{(n^{\log_{b} a}lg^k n)}$, where $k \ge 0$ then $T(n) = \Theta{(n^{\log_{b} a}lg^{k+1} n)}$\\
+\\
 If $k=1$ then we have $f(n) = \Theta{(n^0lg(n))} = \Theta{(lg(n))}$.  Since $f(n) = lg(n)$ this statement is true.\\
 \\
 This means that $T(n) = \Theta{(n^{\log_{b} a}lg^{k+1} n)} = \Theta{(lg^{2} n)}$\\
@@ -403,16 +406,16 @@ Find-Shortest-Path-To-All-Pairs-Of-Nodes-Through-Single-Vertex($G$,$v_0$)
 The algorithm above returns a matrix that contains the shortest paths between all vertices in the graph $G$ that go through some vertex $v_0$.\\
 \subsubsection*{Initialization}
 Initially we have a strongly connected graph $G$ which means that for every pair of vertices $u$ and $v$ there is an edge from $u \rightarrow v$ and an edge from $v \rightarrow u$.
-One vertex $v_0$ is chosen from $G$ where every shortest path from each vertex in $G$ must go through.  The invariant is trivially satisfied.
+One vertex $v_0$ is chosen from $G$ that every shortest path between each pair of vertices in $G$ must go through.  The invariant is satisfied because we have not created the matrix $M$ yet to hold the shortest paths.
 \subsubsection*{Maintenance}
 We assume the correctness of the Dijkstra algorithm and that it returns the shortest paths from a source vertex $s$ to all the vertices a graph.  The first call to Dijkstra returns the shortest paths from $v_0$ to all vertices
-in $G$.  Since the $G$ is strongly connected we know that if we reverse/transpose $G$ (line 2) and then run Dijkstra on $v_0$ again we can find the shortest paths from all vertices $v$ to the vertex $v_0$.  The invariant is satisfied because the paths found with Dijkstra will be later be used to complete shortest path matrix.\\
+in $G$.  Since $G$ is strongly connected we know that if we reverse/transpose $G$ (line 2) and then run Dijkstra on $v_0$ again we can find the shortest paths from all vertices $v$ to the vertex $v_0$.  The invariant is satisfied because the paths found with Dijkstra will be later be used to complete shortest path matrix.\\
 \subsubsection*{Termination}
 Our goal is to create a matrix that contains the shortest path from one vertex to another but the path has to run through a single vertex, $v_0$.  Each shortest path for each vertex is found by combining the two outputs of Dijkstra giving shortest paths that look like the following:
 $$
 v \rightarrow v_0 \rightarrow u\;(u,v) \in V
 $$
-The shortest paths for all pairs of vertices are added to a matrix $M$ where element $M_{v,u}$ is the shortest path from vertex $v$ to vertex $u$.  This matrix is returned and satisfies the invariant state above.
+The shortest paths for all pairs of vertices are added to a matrix $M$ where element $M_{v,u}$ is the shortest path from vertex $v$ to vertex $u$.  This matrix is returned and satisfies the invariant stated above.
 \subsection*{Proof of Runtime}
 The runtime for each line of the pseudocode is as follows:
 \begin{itemize}
@@ -427,7 +430,6 @@ T(n) = O((|V|+|E|)log|V| + (|V|+|E|) + |V|^2)
 $$
 
 \section*{9}
-\section*{8}
 {\fontfamily{pcr}\selectfont
 \textbf{Algorithm}\\
 \\
@@ -437,7 +439,7 @@ $$
 \\
 Cheapest-Route($G$, $s$)\\
 \begin{enumerate}
-\item Create a weight function such that the weight of going from vertex $u$ to vertex $v$ ($w(u,v)$) equals the cost of the edge length between $u$ and $v$ + the cost of vertex $v\;(c_v)$
+\item Create a weight function, $w$, such that the weight of going from vertex $u$ to vertex $v$ ($w(u,v)$) equals the cost of the edge length between $u$ and $v$ + the cost of vertex $v\;(c_v)$
 \item Run the Dijkstra subroutine as Dijkstra($G$, $w$, $s$).  According to Figure 4.8 in the Algorithms book this will return an array called $dist[]$ such that $dist[u]$ is the cheapest path from $s$ to $u$.  Set $cost[] = dist[]$.
 \item Go through $cost[]$ and add the cost of vertex $s$ ($c_s$) to each entry. 
 \end{enumerate}
@@ -459,7 +461,7 @@ The runtime for each line of the pseudocode is as follows:\\
 \begin{itemize}
 \item Line 1: We have to go through each edge $(u,v) \in E$ and add the cost of vertex $v$ to the edge lengths.  This takes $O(|E| + 1)$ time and can be reduced to $O(|E|)$.
 \item Line 2: Assuming we run Dijkstra with binary heap as the priority queue this takes $O((|V|+|E|)log|V|)$ time.
-\item Line 3: Going through the array $cost[]$ will take $O(|V|)$ time because that array will contain and entry for all the vertices from the graph $G$.
+\item Line 3: Going through the array $cost[]$ will take $O(|V|)$ time because that array will contain an entry for all the vertices from the graph $G$.
 \end{itemize}
 So, $T(n)$ (the runtime) of this algorithm is:\\
 $$
