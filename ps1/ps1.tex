@@ -431,23 +431,39 @@ $$
 {\fontfamily{pcr}\selectfont
 \textbf{Algorithm}\\
 \\
-\textbf{Input:} A directed graph $G=(V,E)$; positive edge lengths $l_e$ and positive vertex costs $c_v$;a starting vertex $s \in V$\\
+\textbf{Input:} A directed graph $G=(V,E)$; positive edge lengths $l_e$ and positive vertex costs $c_v$; a starting vertex $s \in V$\\
 \\
 \textbf{Output:} An array $cost[]$ such that for every vertex $u$, $cost[u]$ is the least cost of any path from $s$ to $u$ (i.e., the cost of the cheapest path).\\
 \\
+Cheapest-Route($G$, $s$)\\
+\begin{enumerate}
+\item Create a weight function such that the weight of going from vertex $u$ to vertex $v$ ($w(u,v)$) equals the cost of the edge length between $u$ and $v$ + the cost of vertex $v\;(c_v)$
+\item Run the Dijkstra subroutine as Dijkstra($G$, $w$, $s$).  According to Figure 4.8 in the Algorithms book this will return an array called $dist[]$ such that $dist[u]$ is the cheapest path from $s$ to $u$.  Set $cost[] = dist[]$.
+\item Go through $cost[]$ and add the cost of vertex $s$ ($c_s$) to each entry. 
+\end{enumerate}
 }
 
 \subsection*{Proof Of Correctness}
 \subsubsection*{Invariant}
+The algorithm will return an array such that each entry is the least cost of any path from a source vertex $s$ to that entry.  The least cost path must include the vertex cost and edge length of every vertex and edge in that path.\\
 \subsubsection*{Initialization}
-\subsubsection*{Maintenance}
-\subsubsection*{Termination}
-
+Initially, we have a directed graph $G=(V,E)$; positive edge lengths $l_e$ and positive vertex costs $c_v$; a starting vertex $s \in V$.  We have all the necessary parts (vertex cost and edge length) to satisfy the invariant.\\
+\subsubsection*{Maintenance and Termination}
+We take into account the edge lengths plus the costs of all vertices on the path (not including the source vertex) on line 1.  Line 1 creates a new weight function for an edge between two vertices by adding the cost of the end vertex to the cost of the edge length.\\  
+\\
+We rely on the correctness of the Dijkstra algorithm to find the cheapest path from a source vertex to all the other vertices in the graph using this new weight function.\\
+\\
+Line 3 adds the cost of the source vertex $s$ to the cheapest path values found by Dijkstra so both the endpoint vertices costs are now accounted for in the $cost[]$ array and the invariant is satisfied.\\
 \subsection*{Proof of Runtime}
 The runtime for each line of the pseudocode is as follows:\\
+\begin{itemize}
+\item Line 1: We have to go through each edge $(u,v) \in E$ and add the cost of vertex $v$ to the edge lengths.  This takes $O(|E| + 1)$ time and can be reduced to $O(|E|)$.
+\item Line 2: Assuming we run Dijkstra with binary heap as the priority queue this takes $O((|V|+|E|)log|V|)$ time.
+\item Line 3: Going through the array $cost[]$ will take $O(|V|)$ time because that array will contain and entry for all the vertices from the graph $G$.
+\end{itemize}
 So, $T(n)$ (the runtime) of this algorithm is:\\
 $$
-T(n) = 
+T(n) = O((|V|+|E|)log|V| + |E| + |V|)
 $$
 
 
