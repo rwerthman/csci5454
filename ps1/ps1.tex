@@ -402,20 +402,18 @@ Find-Shortest-Path-To-All-Pairs-Of-Nodes-Through-Single-Vertex($G$,$v_0$)
 }
 
 \subsection*{Proof Of Correctness}
-\subsubsection*{Invariant}
 The algorithm above returns a matrix that contains the shortest paths between all vertices in the graph $G$ that go through some vertex $v_0$.\\
-\subsubsection*{Initialization}
 Initially we have a strongly connected graph $G$ which means that for every pair of vertices $u$ and $v$ there is an edge from $u \rightarrow v$ and an edge from $v \rightarrow u$.
-One vertex $v_0$ is chosen from $G$ that every shortest path between each pair of vertices in $G$ must go through.  The invariant is satisfied because we have not created the matrix $M$ yet to hold the shortest paths.
-\subsubsection*{Maintenance}
+One vertex $v_0$ is chosen from $G$ that every shortest path between each pair of vertices in $G$ must go through.  \\
+\\
 We assume the correctness of the Dijkstra algorithm and that it returns the shortest paths from a source vertex $s$ to all the vertices a graph.  The first call to Dijkstra returns the shortest paths from $v_0$ to all vertices
-in $G$.  Since $G$ is strongly connected we know that if we reverse/transpose $G$ (line 2) and then run Dijkstra on $v_0$ again we can find the shortest paths from all vertices $v$ to the vertex $v_0$.  The invariant is satisfied because the paths found with Dijkstra will be later be used to complete shortest path matrix.\\
-\subsubsection*{Termination}
+in $G$.  Since $G$ is strongly connected we know that if we reverse/transpose $G$ (line 2) and then run Dijkstra on $v_0$ again we can find the shortest paths from all vertices $v$ to the vertex $v_0$.  \\
+\\
 Our goal is to create a matrix that contains the shortest path from one vertex to another but the path has to run through a single vertex, $v_0$.  Each shortest path for each vertex is found by combining the two outputs of Dijkstra giving shortest paths that look like the following:
 $$
 v \rightarrow v_0 \rightarrow u\;(u,v) \in V
 $$
-The shortest paths for all pairs of vertices are added to a matrix $M$ where element $M_{v,u}$ is the shortest path from vertex $v$ to vertex $u$.  This matrix is returned and satisfies the invariant stated above.
+The shortest paths for all pairs of vertices are added to a matrix $M$ where element $M_{v,u}$ is the shortest path from vertex $v$ to vertex $u$. 
 \subsection*{Proof of Runtime}
 The runtime for each line of the pseudocode is as follows:
 \begin{itemize}
@@ -446,16 +444,14 @@ Cheapest-Route($G$, $s$)\\
 }
 
 \subsection*{Proof Of Correctness}
-\subsubsection*{Invariant}
 The algorithm will return an array such that each entry is the least cost of any path from a source vertex $s$ to that entry.  The least cost path must include the vertex cost and edge length of every vertex and edge in that path.\\
-\subsubsection*{Initialization}
-Initially, we have a directed graph $G=(V,E)$; positive edge lengths $l_e$ and positive vertex costs $c_v$; a starting vertex $s \in V$.  We have all the necessary parts (vertex cost and edge length) to satisfy the invariant.\\
-\subsubsection*{Maintenance and Termination}
+Initially, we have a directed graph $G=(V,E)$; positive edge lengths $l_e$ and positive vertex costs $c_v$; a starting vertex $s \in V$.\\
+\\
 We take into account the edge lengths plus the costs of all vertices on the path (not including the source vertex) on line 1.  Line 1 creates a new weight function for an edge between two vertices by adding the cost of the end vertex to the cost of the edge length.\\  
 \\
 We rely on the correctness of the Dijkstra algorithm to find the cheapest path from a source vertex to all the other vertices in the graph using this new weight function.\\
 \\
-Line 3 adds the cost of the source vertex $s$ to the cheapest path values found by Dijkstra so both the endpoint vertices costs are now accounted for in the $cost[]$ array and the invariant is satisfied.\\
+Line 3 adds the cost of the source vertex $s$ to the cheapest path values found by Dijkstra so both the endpoint vertices costs are now accounted for in the $cost[]$ array.\\
 \subsection*{Proof of Runtime}
 The runtime for each line of the pseudocode is as follows:\\
 \begin{itemize}
