@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsfonts,amssymb}
+
+\begin{document}
+
+CSCI 5454 \hfill Problem Set 2\\
+Robert Werthman
+
+\hrulefill
+
+\begin{enumerate}
+
+	\item \textit{Probability boot camp}
+	
+	\begin{enumerate}
+	
+		\item \textit{Prove Markov's inequality: $Pr[X \ge c] \le E[X]/c$}\\
+		\\
+		The formula for the probability of a continuous random variable $X$ with probability density function $f(x)$ is
+			$$
+			Pr[x_1 \le X \le x_2] = \int_{x_1}^{x_2} f(x)dx
+			$$	
+		And the formula for the expected value of a continuous random variable $X$ with probability density function $f(x)$ is
+			$$
+			E[x_1 \le X \le x_2] = \int_{x_1}^{x_2} xf(x)
+			$$	
+		so for $Pr[X \ge c]$ we have
+			$$
+			Pr[X \ge c] = \int_{c}^{\infty} f(x)dx
+			$$
+		and since $X$ is a nonnegative random variable we have
+			$$
+			E[X] = \int_{0}^{\infty} xf(x)dx
+			$$
+		\item \textit{Prove Chebyshev's inequality}
+		
+		\item \textit{Show that for any discrete random variables $X,X',E[X] = E[E[X|X']]$.}
+		
+		\item \textit{Prove by induction that $E[X_t] = 0$.}
+	
+	\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
