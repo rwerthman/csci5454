@@ -20,7 +20,7 @@ Robert Werthman
 	
 	\begin{enumerate}
 	
-		\item \textit{Prove Markov's inequality: $Pr[X \ge c] \le E[X]/c$}\\
+		\item \textit{Prove Markov's inequality, $Pr[X \ge c] \le E[X]/c$, with $c>0$}\\
 		\\
 		The formula for the probability of a continuous random variable $X$ with probability density function $f(x)$ is
 			$$
@@ -38,6 +38,27 @@ Robert Werthman
 			$$
 			E[X] = \int_{0}^{\infty} xf(x)dx
 			$$
+		Notice that $0 < c \le \infty$.  This tells us that the bounds of $E[X]$ are greater than $Pr[X \ge c]$.  We can break up the integral formed by $E[X]$ to create an inequality that 
+		will begin to look similar to the integral of $Pr[X \ge c]$.
+			\begin{align*}
+				E[X] &= \int_{0}^{\infty} xf(x)dx\\
+				&= \int_{0}^{c} xf(x)dx + \int_{c}^{\infty} xf(x)dx\\
+				&\ge \int_{c}^{\infty} xf(x)dx\\
+			\end{align*}
+		We can assume that $x \ge c$ because $c$ is one of the bounds of the integral.  This means we can substitute $c$ for $x$.
+			\begin{align*}
+				 \int_{c}^{\infty} xf(x)dx \ge \int_{c}^{\infty} cf(x)dx \ge c\int_{c}^{\infty} f(x)dx
+			\end{align*}
+		We now have an equation for $E[X]$ that has $Pr[X \ge c]$.
+			$$
+			E[X] \ge c\int_{c}^{\infty} f(x)dx = cPr[X \ge c]
+			$$
+		Dividing both sides by $c$ gives us
+			$$
+			E[X]/c \ge Pr[X \ge c]
+			$$
+		which is Markov's inequality.  We have just shown that $Pr[X \ge c] \le E[X]/c$, with $c>0$ is true based on the probability and expected value of a continuous random variable.
+		
 		\item \textit{Prove Chebyshev's inequality}
 		
 		\item \textit{Show that for any discrete random variables $X,X',E[X] = E[E[X|X']]$.}
