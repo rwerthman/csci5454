@@ -108,10 +108,59 @@ Robert Werthman
 			Pr[|X-\mu| \ge c \cdot \sigma] \le 1/c^2
 			$$ 
 		Which is Chebyshev's inequality.  We have just shown that Chebyshev's inequality can be proven using Markov's Inequality.
-		\item \textit{Show that for any discrete random variables $X,X',E[X] = E[E[X|X']]$.}
+		\newpage
+		\item \textit{Show that for any discrete random variables $X,X',E[X] = E[E[X|X']]$.}\\
+		\\
+		If we let $Y = X'$ we have
+			$$
+			E[X] = E[E[X|Y]]
+			$$
+		The expected value of a discrete random variable X is
+			$$
+			E[X] = \sum_{x} x \cdot Pr[X=x]
+			$$
+		The conditional probability for any two discrete random variables $X,Y$ is defined to be 
+			$$
+			Pr[X=x|Y=y] = \frac{Pr[X=x \cap Y=y]}{Pr[Y=y]}
+			$$
+		The conditional expectation for any two discrete random variable $X,Y$ is defined to be
+			$$
+			E[X|Y=y] = \sum_{x} x \cdot Pr[X=x|Y=y]
+			$$
+		Given the above assertions
+			\begin{align*}
+				E[E[X|Y]] &= \sum_{y} E[X|Y=y] \cdot Pr[Y=y]\\
+				&=\sum_{y} \sum_{x} x \cdot Pr[X=x|Y=y] \cdot Pr[Y=y]\\
+				&=\sum_{x} x \cdot \sum_{y} Pr[X=x|Y=y] \cdot Pr[Y=y]\\
+				&=\sum_{x} x \cdot Pr[X=x]\\
+				&=E[X]
+			\end{align*}
+		Sources I used to complete this problem:
+		\begin{itemize}
+			\item http://www.maths.qmul.ac.uk/~pettit/MTH5122/notes15.pdf
+			\item https://en.wikipedia.org/wiki/Expected\_value
+		\end{itemize}
 		
-		\item \textit{Prove by induction that $E[X_t] = 0$ for a martingale.}
-	
+		\newpage
+		\item \textit{Prove by induction that $E[X_t] = 0$ for a martingale.}\\
+		\\
+		We want to show that in a martingale sequence the expected value for a random variable $X_{t+1}$ is the random variable $X_t$ before it.\\
+		\\
+		\textbf{Base case: }\\
+		\\
+		When $t=0$ with $X_0 = 0$ we have
+			\begin{align*}
+			E[X_1|X_0] &= \sum_{x} x \cdot Pr[X_1=x|X_0 = 0]\\
+			&=0\\
+			\end{align*}
+		\textbf{Inductive step: }\\
+		\\
+		We showed that the base case $E[X_1|X_0] = 0$ is true.  Therefore, we can say that $E[X_2|X_1] = E[E[X_1|X0]] = 0$ no matter what $X_2$ is.   This leads to the equation
+			$$
+			E[X_t|X_0,...,X_{t-1}] = E[E[...E[X_{1}|X_{0}]]] = 0
+			$$
+		So by induction we have just shown that $E[X_t] = 0$.
+		
 	\end{enumerate}
 
 
