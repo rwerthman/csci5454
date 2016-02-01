@@ -59,20 +59,55 @@ Robert Werthman
 			$$
 		which is Markov's inequality.  We have just shown that $Pr[X \ge c] \le E[X]/c$, with $c>0$ is true based on the probability and expected value of the continuous random variable $X$.
 		
+		\newpage
 		\item \textit{Prove Chebyshev's inequality $Pr[|X-\mu| \ge c \cdot \sigma] \le 1/c^2$}\\
 		\\
-		One of the properties of $|a|$ is that it can also be represented as $\sqrt{a^2}$.\\
-		We can then change $|X-\mu|$ to $\sqrt{(X-\mu)^2}$.\\
-		If we take the square root of both sides of $\sqrt{(X-\mu)^2} \ge c \cdot \sigma$ we get
-		$$
-		(X-\mu)^2 \ge (c \cdot \sigma)^2
-		$$
+		If we let $k = (c \cdot \sigma)$ we have
+			$$
+			Pr[|X-\mu| \ge c \cdot \sigma] = Pr[|X-\mu| \ge k]
+			$$
+		One of the properties of $|a|$ is that it can also be represented as $\sqrt{a^2}$ so we can change\\
+			$$
+			Pr[|X-\mu| \ge k] = Pr[\sqrt{(X-\mu)^2} \ge k]
+			$$
+		If we take the square root of both sides of the inequality we get
+			$$
+			Pr[(X-\mu)^2 \ge k^2]
+			$$
+		From here we can use Markov's inequality since we know $(X-\mu)^2$ is nonnegative.  If we let $(X-\mu)^2 = X$ and $k^2 = c$ and substitute those into Markov's inequality we have 
+			$$
+			Pr[(X-\mu)^2 \ge k^2] \le E[(X-\mu)^2]/k
+			$$
 		The variance $\sigma^2$ of a continuous random variable $X$ with mean $\mu$ is 
-		$$
-		\sigma^2 = E[(X-\mu)^2]
-		$$
+			$$
+			\sigma^2 = E[(X-\mu)^2]
+			$$
+		So
+			$$
+			Pr[(X-\mu)^2 \ge k^2] \le E[(X-\mu)^2]/k
+			$$
+		Now becomes
+			$$
+			Pr[(X-\mu)^2 \ge k^2] \le \sigma^2/k
+			$$
+		If we now change $k$ back to $c \cdot \sigma$ we have the equation
+			$$
+			Pr[(X-\mu)^2 \ge (c \cdot \sigma)^2] \le \sigma^2/c^2 \cdot \sigma^2
+			$$
+		Reducing the right side of the equation results in
+			$$
+			Pr[(X-\mu)^2 \ge (c \cdot \sigma)^2] \le 1/c^2
+			$$
+		And taking the square root of both sides of the inequality on the left hand side of the equation results in
+			$$
+			Pr[\sqrt{(X-\mu)^2} \ge c \cdot \sigma] \le 1/c^2
+			$$ 
 		
-		
+		Which can be further reduced to 
+			$$
+			Pr[|X-\mu| \ge c \cdot \sigma] \le 1/c^2
+			$$ 
+		Which is Chebyshev's inequality.  We have just shown that Chebyshev's inequality can be proven using Markov's Inequality.
 		\item \textit{Show that for any discrete random variables $X,X',E[X] = E[E[X|X']]$.}
 		
 		\item \textit{Prove by induction that $E[X_t] = 0$ for a martingale.}
