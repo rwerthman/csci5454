@@ -57,13 +57,25 @@ Robert Werthman
 			$$
 			E[X]/c \ge Pr[X \ge c]
 			$$
-		which is Markov's inequality.  We have just shown that $Pr[X \ge c] \le E[X]/c$, with $c>0$ is true based on the probability and expected value of a continuous random variable.
+		which is Markov's inequality.  We have just shown that $Pr[X \ge c] \le E[X]/c$, with $c>0$ is true based on the probability and expected value of the continuous random variable $X$.
 		
-		\item \textit{Prove Chebyshev's inequality}
+		\item \textit{Prove Chebyshev's inequality $Pr[|X-\mu| \ge c \cdot \sigma] \le 1/c^2$}\\
+		\\
+		One of the properties of $|a|$ is that it can also be represented as $\sqrt{a^2}$.\\
+		We can then change $|X-\mu|$ to $\sqrt{(X-\mu)^2}$.\\
+		If we take the square root of both sides of $\sqrt{(X-\mu)^2} \ge c \cdot \sigma$ we get
+		$$
+		(X-\mu)^2 \ge (c \cdot \sigma)^2
+		$$
+		The variance $\sigma^2$ of a continuous random variable $X$ with mean $\mu$ is 
+		$$
+		\sigma^2 = E[(X-\mu)^2]
+		$$
+		
 		
 		\item \textit{Show that for any discrete random variables $X,X',E[X] = E[E[X|X']]$.}
 		
-		\item \textit{Prove by induction that $E[X_t] = 0$.}
+		\item \textit{Prove by induction that $E[X_t] = 0$ for a martingale.}
 	
 	\end{enumerate}
 
