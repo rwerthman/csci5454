@@ -5,7 +5,7 @@
 \setlength{\parindent}{0in}
 \setlength{\parskip}{\baselineskip}
 
-\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{amsmath,amsfonts,amssymb,graphicx}
 
 \begin{document}
 
@@ -129,9 +129,9 @@ Robert Werthman
 			$$
 		Given the above assertions
 			\begin{align*}
-				E[E[X|Y]] &= \sum_{y} E[X|Y=y] \cdot Pr[Y=y]\\
-				&=\sum_{y} \sum_{x} x \cdot Pr[X=x|Y=y] \cdot Pr[Y=y]\\
-				&=\sum_{x} x \cdot \sum_{y} Pr[X=x|Y=y] \cdot Pr[Y=y]\\
+				E[E[X|Y]] &= E[\sum_{x} x \cdot Pr[X=x|Y]]\\
+				&=\sum_{y} [\sum_{x} x \cdot Pr[X=x|Y=y]] \cdot Pr[Y=y]\\
+				&=\sum_{x} x \sum_{y} Pr[X=x|Y=y] \cdot Pr[Y=y]\\
 				&=\sum_{x} x \cdot Pr[X=x]\\
 				&=E[X]
 			\end{align*}
@@ -139,6 +139,7 @@ Robert Werthman
 		\begin{itemize}
 			\item http://www.maths.qmul.ac.uk/~pettit/MTH5122/notes15.pdf
 			\item https://en.wikipedia.org/wiki/Expected\_value
+			\item https://math.stackexchange.com/questions/1353418/expected-value-proof-law-of-total-expectation
 		\end{itemize}
 		
 		\newpage
@@ -162,6 +163,31 @@ Robert Werthman
 		So by induction we have just shown that $E[X_t] = 0$.
 		
 	\end{enumerate}
+	\newpage
+	\item \textit{Give a graph $G$ with a source vertex $s$ and a set of edges $E_\pi$ to every vertex in $G$ such that the path from $s$ to $v$ is the shortest
+	path but the set of the edges $E_\pi$ cannot be produced by running a breadth-first search on $G$.} \\
+	\\
+	\begin{figure}[h]
+	\caption{Example of a graph where there exists a set of edges that are the shortest path between vertices but will not be found by a breadth first search.}
+	\includegraphics[width=6cm]{ps2_q2.png}
+	\centering
+	\end{figure}
+	\\
+	For this question, the shortest-path from $s$ to $v$ is defined as the minimum number of edges in any path from vertex $s$ to vertex $v$.  
+	If we let the source vertex $s$ be vertex $A$ then the set of edges $E_\pi$ that cannot be produced by running a breadth first search are
+	$$
+	\{(A,B),(A,C),(B,D),(C,E)\}
+	$$
+	This is the case because of how breadth first search discovers vertices.  It starts at a source vertex $s$ and then adds every vertex in the adjacency list of $s$ to a queue.  
+	In the case above $s$ will be $A$ and it will add $B$ and $C$ to the queue because those are the vertices adjacent to $A$.  
+	An edge from $A$ to $B$ and from $A$ to $C$ will be created.  
+	Once it does that it will then pop off the first vertex on the queue which will be either $B$ or $C$ depending on the ordering of the adjacency list of $A$.  
+	It will then add every vertex from the adjacency list of the vertex is pops off to the queue.
+	If either $B$ or $C$ is removed from the queue, $D$ and $E$ are still both added to the queue because there are both in $B$ and $C$ adjacency lists.
+	In either case, edges are created from a single vertex, $C$ or $B$, to both $D$ and $E$ i.e. $(C,D),(C,E)$.  It will never be the case that both $C$ and $B$ will have a only single edge i.e. $(C,D),(B,E)$.
+	It will only be the case that one of them will have two edges so the set of edges $E_\pi$ above will would never occur with a breadth first search.
+	\newpage
+	\item
 
 
 \end{enumerate}
