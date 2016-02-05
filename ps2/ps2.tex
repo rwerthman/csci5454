@@ -208,17 +208,22 @@ Robert Werthman
 	
 	\textbf{Correctness}\\
 	\\
-	We have two hypotheses to prove:
+	The algorithm above is base on two proven assumptions that will not be proven again here:
 	\begin{enumerate}
 		\item If an edge $(u, v)$ is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph [1].
 		\item For any cycle C in the graph, if the weight of an edge e of C is larger than the individual weights of all other edges of C, then this edge cannot belong to a MST [2].
 	\end{enumerate}
-	Using Figure 2 below I want to give an example of the two hypotheses above.\\
-	\\  
-	For hypothesis (a) as an example we cut the the graph of Figure 2 between vertices $A$ and $B$ and $D$ and $E$ with $S = \{A,D\}$ and $S'=\{B,C,E,F\}$. \\
+	As an example for hypothesis (a) we cut the the graph of Figure 2 between vertices $A$ and $D$ and vertices $D$ and $E$.  After the cut $S = \{D\}$ and $S'=\{A,B,C,E,F\}$.
+	The edge $(A,D)$ is in the minimum spanning tree created by Kruskal's algorithm and it is a light edge of the cut that was made.\\
+	\\
+	As an example for hypothesis (b) if we add the edge $(D,E)$ to the minimum spanning tree it will create a cycle from vertices $A \rightarrow B \rightarrow E \rightarrow D \rightarrow A$.
+	If we remove the largest weighted edge which in this case we say is $(A,D)$ even though it is the same weight as $(D,E)$ we get a new minimum spanning tree that has $(A,D)$ as an edge.  
+	If $(A,D)$ had been larger than $(D,E)$ then it would have been removed from the minimum spanning tree and would not be part of any other minimum spanning tree.\\
+	\\ 
+	
 	\begin{figure}[h]
 	\caption{A graph where the edges of a minimum spanning tree created by Kruskal's algorithm are highlighted in green.}
-	\includegraphics[width=7cm]{ps2_q3.png}
+	\includegraphics[width=8cm]{ps2_q3.png}
 	\centering
 	\end{figure}
 	Sources I used to complete this problem.
