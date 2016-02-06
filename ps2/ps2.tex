@@ -194,7 +194,7 @@ Robert Werthman
 	def LightEdgeCut(G,e):
 	    minimum spanning tree = Kruskal's algorithm
 	    if e is in minimum spanning tree:
-	        create a cut of graph with e included in the cut
+	        create a cut of the graph with e as a light edge
 	        return cut
 	    else:
 	        add e to minimum spanning tree to create a cycle C
@@ -202,13 +202,13 @@ Robert Werthman
 	        if z is e: // Cycle property of minimum spanning tree
 	            return NO
 	        else:
-	    	    create a cut of the graph with e included in the cut
-		    return cut
+	            create a cut of the graph with e as a light edge
+	            return cut
 	\end{verbatim}
 	
 	\textbf{Correctness}\\
 	\\
-	The algorithm above is base on two proven assumptions that will not be proven again here:
+	The algorithm above depends on two assumptions:
 	\begin{enumerate}
 		\item If an edge $(u, v)$ is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph [1].
 		\item For any cycle C in the graph, if the weight of an edge e of C is larger than the individual weights of all other edges of C, then this edge cannot belong to a MST [2].
@@ -220,17 +220,37 @@ Robert Werthman
 	If we remove the largest weighted edge which in this case we say is $(A,D)$ even though it is the same weight as $(D,E)$ we get a new minimum spanning tree that has $(A,D)$ as an edge.  
 	If $(A,D)$ had been larger than $(D,E)$ then it would have been removed from the minimum spanning tree and would not be part of any other minimum spanning tree.\\
 	\\ 
-	
+	We assume Kruskal's algorithm is correct and returns a minimum spanning tree for the graph $G$.  
+	It may be that the edge $e$ LightEdgeCut takes as input is part of the minimum spanning tree returned by Kruskal's algorithm.  
+	We then know that the edge $e$ is a light edge crossing some cut of $G$ so we can create that cut with $e$ and return it. \\
+	\\ 
+	If $e$ is not in the minimum spanning tree returned by Kruskal's algorithm then we have to check to see if $e$ is part of any minimum spanning tree of $G$.
+	We do this by adding it to the minimum spanning tree returned by Kruskal's algorithm in order to create a cycle.  
+	Based on the cycle property of minimum spanning trees the largest edge in a cycle cannot be part of any minimum spanning tree.  If $e$ is the largest edge
+	in the cycle we know it is not part of a minimum spanning tree and therefore not a light edge crossing some cut of the graph.  If it is not the largest edge then
+	we can conclude it is part of a minimum spanning tree and is a light edge crossing some cut of the graph.\\
 	\begin{figure}[h]
 	\caption{A graph where the edges of a minimum spanning tree created by Kruskal's algorithm are highlighted in green.}
 	\includegraphics[width=8cm]{ps2_q3.png}
 	\centering
 	\end{figure}
+	\\
+	\textbf{Runtime}\\
+	\\
+	Kruskal's algorithm runs in $O(V\,log(E))$.  The worse case of this algorithm will, after going through Kruskal's algorithm, go to the else statement.
+	Assuming the minimum spanning tree is a disjoint-set data structure adding the edge $e$ to the spanning tree is a set union operation that takes $O(1)$.
+	Finding the edge with the highest weight in the cycle could take $O(V-1)$ if the cycle contains all of the edges in the minimum spanning tree.
+	Checking if the largest edge is $e$ takes $O(1)$.  
+	Creating a cut of the graph $G$ with $e$ as a light edge takes O(V) if it has to look at all of there vertices where to make the cut.
+	The worst case runtime would be $O(V\,log(E)+V+(V-1)) = O(V\,log(E) + V)$.\\
+	\\
 	Sources I used to complete this problem.
 	\begin{enumerate}[1]
 		\item https://en.wikipedia.org/wiki/Minimum\_spanning\_tree
 		\item http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-4985903869437/solutions-to-some-homework-exercises-as-shared-with-students/4-solutions-clrs-23.pdf 
 	\end{enumerate}
+	
+	\item
 
 
 \end{enumerate}

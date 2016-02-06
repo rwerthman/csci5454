@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  4 FEB 2016 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 FEB 2016 19:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -289,57 +289,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--213
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--223
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--223
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--223
-
- []
-
-[7] <ps2_q3.png, id=37, 316.18124pt x 153.57375pt>
+<ps2_q3.png, id=32, 316.18124pt x 153.57375pt>
 File: ps2_q3.png Graphic file (type png)
  <use ps2_q3.png>
-Package pdftex.def Info: ps2_q3.png used on input line 226.
+Package pdftex.def Info: ps2_q3.png used on input line 234.
 (pdftex.def)             Requested size: 227.62204pt x 110.56128pt.
 
-Overfull \hbox (22.76073pt too wide) in paragraph at lines 232--233
+Underfull \hbox (badness 10000) in paragraph at lines 216--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--248
+
+ []
+
+[7] [8 <./ps2_q3.png>]
+Overfull \hbox (22.76073pt too wide) in paragraph at lines 250--251
 []\OT1/cmr/m/n/12 http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-4
 985903869437/solutions-
  []
 
-[8 <./ps2_q3.png>] (./ps2.aux) ) 
+[9] (./ps2.aux) ) 
 Here is how much of TeX's memory you used:
  2414 strings out of 493089
  32103 string characters out of 6134842
- 93402 words of memory out of 5000000
+ 97402 words of memory out of 5000000
  5866 multiletter control sequences out of 15000+600000
  9108 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,24p,253b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmti12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmtt12.pfb>
-Output written on ps2.pdf (8 pages, 136353 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on ps2.pdf (9 pages, 140182 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
