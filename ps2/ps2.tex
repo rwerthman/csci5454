@@ -250,7 +250,64 @@ Robert Werthman
 		\item http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-4985903869437/solutions-to-some-homework-exercises-as-shared-with-students/4-solutions-clrs-23.pdf 
 	\end{enumerate}
 	
-	\item
+	\newpage
+	\item \textit{Give a $o(|V|^2)$ algorithm to find a universal sink given an adjacency matrix.}\\
+	\\
+	\textbf{Pseudocode}\\
+	\begin{verbatim}
+	FindUniversalSink(A):
+	 for k in range(1,|V|):
+	  vertex k is a universal sink
+	  for i in range(1,|V|):
+	   if i != k and A_{ik} == 0: // 0 in the vertex's column that is not a self loop 
+	    vertex k not universal sink
+	    break
+	  for j in range(1,|V|):
+	   if A_{kj} == 1: // 1 in the vertex's row
+	    vertex k not universal sink
+	    break
+	 if vertex k is still a universal sink:
+	  return vertex k
+	 elif k == |V|:
+	  return NO
+	            
+	               
+	            	
+	                
+	       
+	\end{verbatim}
+	\textbf{Correctness}\\
+	\\
+	In order for this algorithm to be correct I make the following assumptions:
+	\begin{enumerate}
+		\item If a graph is represented as an adjacency matrix $A$ then $A_{ij}$ is the edge from vertex $i$ to vertex $j$. \\ 
+		\item If a 1 is present in the matrix at row $i$ column $j$ then an edge exists from $i$ to $j$.  If a 0 is present then no edge exists from $i$ to $j$.\\
+		\item A universal sink will have 0's in its entire row of the adjacency matrix meaning there are no edges from it to any other vertex or to itself in the form of a self-loop.\\  
+		\item Every vertex, not including the universal sink, will have a 1 in the column the belongs to the universal sink.  This means that they all have edges from themselves to the universal sink.\\
+		\item A vertex that has a 1 in any part of its row in the matrix or a 0 in any part of its column in the matrix other then the cell that is a self-loop then it is not a universal sink.\\
+	\end{enumerate}
+	I claim that FindUniversalSink will always return a universal sink if there is one to be found in the adjacency matrix $A$ otherwise NO is returned.  
+	It does this by looking at and assuming every vertex in the adjacency matrix is the universal sink until proven otherwise.\\
+	\\
+	The algorithm begins with a adjacency list.  It continues by iterating vertex by vertex through the adjacency list, setting each vertex as the universal sink.  
+	Each time a new vertex is set as the universal sink it first looks at the entire column of the vertex and checks to see if there is a 0 in any place other than the self loop cell where row number $i$ equals column number $j$.     
+	This indicates this vertex is not a universal sink because it does not have an edge from every other vertex in the graph going to it.
+	The algorithm then looks at the row of the vertex to see if there are any 1's in any place.  This also indicates this vertex is not a universal sink because a universal sink does not have any out-edges.
+	If it is found that this vertex is not a universal sink by either looking at the column or the row of the vertex, the algorithm sets the vertex to not being a universal sink and breaks out of whichever loop it is currently and 
+	ends up at a conditional statement.\\
+	\\
+	This conditional statement checks if the vertex is still a universal sink.  If it is a universal sink the vertex is returned otherwise two things could happen.  
+	We could be at the last vertex in the adjacency list which, if we have reached this point, is not a universal sink so there exists on universal sink the graph.
+	Or we could not be at the last vertex in the adjacency list which means we will go back to the top loop and move to and check the next vertex in the adjacency list.
+	
+	\textbf{Runtime}\\
+	Unfortunately, I was unable to to create an algorithm that had a runtime of $o(|V|^2)$.
+	The first loop of FindUniversalSink runs from $|V|$ times as it goes through all of the vertices.  
+	With in that loop, there are two other loops that also run through all of the vertices in the adjacency graph so they run a total of $2|V|$ times.
+	The rest of the operations like checking the values in the cells of the matrix or seeing if a vertex is a universal sink run in in constant time.\\
+	\\
+	This means this algorithm has a runtime of $O(|V|*2|V|) = O(|V|^2)$.  
+	
 
 
 \end{enumerate}
