@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 FEB 2016 19:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 FEB 2016 20:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -443,88 +443,103 @@ File: ps2_q6a.png Graphic file (type png)
 Package pdftex.def Info: ps2_q6a.png used on input line 370.
 (pdftex.def)             Requested size: 227.62204pt x 157.58296pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--377
+Underfull \hbox (badness 10000) in paragraph at lines 364--386
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--377
+Underfull \hbox (badness 10000) in paragraph at lines 364--386
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--377
+Underfull \hbox (badness 10000) in paragraph at lines 364--386
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--385
+Underfull \hbox (badness 10000) in paragraph at lines 364--386
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--385
+Underfull \hbox (badness 10000) in paragraph at lines 364--386
 
  []
 
-<ps2_q6bii.png, id=69, 298.11375pt x 162.6075pt>
-File: ps2_q6bii.png Graphic file (type png)
- <use ps2_q6bii.png>
-Package pdftex.def Info: ps2_q6bii.png used on input line 389.
-(pdftex.def)             Requested size: 227.62204pt x 124.15862pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--395
+Underfull \hbox (badness 10000) in paragraph at lines 364--386
 
  []
 
 [16 <./ps2_q6a.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 401--402
+Underfull \hbox (badness 10000) in paragraph at lines 388--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--403
+Underfull \hbox (badness 10000) in paragraph at lines 388--393
+
+ []
+
+<ps2_q6bii.png, id=73, 298.11375pt x 162.6075pt>
+File: ps2_q6bii.png Graphic file (type png)
+ <use ps2_q6bii.png>
+Package pdftex.def Info: ps2_q6bii.png used on input line 397.
+(pdftex.def)             Requested size: 227.62204pt x 124.15862pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 393--403
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+
+ []
+
+[17 <./ps2_q6bii.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 []\OT1/cmr/m/n/12 http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 \OT1/cmr/m/n/12 4985903869437/solutions-to-some-homework-exercises-as-shared-wi
 th-students/4-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--406
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 []\OT1/cmr/m/n/12 https://math.stackexchange.com/questions/1353418/expected-val
 ue-proof-law-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
-[17 <./ps2_q6bii.png>] [18] (./ps2.aux) ) 
+[18] (./ps2.aux) ) 
 Here is how much of TeX's memory you used:
  2432 strings out of 493089
  32257 string characters out of 6134842
@@ -533,19 +548,19 @@ Here is how much of TeX's memory you used:
  9714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,24p,253b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt12.pfb>
-Output written on ps2.pdf (18 pages, 177436 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+
+Output written on ps2.pdf (18 pages, 178100 bytes).
 PDF statistics:
  116 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream

@@ -361,7 +361,7 @@ No Collaborators
 		\item
 			\begin{enumerate}
 				\item \textit{Give an example graph with a unique MST and two edges of equal length.  Give an algorithm to construct a graph with $\Omega{(|V|^2)}$
-				edges of equal weight yet still having a unique MST.}\\
+				edges of equal weight yet still having an unique MST.}\\
 				\\
 				\textbf{Example Graph}\\
 				\\
@@ -373,8 +373,16 @@ No Collaborators
 				\\
 				In Figure 6 above, the MST of the graph will always have the set of edges $\{(A,B),(A,C)\}$ since those are the minimum weight edges connecting all the nodes in the graph.\\
 				\\
-				\textbf{Algorithm}
-								
+				\textbf{Algorithm}\\
+				\\
+				Unfortunately, I was unable to come up with an algorithm that will build a graph with $\Omega{(|V|^2)}$ equal length edges still having an unique MST. 
+				I do have an algorithm that builds a graph with $\Omega{(|V|)}$ equal length edges still having an unique MST.\\
+				\\
+				In this algorithm you start with a source vertex $s$ and connect all other vertices directly to $s$.  The edges connected from $s$ to all other vertices will all have the same minimum weight.
+				These edges will be the unique minimum spanning tree of the graph.
+				The edges connected between the vertices that are not the source vertex $s$ can be any weight above the minimum weight.  This ensures the minimum spanning tree remains unique.
+				Examples of this algorithm can be seen in Figure 6 and 7.
+				\\
 				\item \textit{Refute the following two claims about a unique MST:}
 					\begin{enumerate}
 						\item \textit{Every cut has a unique minimum weight across it.}\\
