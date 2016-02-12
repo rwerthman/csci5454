@@ -402,9 +402,33 @@ No Collaborators
 						As can be seen, the edges $(B,C)$ and $(C,D)$ have the same maximum weight in the cycle so the claim that the maximum weight edge in any cycle of a graph is unique is false.  
 					\end{enumerate}
 			\end{enumerate}
+			
+			\item \textit{Give an $O(n\,log\,n)$ time greedy algorithm to minimize the number of billboards to place along a jogging path with $n$ joggers each occupying a certain interval of the jogging path.}\\
+			\\
+			\textbf{Pseudocode}\\
+			\begin{verbatim}
+			MinimizeBillboards(I){
+			  sort I by a_{i} in ascending order // i.e. [1.2,5], [1.4,5], [2,6]
+			  i = 1
+			  while( i <= n){
+			    b = I[i].b // Get the highest/rightmost value from the interval
+			    while(i <= n && b >= I[i].a){ // Compare left and right values of interval
+			     i++ 
+			      
+			    }
+			    
+			  }
+			}
+			\end{verbatim}
+			\textbf{Correctness}\\
+			\\
+			The worst case scenario for this problem would be if only the beginning and end of each jogger's interval coincided with another joggers interval.\\
+			\textbf{Runtime}\\
+			\\
 	
 \end{enumerate}
 
+\newpage
 \begin{thebibliography}{10}
 	\bibitem{1} https://en.wikipedia.org/wiki/Cycle\_graph\\
 	\bibitem{2} https://en.wikipedia.org/wiki/Minimum\_spanning\_tree\\
