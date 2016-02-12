@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 FEB 2016 23:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 FEB 2016 07:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -312,265 +312,275 @@ Underfull \hbox (badness 10000) in paragraph at lines 243--246
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--246
-
- []
-
-
-Overfull \hbox (59.79495pt too wide) in paragraph at lines 267--267
+Overfull \hbox (59.79495pt too wide) in paragraph at lines 262--262
  []   \OT1/cmtt/m/n/12 if i != k and A_{ik} == 0: // 0 in the vertex's column t
 hat is not a self loop[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--272
+Underfull \hbox (badness 10000) in paragraph at lines 263--267
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
+Underfull \hbox (badness 10000) in paragraph at lines 273--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 273--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--291
+Underfull \hbox (badness 10000) in paragraph at lines 287--294
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--291
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 292--299
-
- []
-
-[11] [12] <ps2_q5a.png, id=54, 298.11375pt x 194.22563pt>
+[11] <ps2_q5a.png, id=51, 298.11375pt x 194.22563pt>
 File: ps2_q5a.png Graphic file (type png)
  <use ps2_q5a.png>
-Package pdftex.def Info: ps2_q5a.png used on input line 307.
+Package pdftex.def Info: ps2_q5a.png used on input line 302.
 (pdftex.def)             Requested size: 227.62204pt x 148.30057pt.
 
-<ps2_a5aa.png, id=55, 252.945pt x 180.675pt>
+<ps2_a5aa.png, id=52, 252.945pt x 180.675pt>
 File: ps2_a5aa.png Graphic file (type png)
  <use ps2_a5aa.png>
-Package pdftex.def Info: ps2_a5aa.png used on input line 313.
+Package pdftex.def Info: ps2_a5aa.png used on input line 308.
 (pdftex.def)             Requested size: 227.62204pt x 162.58943pt.
 
-<ps2_q5aaa.png, id=56, 307.1475pt x 234.8775pt>
+<ps2_q5aaa.png, id=53, 307.1475pt x 234.8775pt>
 File: ps2_q5aaa.png Graphic file (type png)
  <use ps2_q5aaa.png>
-Package pdftex.def Info: ps2_q5aaa.png used on input line 318.
+Package pdftex.def Info: ps2_q5aaa.png used on input line 313.
 (pdftex.def)             Requested size: 227.62204pt x 174.06467pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--321
+Underfull \hbox (badness 10000) in paragraph at lines 298--316
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13 <./ps2_q5a.png> <./ps2_a5aa.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 322--332
+[12 <./ps2_q5a.png> <./ps2_a5aa.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 317--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--332
+Underfull \hbox (badness 10000) in paragraph at lines 317--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--332
+Underfull \hbox (badness 10000) in paragraph at lines 317--327
 
  []
 
-[14 <./ps2_q5aaa.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 333--359
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 333--359
+[13 <./ps2_q5aaa.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 328--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--359
+Underfull \hbox (badness 10000) in paragraph at lines 328--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--359
+Underfull \hbox (badness 10000) in paragraph at lines 328--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--359
+Underfull \hbox (badness 10000) in paragraph at lines 328--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--359
+Underfull \hbox (badness 10000) in paragraph at lines 328--354
 
  []
 
-[15] <ps2_q6a.png, id=67, 521.95pt x 361.35pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--354
+
+ []
+
+[14] [15] <ps2_q6a.png, id=67, 521.95pt x 361.35pt>
 File: ps2_q6a.png Graphic file (type png)
  <use ps2_q6a.png>
-Package pdftex.def Info: ps2_q6a.png used on input line 370.
+Package pdftex.def Info: ps2_q6a.png used on input line 366.
 (pdftex.def)             Requested size: 227.62204pt x 157.58296pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--386
+Underfull \hbox (badness 10000) in paragraph at lines 360--382
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--386
+Underfull \hbox (badness 10000) in paragraph at lines 360--382
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--386
+Underfull \hbox (badness 10000) in paragraph at lines 360--382
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--386
+Underfull \hbox (badness 10000) in paragraph at lines 360--382
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--386
+Underfull \hbox (badness 10000) in paragraph at lines 360--382
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--386
+Underfull \hbox (badness 10000) in paragraph at lines 360--382
 
  []
 
 [16 <./ps2_q6a.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 388--393
+Underfull \hbox (badness 10000) in paragraph at lines 384--389
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--393
+Underfull \hbox (badness 10000) in paragraph at lines 384--389
 
  []
 
 <ps2_q6bii.png, id=73, 298.11375pt x 162.6075pt>
 File: ps2_q6bii.png Graphic file (type png)
  <use ps2_q6bii.png>
-Package pdftex.def Info: ps2_q6bii.png used on input line 397.
+Package pdftex.def Info: ps2_q6bii.png used on input line 393.
 (pdftex.def)             Requested size: 227.62204pt x 124.15862pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 393--403
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 406--409
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 406--409
+Underfull \hbox (badness 10000) in paragraph at lines 389--399
 
  []
 
 [17 <./ps2_q6bii.png>]
-Overfull \hbox (41.26994pt too wide) in paragraph at lines 422--422
- []    \OT1/cmtt/m/n/12 while(i <= n && b >= I[i].a){ // Compare left and right
- values of interval[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 423--428
+Underfull \hbox (badness 10000) in paragraph at lines 403--406
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--428
+Underfull \hbox (badness 10000) in paragraph at lines 403--406
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--428
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
-
+Overfull \hbox (22.74493pt too wide) in paragraph at lines 427--427
+ []    \OT1/cmtt/m/n/12 while(i <= n and b >= I[i].a){ // Compare left values o
+f intervals to b[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--435
+Underfull \hbox (badness 10000) in paragraph at lines 428--453
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 428--453
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--453
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--453
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--453
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--453
+
+ []
+
+[18] [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 []\OT1/cmr/m/n/12 http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 \OT1/cmr/m/n/12 4985903869437/solutions-to-some-homework-exercises-as-shared-wi
 th-students/4-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 437--438
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
 []\OT1/cmr/m/n/12 https://math.stackexchange.com/questions/1353418/expected-val
 ue-proof-law-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
 
  []
 
-[19] (./ps2.aux) ) 
+[21] (./ps2.aux) ) 
 Here is how much of TeX's memory you used:
  2432 strings out of 493089
  32257 string characters out of 6134842
@@ -591,10 +601,10 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
 
-Output written on ps2.pdf (19 pages, 181487 bytes).
+Output written on ps2.pdf (21 pages, 184552 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

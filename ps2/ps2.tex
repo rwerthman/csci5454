@@ -242,7 +242,7 @@ No Collaborators
 	\newpage
 	\item \textit{Give a $o(|V|^2)$ algorithm to find a universal sink given an adjacency matrix.}\\
 	\\
-	\textbf{Pseudocode}\\
+	\textbf{Pseudocode}
 	\begin{verbatim}
 	FindUniversalSink(A):
 	 for k in range(1,|V|):
@@ -259,11 +259,6 @@ No Collaborators
 	  return vertex k
 	 elif k == |V|:
 	  return NO
-	            
-	               
-	            	
-	                
-	       
 	\end{verbatim}
 	\textbf{Correctness}\\
 	\\
@@ -358,6 +353,7 @@ No Collaborators
 			I claim that the runtime of the modified breadth first search remains $O(V+E)$.
 		\end{enumerate}
 		
+		\newpage
 		\item
 			\begin{enumerate}
 				\item \textit{Give an example graph with a unique MST and two edges of equal length.  Give an algorithm to construct a graph with $\Omega{(|V|^2)}$
@@ -403,28 +399,59 @@ No Collaborators
 					\end{enumerate}
 			\end{enumerate}
 			
+			\newpage
 			\item \textit{Give an $O(n\,log\,n)$ time greedy algorithm to minimize the number of billboards to place along a jogging path with $n$ joggers each occupying a certain interval of the jogging path.}\\
 			\\
 			\textbf{Pseudocode}\\
 			\begin{verbatim}
 			MinimizeBillboards(I){
+			  S = {} \\ 
 			  sort I by a_{i} in ascending order // i.e. [1.2,5], [1.4,5], [2,6]
 			  i = 1
 			  while( i <= n){
-			    b = I[i].b // Get the highest/rightmost value from the interval
-			    while(i <= n && b >= I[i].a){ // Compare left and right values of interval
-			     i++ 
-			      
+			    b = I[i].b // Get the highest/rightmost value from the interval i
+			    if(i == n){ // If the last interval did not intersect any others
+			     add b to S
+			     return S
 			    }
-			    
+			    i++ // Move to the next interval
+			    while(i <= n and b >= I[i].a){ // Compare left values of intervals to b
+			     i++ 
+			    }
+			    add b to S // add the value where the most intervals overlap to S
+			    if(i > n){
+			     return S
+			    }
 			  }
 			}
 			\end{verbatim}
 			\textbf{Correctness}\\
 			\\
-			The worst case scenario for this problem would be if only the beginning and end of each jogger's interval coincided with another joggers interval.\\
+			The greedy part of MinimizeBillboards is that it looks for a place to put a billboard that overlaps the most intervals so that the most joggers see a single billboard.
+			This ensures we minimize the number of billboards placed on the jogging path.\\
+			\\
+			We start the algorithm by sorting the path of the joggers by the $a_i$ for each of their intervals in ascending order.  This allows us to iterate in a systematic way over the intervals.
+			Initially we choose the $b_i$ of an interval $y$, let that value be $b$, and then we move to the next interval $z$ and compare $b$ to the $a_i$ of $z$.  
+			We do this to see if there is any overlap between interval $z$ and interval $y$.
+			If we see that there is overlap and $b$ is equal to or larger than $a_i$ of $z$ then we move to the next interval past $z$ and repeat the comparison ob $b$ to $a_i$. 
+			If there isn't any overlap then we have to put a billboard at $b$ of $y$ so that the jogger in that interval will see it.  
+			We then set $b$ to the $b_i$ of interval $z$ and begin to compare $b$ to the intervals after $z$.
+			For each value of $b$ where we find the most overlap we add it to the set $S$.\\
+			\\
+			We continue to move along the intervals looking for the value in an interval the overlaps the most intervals.  
+			This guarantees that MinimizeBillboards will minimize the number of Billboards more than the naive approach of placing $n$ billboards for each jogger.
+			If no values in any intervals overlap, billboards are put at the $b_i$ of each interval guaranteeing that all joggers will see at least one billboard.  
+			In this case the minimal number of billboards is $n$.\\
+			\\
+			If the algorithm is at interval $n$ and it overlaps with with a previous interval, the $b$ of that previous interval is added to $S$ and the algorithm returns.
+			If the algorithm is at interval $n$ and it does not overlap with any previous interval then the $b$ of interval $n$ is added to $S$ and the algorithm returns.\\
+			\\
 			\textbf{Runtime}\\
 			\\
+			The sorting of the intervals takes $O(n\,log\,n)$ time.  The while loop runs through all of the intervals at most once taking $O(n)$ time.  
+			The comparisons of the values and the appending to the set $S$ each run in $O(1)$.  This results in a runtime of $O(n\,log\,n+n) = O(n\,log\,n)$.
+	\newpage
+	\item
 	
 \end{enumerate}
 
