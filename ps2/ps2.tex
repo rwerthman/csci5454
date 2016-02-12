@@ -10,7 +10,8 @@
 \begin{document}
 
 CSCI 5454 \hfill Problem Set 2\\
-Robert Werthman
+Robert Werthman\\
+No Collaborators
 
 \hrulefill
 
@@ -358,6 +359,41 @@ Robert Werthman
 		\end{enumerate}
 		
 		\item
+			\begin{enumerate}
+				\item \textit{Give an example graph with a unique MST and two edges of equal length.  Give an algorithm to construct a graph with $\Omega{(|V|^2)}$
+				edges of equal weight yet still having a unique MST.}\\
+				\\
+				\textbf{Example Graph}\\
+				\\
+				\begin{figure}[h]
+				\caption{An example of a unique MST with two edges of equal length.}
+				\includegraphics[width=8cm]{ps2_q6a.png}
+				\centering
+				\end{figure}
+				\\
+				In Figure 6 above, the MST of the graph will always have the set of edges $\{(A,B),(A,C)\}$ since those are the minimum weight edges connecting all the nodes in the graph.\\
+				\\
+				\textbf{Algorithm}
+								
+				\item \textit{Refute the following two claims about a unique MST:}
+					\begin{enumerate}
+						\item \textit{Every cut has a unique minimum weight across it.}\\
+						\\
+						We can use Figure 6 to show that this claim is not true.  
+						If we cut the graph between vertices $A$ and $B$ and $A$ and $C$ where $S = \{A\}$ and $S' =\{B,C\}$ we see that both edges $(A,B)$ and $(A,C)$
+						are light edges that cross the cut and so there is not a unique minimum weight across it.\\
+						\item \textit{The maximum weight edge in any cycle of a graph is unique.}\\
+						\\
+						\begin{figure}[h]
+						\caption{An example of a graph with a unique MST and maximum weight edge in a cycle that is not unique.}
+						\includegraphics[width=8cm]{ps2_q6bii.png}
+						\centering
+						\end{figure}
+						\\
+						The MST in Figure 7 consists of the set of edges $\{(A,B),(A,D),(A,C)\}$.  The cycle in Figure 7 consists of the set of edges $\{(A,B),(B,C),(C,D),(D,A)\}$.  
+						As can be seen, the edges $(B,C)$ and $(C,D)$ have the same maximum weight in the cycle so the claim that the maximum weight edge in any cycle of a graph is unique is false.  
+					\end{enumerate}
+			\end{enumerate}
 	
 \end{enumerate}
 
