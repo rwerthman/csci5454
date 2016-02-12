@@ -127,7 +127,7 @@ Robert Werthman
 			$$
 			E[X|Y=y] = \sum_{x} x \cdot Pr[X=x|Y=y]
 			$$
-		Given the above assertions
+		Given the above assertions the proof is with the help of online sources \cite{4,5,6}
 			\begin{align*}
 				E[E[X|Y]] &= E[\sum_{x} x \cdot Pr[X=x|Y]]\\
 				&=\sum_{y} [\sum_{x} x \cdot Pr[X=x|Y=y]] \cdot Pr[Y=y]\\
@@ -135,12 +135,6 @@ Robert Werthman
 				&=\sum_{x} x \cdot Pr[X=x]\\
 				&=E[X]
 			\end{align*}
-		Sources I used to complete this problem:
-		\begin{itemize}
-			\item http://www.maths.qmul.ac.uk/~pettit/MTH5122/notes15.pdf
-			\item https://en.wikipedia.org/wiki/Expected\_value
-			\item https://math.stackexchange.com/questions/1353418/expected-value-proof-law-of-total-expectation
-		\end{itemize}
 		
 		\newpage
 		\item \textit{Prove by induction that $E[X_t] = 0$ for a martingale.}\\
@@ -210,8 +204,8 @@ Robert Werthman
 	\\
 	The algorithm above depends on two assumptions:
 	\begin{enumerate}
-		\item If an edge $(u, v)$ is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph [1].
-		\item For any cycle C in the graph, if the weight of an edge e of C is larger than the individual weights of all other edges of C, then this edge cannot belong to a MST [2].
+		\item If an edge $(u, v)$ is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph \cite{2}.
+		\item For any cycle C in the graph, if the weight of an edge e of C is larger than the individual weights of all other edges of C, then this edge cannot belong to a MST \cite{3}.
 	\end{enumerate}
 	As an example for hypothesis (a) we cut the the graph of Figure 2 between vertices $A$ and $D$ and vertices $D$ and $E$.  After the cut $S = \{D\}$ and $S'=\{A,B,C,E,F\}$.
 	The edge $(A,D)$ is in the minimum spanning tree created by Kruskal's algorithm and it is a light edge of the cut that was made.\\
@@ -243,12 +237,6 @@ Robert Werthman
 	Checking if the largest edge is $e$ takes $O(1)$.  
 	Creating a cut of the graph $G$ with $e$ as a light edge takes O(V) if it has to look at all of there vertices where to make the cut.
 	The worst case runtime would be $O(V\,log(E)+V+(V-1)) = O(V\,log(E) + V)$.\\
-	\\
-	Sources I used to complete this problem.
-	\begin{enumerate}[1]
-		\item https://en.wikipedia.org/wiki/Minimum\_spanning\_tree
-		\item http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-4985903869437/solutions-to-some-homework-exercises-as-shared-with-students/4-solutions-clrs-23.pdf 
-	\end{enumerate}
 	
 	\newpage
 	\item \textit{Give a $o(|V|^2)$ algorithm to find a universal sink given an adjacency matrix.}\\
@@ -278,7 +266,7 @@ Robert Werthman
 	\end{verbatim}
 	\textbf{Correctness}\\
 	\\
-	In order for this algorithm to be correct I make the following assumptions:
+	In order for this algorithm to be correct I make the following assumptions about an adjacency matrix:
 	\begin{enumerate}
 		\item If a graph is represented as an adjacency matrix $A$ then $A_{ij}$ is the edge from vertex $i$ to vertex $j$. \\ 
 		\item If a 1 is present in the matrix at row $i$ column $j$ then an edge exists from $i$ to $j$.  If a 0 is present then no edge exists from $i$ to $j$.\\
@@ -308,8 +296,79 @@ Robert Werthman
 	\\
 	This means this algorithm has a runtime of $O(|V|*2|V|) = O(|V|^2)$.  
 	
-
-
+	\newpage
+	\item
+		\begin{enumerate}
+			\item \textit{Prove that every tree is a bipartite graph.}\\
+			\\
+			\begin{figure}[h]
+			\caption{An example of a bipartite graph.}
+			\includegraphics[width=8cm]{ps2_q5a.png}
+			\centering
+			\end{figure}
+			\\
+			\begin{figure}[h]
+			\caption{An example of a non bipartite graph.}
+			\includegraphics[width=8cm]{ps2_a5aa.png}
+			\centering
+			\end{figure}			
+			\begin{figure}[h]
+			\caption{An example of a tree.}
+			\includegraphics[width=8cm]{ps2_q5aaa.png}
+			\centering
+			\end{figure}
+			\newpage
+			If you notice in the pictures above a graph that has an even number of vertices in a cycle (an even cycle) is bipartite while a graph that has an odd number of vertices in a cycle (an odd cycle) is not bipartite \cite{1}.
+			A tree is a connected, acyclic, and undirected graph.  Since it does contain any cycles, in particular an odd cycle, I claim it must be bipartite.\\
+			\\
+			If we were to assume a tree was not bipartite then no matter how the vertices were partitioned there would always be at least one edge $(u,v)$ of the tree where $u$ and $v$ were in the 
+			same vertex subset if the vertices were broken into two susbets.  
+			Starting with two vertices in a tree which is the minimum number of vertices to form an edge those vertices can be partitioned into two subsets that will make the tree bipartite.  
+			The edge $(u,v)$ between the two vertices will have one end in one subset and the other end in the other subset.\\
+			\\
+			With three or more vertices in a graph, the only way to make a graph not bipartite is to create cycles between the vertices as in Figure 4.  But as we see in Figure 3, a graph with an even cycle is still bipartite.  
+			This would mean a tree would need to have an odd cycle to not be bipartite but because a tree by definition will never have any cycles it will always be bipartite.\\    
+			\newpage
+			\item \textit{Given an efficient alogrithm to determine whether a given undirected graph is bipartite.}\\
+			\\
+			\textbf{Correctness}\\
+			\\
+			We can determine if an undirected graph is bipartite by coloring the vertices in the graph with two different colors \cite{7}.
+			We can search through the graph and when we hit one endpoint of an edge we color it one color and when we hit the next endpoint of the edge we color it a different color.
+			We will end up with all the nodes in $R$ being a different color compared to the color of all of the nodes in $L$ if the graph is bipartite.
+			To do this we can use a modified breadth first search.\\
+			\\
+			When we run breadth first search we first take the source vertex that is in the input to the algorithm and color it one particular color--lets say red for this example.
+			Then we put it on the queue.  When the source is removed from the queue we check to make sure its color is correct and then we look at all of its neighbors.  
+			To figure out which color to use for the neighbors of any vertex we look at the distance from the the source vertex to each neighbor vertex.  
+			In the example of the neighbors of the source vertex they will all be a distance of one away from the source so we color them green.  The next vertices from the source's neighbors will
+			be a distance of two away so we will color them red.  To generalize, any vertex that is an even distance away is colored red and any vertex that is an odd distance away from the source
+			will be colored green.  If we pop a vertex from the queue and check its color and it disagrees with the coloring scheme we know that this graph is not bipartite.\\			
+			\\
+			Since breadth first search discovers nodes one level of distance away from the source vertex at a time this change to the algorithm ensures 
+			that if the graph is bipartite the vertices will be colored in a way that leaves each endpoint of an edge a different color.
+			This means that vertices of color one can be partitioned into one subset $R$ and vertices of color two can be partition into another subset $L$.  
+			These subsets will have one endpoint of an edge in $R$ and one endpoint of an edge in $L$.\\
+			\\
+			\textbf{Runtime}\\
+			\\
+			The regular breadth first search algorithm runs in $O(V+E)$.  
+			We are adding a color attribute to a node which is just another array and inserting and checking the values of the array takes O(1) time per node.  
+			I claim that the runtime of the modified breadth first search remains $O(V+E)$.
+		\end{enumerate}
+		
+		\item
+	
 \end{enumerate}
+
+\begin{thebibliography}{10}
+	\bibitem{1} https://en.wikipedia.org/wiki/Cycle\_graph\\
+	\bibitem{2} https://en.wikipedia.org/wiki/Minimum\_spanning\_tree\\
+	\bibitem{3} http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-4985903869437/solutions-to-some-homework-exercises-as-shared-with-students/4-solutions-clrs-23.pdf\\
+	\bibitem{4} http://www.maths.qmul.ac.uk/~pettit/MTH5122/notes15.pdf\\
+	\bibitem{5} https://en.wikipedia.org/wiki/Expected\_value\\
+	\bibitem{6} https://math.stackexchange.com/questions/1353418/expected-value-proof-law-of-total-expectation\\
+	\bibitem{7} https://en.wikipedia.org/wiki/Bipartite\_graph
+\end{thebibliography}
 
 \end{document}
