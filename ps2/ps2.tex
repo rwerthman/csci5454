@@ -452,6 +452,40 @@ No Collaborators
 			The comparisons of the values and the appending to the set $S$ each run in $O(1)$.  This results in a runtime of $O(n\,log\,n+n) = O(n\,log\,n)$.
 	\newpage
 	\item
+	\newpage
+	\item \textit{Give a linear time algorithm to determine whether numbers given to you are the shortest path distances from every vertex in the graph to a source vertex.}\\
+	\\
+	\textbf{Pseudocode}
+	\begin{verbatim}
+	FindSSSPFaster(G, s, d)
+	 SP = empty array of size V
+	 
+	 for all vertices in V:
+	   dist[u] = infinity
+	   SP[v] = NO
+	   
+	 dist[s] = 0
+	 Q = a priority queue of all the distances of all vertices in V
+	 
+	 while Q is not empty:
+	   u = pop lowest value vertex from Q
+	   for all edges (u,v) in E:
+	     if dist[v] > dist[u] + l[u,v]:
+	       dist[v] = dist[u] + l[u,v]
+	       
+	 for all vertices in V:
+	   if dist[v] = d[v]:
+	     SP[v] = YES
+	 return SP
+	\end{verbatim}
+	\textbf{Correctness}\\
+	\\
+	We assume we are given the cost of the shortest path to every node.  
+	We don't really care about what the shortest path is but we can use the value of the shortest path to check if the value of the node
+	at the end of running a modified Dijkstra algorithm is correct.
+	\\
+	\textbf{Runtime}\\
+	\\
 	
 \end{enumerate}
 

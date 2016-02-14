@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 FEB 2016 07:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  14 FEB 2016 14:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -534,53 +534,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 428--453
  []
 
 [18] [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
+Underfull \hbox (badness 10000) in paragraph at lines 456--459
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 461--462
+Underfull \hbox (badness 10000) in paragraph at lines 481--489
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 481--489
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 481--489
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--496
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
 []\OT1/cmr/m/n/12 http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
 \OT1/cmr/m/n/12 4985903869437/solutions-to-some-homework-exercises-as-shared-wi
 th-students/4-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 463--464
+Underfull \hbox (badness 10000) in paragraph at lines 497--498
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 465--466
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 []\OT1/cmr/m/n/12 https://math.stackexchange.com/questions/1353418/expected-val
 ue-proof-law-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 465--466
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
-[21] (./ps2.aux) ) 
+[22] (./ps2.aux) ) 
 Here is how much of TeX's memory you used:
  2432 strings out of 493089
  32257 string characters out of 6134842
@@ -601,10 +621,10 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
 
-Output written on ps2.pdf (21 pages, 184552 bytes).
+Output written on ps2.pdf (22 pages, 186227 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
