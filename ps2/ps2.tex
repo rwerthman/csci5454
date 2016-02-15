@@ -451,7 +451,32 @@ No Collaborators
 			The sorting of the intervals takes $O(n\,log\,n)$ time.  The while loop runs through all of the intervals at most once taking $O(n)$ time.  
 			The comparisons of the values and the appending to the set $S$ each run in $O(1)$.  This results in a runtime of $O(n\,log\,n+n) = O(n\,log\,n)$.
 	\newpage
-	\item
+	\item \textit{Prove that the search version for minimizing the number of billboards for a jogging path where each jogger runs in two segments is NP-Complete}\\
+	\\
+	\textbf{Proof}\\
+	\\
+	To prove that an algorithm $X$ is NP-complete we have to prove
+		\begin{enumerate}
+			\item $X \in NP$
+			\item $X$ is NP-hard by reducing NP-complete algorithm $Y$ to $X$
+		\end{enumerate}
+	To show that the jogging path problem with each jogger having two paths is $\in NP$ we have to be able to verify the algorithm in polynomial time.
+	We do this by taking the output set, the certificate, of the algorithm $S$ and check that $|S| \leq M$.  We can do this in polynomial time by counting the size of $S$.
+	We know we can do this in polynomial timebecause there will be a max of $n$ numbers in $S$ due to the fact that in the worst case there will be 1 billboard per jogger giving us $n$ billboard locations.\\
+	\\
+	In order to prove that the jogging path problem is NP-hard we need to show that an NP-complete problem can be reduced this problem.  
+	In this case I will reduce Set Cover, a known NP-complete problem, to the jogging path problem.
+	Given an instance of Set Cover which is a set of elements $n$ and a collection of $k$ sets whose union equals $n$, I will construct and instance of the jogging path problem.
+	I argue that the $n$ of Set Cover represents the jogging path and $k$ represents all the intervals of all the joggers.  In other words, the union of all the intervals of the joggers
+	will give us the entire jogging path.\\
+	\\
+	The input to Set Cover is the same as the input to the jogging path problem but the output of Set Cover is not the output we need for the jogging path problem.
+	Set cover returns the smallest subset of $k$ whose union equals $n$ which, in the case of the jogging path problem, is the minimum number of jogging intervals that cover the jogging path.
+	But for the jogging path problem we need single points within those intervals as the correct output.  We can use the algorithm from question 7 above to find that set $S$ in polynomial time, specifically $O(\,n\,log\,n)$.\\
+	\\
+	This shows that we were able to reduce Set Cover to the jogging path problem in polynomial-time which means the jogging path problem is NP-complete.
+	
+	
 	\newpage
 	\item \textit{Give a linear time algorithm to determine whether numbers given to you are the shortest path distances from every vertex in the graph to a source vertex.}\\
 	\\
@@ -517,6 +542,7 @@ No Collaborators
 	\bibitem{5} https://en.wikipedia.org/wiki/Expected\_value\\
 	\bibitem{6} https://math.stackexchange.com/questions/1353418/expected-value-proof-law-of-total-expectation\\
 	\bibitem{7} https://en.wikipedia.org/wiki/Bipartite\_graph
+	\bibitem{8} http://beust.com/algorithms.pdf
 \end{thebibliography}
 
 \end{document}

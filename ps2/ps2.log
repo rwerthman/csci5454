@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  14 FEB 2016 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  14 FEB 2016 20:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -533,99 +533,124 @@ Underfull \hbox (badness 10000) in paragraph at lines 428--453
 
  []
 
-[18] [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 456--459
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 454--460
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 454--460
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 463--478
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 463--478
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 463--478
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 481--484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--508
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--533
 
  []
 
 [21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 538--539
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 514--515
+Underfull \hbox (badness 10000) in paragraph at lines 539--540
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 []\OT1/cmr/m/n/12 http://test.scripts.psu.edu/users/d/j/djh300/cmpsc465/notes-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 \OT1/cmr/m/n/12 4985903869437/solutions-to-some-homework-exercises-as-shared-wi
 th-students/4-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 516--517
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 542--543
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 518--519
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 []\OT1/cmr/m/n/12 https://math.stackexchange.com/questions/1353418/expected-val
 ue-proof-law-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 518--519
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 
  []
 
 [23] (./ps2.aux) ) 
 Here is how much of TeX's memory you used:
- 2432 strings out of 493089
- 32257 string characters out of 6134842
- 97423 words of memory out of 5000000
- 5881 multiletter control sequences out of 15000+600000
+ 2433 strings out of 493089
+ 32260 string characters out of 6134842
+ 97426 words of memory out of 5000000
+ 5882 multiletter control sequences out of 15000+600000
  9714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,24p,253b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -641,7 +666,7 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
 
-Output written on ps2.pdf (23 pages, 189026 bytes).
+Output written on ps2.pdf (23 pages, 191819 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  86 compressed objects within 1 object stream
