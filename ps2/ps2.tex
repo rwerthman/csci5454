@@ -458,33 +458,52 @@ No Collaborators
 	\textbf{Pseudocode}
 	\begin{verbatim}
 	FindSSSPFaster(G, s, d)
-	 SP = empty array of size V
+	 SP = empty array of size V // Stores YES or NO for each vertex
 	 
 	 for all vertices in V:
 	   dist[u] = infinity
-	   SP[v] = NO
+	   SP[v] = 0 // NO
 	   
 	 dist[s] = 0
 	 Q = a priority queue of all the distances of all vertices in V
 	 
-	 while Q is not empty:
+	 while Q is not empty: // Find lowest distance for all vertices in G
 	   u = pop lowest value vertex from Q
 	   for all edges (u,v) in E:
 	     if dist[v] > dist[u] + l[u,v]:
 	       dist[v] = dist[u] + l[u,v]
 	       
-	 for all vertices in V:
+	 for all vertices in V: // Determine if the values in d are correct
 	   if dist[v] = d[v]:
-	     SP[v] = YES
+	     SP[v] = 1 // YES
 	 return SP
 	\end{verbatim}
 	\textbf{Correctness}\\
 	\\
 	We assume we are given the cost of the shortest path to every node.  
 	We don't really care about what the shortest path is but we can use the value of the shortest path to check if the value of the node
-	at the end of running a modified Dijkstra algorithm is correct.
+	at the end of running a modified Dijkstra algorithm is correct.\\
+	\\
+	FindSSSPFaster returns the array $SP$ of either YES or NO if the actual value for the shortest path for a vertex is the same as the value of the shortest path for that vertex in $d$.  
+	This algorithm is a modified Dijkstra.  We create a queue of all the vertices in $G$.  The queue is indexed by distance value of the vertex with all except the source vertex $s$ being set to $\infty$ initially.   
+	$s$ is set to $0$ and and every time we access the queue we remove the lowest distance value.   The first time we access the queue we remove the source vertex $s$.  
+	From there we look at all of the neighbors the vertex is connected to and set each neighbor's distance value if a
+	lower value is found based on the cost of $u$, in the first case $s$, and the cost of the edge $(u,v)$.  
+	Once all of the neighbors' distance values are set we pop the vertex with the next lowest distance value from the queue and repeat.  
+	All vertices are given distance values less than $\infty$ and popped from the queue.\\
+	\\
+	This is similar to Dijkstra except we don't put any nodes back on the queue.  All we care about is the shortest path value of the node not the actual shortest path.   
+	Once we have gone through all the vertices in the queue which means all their distance values have been set to the shortest path distance, 
+	we iterate through the each vertex's distance value and compare that to the values we were given in $d$.  
+	If they are the same then we mark the vertex's index in the array as 1 for YES, otherwise it remains 0 for NO.\\
 	\\
 	\textbf{Runtime}\\
+	\\
+	We create the $SP$ array which takes $O(|V|)$ because it contains all $V$.  We iterate through all of the vertices and set their distances to $\infty$ which takes $O(|V|)$.
+	We create the queue of $V$ which takes $O(|V|)$.  We also pop each vertex from the queue and look at each edge from that vertex.  
+	This part of the algorithm takes $O(|V|+|E|)$ time.  Finally we go through the all the vertices and look at there distance values.  This takes $O(|V|)$.\\
+	\\
+	The final runtime of SSSPFaster is $O(4|V| + (|V|+|E|)) = O(|V|+|E|)$ which is linear time.
 	\\
 	
 \end{enumerate}
