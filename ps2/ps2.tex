@@ -11,7 +11,7 @@
 
 CSCI 5454 \hfill Problem Set 2\\
 Robert Werthman\\
-No Collaborators
+Collaborators: Swapnil Paratey 
 
 \hrulefill
 
@@ -472,7 +472,8 @@ No Collaborators
 	\\
 	The input to Set Cover is the same as the input to the jogging path problem but the output of Set Cover is not the output we need for the jogging path problem.
 	Set cover returns the smallest subset of $k$ whose union equals $n$ which, in the case of the jogging path problem, is the minimum number of jogging intervals that cover the jogging path.
-	But for the jogging path problem we need single points within those intervals as the correct output.  We can use the algorithm from question 7 above to find that set $S$ in polynomial time, specifically $O(\,n\,log\,n)$.\\
+	But for the jogging path problem we need single points within those intervals as the correct output.  
+	We can use the algorithm from question 7 (MinimizeBillboards) above to find set $S$ of single points within the jogging intervals in polynomial time, specifically $O(\,n\,log\,n)$.\\
 	\\
 	This shows that we were able to reduce Set Cover to the jogging path problem in polynomial-time which means the jogging path problem is NP-complete.
 	
