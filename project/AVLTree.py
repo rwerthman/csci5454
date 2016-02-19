@@ -1,17 +1,21 @@
 class AVLTree(object):
 
 	def __init__(self):
+		self.root = None
 
-	def insert(self):
+	def Insert(self):
 
-	def find(self):
+	def Find(self):
 
-	def delete(self):
+	def Delete(self):
 
-	def traverse(self):
+	def PrintTree(self):
 
 
 
 class AVLNode(object):
 
 	def __init__(self):
+		self.left_child = None
+		self.right_child = None
+		self.parent = None
