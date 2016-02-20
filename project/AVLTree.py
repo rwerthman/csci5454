@@ -55,6 +55,11 @@ class AVLTree(object):
 		pass
 
 	def print_tree(self, current_node):
+		'''
+
+		Sources: https://stackoverflow.com/questions/20242479/printing-a-tree-data-structure-in-python
+			- How to print a tree data structure that is understandable
+		'''
 
 		if self.root is None:
 			print 'Tree is empty.'
