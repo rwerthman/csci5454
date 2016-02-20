@@ -22,7 +22,7 @@ No Collaborators\\
 			
 			\textbf{Pseudocode}
 			\begin{verbatim}
-			randbit():
+			def randbit():
 			  while true:
 			    (bitA, p) = probefluxcapacitor()
 			    (bitB, p) = probefluxcapacitor()
@@ -74,12 +74,20 @@ No Collaborators\\
 			E[X] &= \sum_{i=0}^{1} E[X_i]\\
 			&= E[X_0] + E[X_1]\\
 			&= p \cdot (1-p) + (1-p) \cdot p\\
-			&= 2(p \cdot (1-p))\\
+			&= 2p(1-p)\\
 			\end{align*}
-			This means the running time of randbit() is $O(2(p \cdot (1-p)) \cdot 1) = O(2(p \cdot (1-p))$.
+			This means the running time of randbit() is $O(2p(1-p) \cdot 1) = O(2p(1-p))$.
 			
 			\newpage
-			\item \textit{}		
+			\item \textit{Implement the algorithm randbit(p) that outputs 
+			an independent random bit with P(randbit(p)=1)=p.}\\
+			\\
+			\textbf{Pseudocode}\\
+			\\
+			\textbf{Correctness}\\
+			\\
+			\textbf{Runtime}\\
+			\\		
 		\end{enumerate}
 
 \end{enumerate}
