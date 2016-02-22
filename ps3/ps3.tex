@@ -78,13 +78,13 @@ No Collaborators\\
 			\end{align*}
 			This means the running time of randbit() is $O(2p(1-p) \cdot 1) = O(2p(1-p))$.
 			
-			\newpage
 			\item \textit{Implement the algorithm randbit(p) that outputs 
 			an independent random bit with P(randbit(p)=1)=p.}\\
 			\\
 			\textbf{Pseudocode}
 			\begin{verbatim}
 			def randbit(p):
+			  (k, n) = p
 			  l = list of bits
 			  for i from 1 to n:
 			    bit = randbit()
@@ -106,7 +106,7 @@ No Collaborators\\
 			&= \frac{1}{2} \cdot \frac{1}{2} \cdot ... \cdot \frac{1}{2}\\
 			&= \frac{1}{2^n}\\
 			\end{align*}
-			$k$ is the number of outcomes we want out of the combined of the runs of randbit().  
+			$k$ is the number of outcomes we want out of the combined runs of randbit().  
 			For example, if we want $P(randbit(\frac{3}{4})=1)=\frac{3}{4}$, then we would need look at the combined output of calling randbit() two times because $n=2$.
 			This would give us four possible possible outcomes: (0,0), (1,0), (0,1), (1,1).  
 			Out of those four possible outcomes there is a 1 contained in three of them.
@@ -116,25 +116,24 @@ No Collaborators\\
 			keeping a list of the bits that are returned by randbit().  If a 1 exists in the list then we return a 1
 			otherwise we return a 0.\\
 			\\
-			This doesn't appear to work for any other example so it is not correct.
+			This technique doesn't appear to work for any other example so it is not correct.
 			I was unable to figure out a solution to this problem.
 			\\	
 
-			\newpage
 			\item \textit{Show the correctness and runtime for randbit(p) when p is not of the form $k/2^n$}\\
 			\\
 			\textbf{Correctness}\\
 			\\
 			Let's look at the alorithm when $p = 3/4$.
 			This means $p = 0.11$ and $i$ will be in the range 0 to 1.
-			$d$ is first set to $b_0$ which is a 1.  Then randbit() is called and its output is compared to $d$.
+			$d$ is first set to $b_1$ which is a 1.  Then randbit() is called and its output is compared to $d$.
 			The probability of randbit() returning a 0 which would end the function is $1/2$.  
-			The next time through $d$ is set to $b_1$ which is a 1.  
+			The next time through $d$ is set to $b_2$ which is a 1.  
 			Again randbit() is called and its output is compared to $d$ and the function returns if 
 			the output of randbit() is not the same as $d$.
 			Each time, the probability of the output of randbit() not being equal to $d$ is $1/2$.\\  
 			\\ 
-			I don't have any answer for proving the correctness of this problem.
+			I don't have any answer for proving the correctness of this problem.\\
 			\\
 			\textbf{Runtime}\\
 			\\	
@@ -145,6 +144,48 @@ No Collaborators\\
 			\\
 			We can then say the upper bound on this function is $O(i (i^c + 1/2))$
 		\end{enumerate}
+
+		\item \textit{Give a linear time algorithm that determines if an 
+		element appears more than $n/2$ times in an array with probability $1-p$ where $p$ is small.}\\
+		\\
+		\textbf{Pseudocode}
+		\begin{verbatim}
+		def AppearsOften(A):
+		  n = total elements in A
+		  counter = 0
+		  i = 1
+		  if n > 1:
+		    for j from 1 to n:
+		      if arethesame(i,j):
+		        counter = counter + 1
+		      elif !arethesame(i,j):
+		        counter = counter - 1
+		      if counter < 1:
+		        if j < n:
+		          i = j + 1
+		          counter = 0
+		    if counter > 0:
+		      return 'YES'
+		    else:
+		      return 'NO'
+		  else:
+		    return 'YES' # Single element in the array so it must occur > n/2 times
+		\end{verbatim}
+		\textbf{Correctness}\\
+		\\
+		The algorithm AppearsOften() goes through all of the elements in array $A$ and attempts to keep a count of the
+		element that appears most often in $A$.  The base case, when $i = 1$, occures when $A$ has only one element and the algorithm returns 'YES' because $n/2 = 1/2$ and the element occures one time which is greater than $1/2$.
+		\\
+		For the inductive step we assume $n > 1$ and $i,j \le n$.  Each iteration through the loop, we compare the $i$th element with the $j$th element.  If they are the same we increment the counter otherwise we decrement the counter.  The counter helps to determine if after having gone through the elements in the array there is an element $x$ that occurs $> n/2$ times.  The counter would need to be greater than 1 in order for there to be an element that occurs $> n/2$ times.  We can think of this as breaking the array into comparisons between pairs.  $x$ would occur in a lot of pairs because it is the element that occurs the most so the counter would end up being higher after the completion of the for loop.\\
+		\\
+		This algorithm will return 'NO' when there isn't an element that occurs $> n/2$ times but it will also return 'NO' in some cases when there is an element $> n/2$.  This also occurs for 'YES' so I am unable to prove it correctly says 'NO' if there is no such element and 'YES' with probability $1-p$.      
+		\\
+		\textbf{Runtime}\\
+		\\
+		The algorithm goes all $n$ elements of array $A$ at most one time.  
+		Keeping a counter and checking if elements are the 
+		same and checked the value of the counter take constant time, O(1), each.
+		This means the runtime for this algorithm is $O(n)$.
 
 \end{enumerate}
 
