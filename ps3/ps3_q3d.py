@@ -14,6 +14,13 @@ import math
 
 
 def DispenseMinions():
+	'''
+	Args:
+
+	Returns:
+		A dictionary of number of pods mapped to the number of minions needed
+		to fill each pod with at least one minion.
+	'''
 	num_pods_per_interation = collections.OrderedDict()
 	for i in xrange(1,30):
 		num_pods_per_interation[i*100] = 0
@@ -41,6 +48,14 @@ def DispenseMinions():
 	return num_pods_per_interation
 
 def GraphOutput(pods_with_num_minions):
+	'''
+	Args:
+		pods_with_num_minions a dictionary of the number of pods with the number
+							  of minions needed to fill those pods with 
+							  at least one minion
+	Returns:
+		saves a graph to png 
+	'''
 
 	# Create two lists of the number of pods 
 	# and the number of minions dispensed for
