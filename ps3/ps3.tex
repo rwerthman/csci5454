@@ -145,6 +145,7 @@ No Collaborators\\
 			We can then say the upper bound on this function is $O(i (i^c + 1/2))$
 		\end{enumerate}
 
+        \newpage
 		\item \textit{Give a linear time algorithm that determines if an 
 		element appears more than $n/2$ times in an array with probability $1-p$ where $p$ is small.}\\
 		\\
@@ -178,7 +179,7 @@ No Collaborators\\
 		\\
 		For the inductive step we assume $n > 1$ and $i,j \le n$.  Each iteration through the loop, we compare the $i$th element with the $j$th element.  If they are the same we increment the counter otherwise we decrement the counter.  The counter helps to determine if after having gone through the elements in the array there is an element $x$ that occurs $> n/2$ times.  The counter would need to be greater than 1 in order for there to be an element that occurs $> n/2$ times.  We can think of this as breaking the array into comparisons between pairs.  $x$ would occur in a lot of pairs because it is the element that occurs the most so the counter would end up being higher after the completion of the for loop.\\
 		\\
-		This algorithm will return 'NO' when there isn't an element that occurs $> n/2$ times but it will also return 'NO' in some cases when there is an element $> n/2$.  This also occurs for 'YES' so I am unable to prove it correctly says 'NO' if there is no such element and 'YES' with probability $1-p$.      
+		This algorithm will return 'NO' when there isn't an element that occurs $> n/2$ times but it will also return 'NO' in some cases when there is an element $> n/2$.  This also occurs for 'YES' so I am unable to prove it correctly says 'NO' if there is no such element and 'YES' with probability $1-p$.\\      
 		\\
 		\textbf{Runtime}\\
 		\\
@@ -186,14 +187,44 @@ No Collaborators\\
 		Keeping a counter and checking if elements are the 
 		same and checked the value of the counter take constant time, O(1), each.
 		This means the runtime for this algorithm is $O(n)$.
+		
+		\newpage
+		\item \textit{Help Gru understand his minion dispensing situation}
+		\begin{enumerate}
+		    \item \textit{What is the expected number of minions in the first pod after t seconds?}\\
+		    \\
+		    If a minion is added to a pod every second we expect there to be a total of $t$ minions combined from all of the pods after $t$ seconds.   Let $X$ be the random variable that represents the number of minions in the first pod.  After time $t$, $X$ can be between 0 and $t$ which means the pod can contain between 0 and $t$ minions.  The expected value of the number of minions $i$ in the first pod after time $t$ can be represented as the binomial distribution \cite{2}
+		    \begin{align*}
+		    E[X] &= \sum_{i=1}^{t} i\binom{t}{i}\frac{1}{k^i}(1-\frac{1}{k})^{t-i}\\
+		    &=\frac{t}{k}\\
+		    \end{align*}
+		    \item \textit{In expectation, when will the first pod get its first minion?}\\
+		    \\
+		    Let $X$ be the random variable that represents the number of minions that are dispensed before a minion goes into the first pod.  The expected value of the number of minions $i$ that are dispensed before the first pod will get a minion can be represented as the geometric distribution \cite{3}
+		    \begin{align*}
+		    E[X] &= \sum_{i=1}^{\infty} i(1-\frac{1}{k})^{i-1} \cdot \frac{1}{k}\\
+		    &= k\\
+		    \end{align*}
+		    
+		    \item \textit{In expectation, when will all pods have at least one minion?}\\
+		    \\
+		    Let $n$ be the number of minions we need to dispense in order to have at least one minion in all $k$ pods.  Let $n_i$ be the number of minions we have to dispense in order to fill the ith pod.  The probability that the ith pod will be filled is $(k-i+1)/k$.  The expected time until the ith pod gets a minion is $k/(k-i+1)$. The expected value of $n$ is then \cite{4}
+		    \begin{align*}
+		        E[n] &= \sum_{i=1}^{k} E[n_i]=\sum_{i=1}^{k} k/(k-i+1)\\
+		        &\le \sum_{i=1}^{k} k/(k-i)=k\sum_{i=1}^{k} 1/(k-i)\\
+		        &\le k\sum_{i=1}^{k} 1/i=\theta(k\,log\,k)\\
+		    \end{align*}
+		    
+		\end{enumerate}
 
 \end{enumerate}
 
 \newpage
 \begin{thebibliography}{10}
 	\bibitem{1} https://www.mathsisfun.com/data/probability-events-independent.html
-	\bibitem{2} https://www.mathsisfun.com/data/binomial-distribution.html
+	\bibitem{2} https://en.wikipedia.org/wiki/Binomial\_distribution
+	\bibitem{3} https://en.wikipedia.org/wiki/Geometric\_distribution
+    \bibitem{4} http://tuvalu.santafe.edu/~aaronc/courses/5454/csci5454\_spring2013\_L4.pdf
 \end{thebibliography}
 
 \end{document}
-
