@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 FEB 2016 22:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  25 FEB 2016 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,30 +409,129 @@ Underfull \hbox (badness 10000) in paragraph at lines 218--223
 
  []
 
-[9 <./q3_3d.png>] [10] (./ps3.aux) ) 
+[9 <./q3_3d.png>]
+Missing character: There is no â in font cmti12!
+Missing character: There is no € in font cmti12!
+Missing character: There is no ™ in font cmti12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 246--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--255
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--255
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--255
+
+ []
+
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 261--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--271
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--271
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--271
+
+ []
+
+[13] [14] (./ps3.aux) ) 
 Here is how much of TeX's memory you used:
- 2474 strings out of 493089
- 32851 string characters out of 6134842
- 96781 words of memory out of 5000000
- 5922 multiletter control sequences out of 15000+600000
+ 2477 strings out of 493089
+ 32860 string characters out of 6134842
+ 96790 words of memory out of 5000000
+ 5925 multiletter control sequences out of 15000+600000
  9714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,9n,24p,724b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmti12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmtt12.pfb>
-Output written on ps3.pdf (10 pages, 154509 bytes).
+ 37i,9n,24p,727b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+t12.pfb>
+Output written on ps3.pdf (14 pages, 162414 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -175,11 +175,11 @@ No Collaborators\\
 		\textbf{Correctness}\\
 		\\
 		The algorithm AppearsOften() goes through all of the elements in array $A$ and attempts to keep a count of the
-		element that appears most often in $A$.  The base case, when $i = 1$, occures when $A$ has only one element and the algorithm returns 'YES' because $n/2 = 1/2$ and the element occures one time which is greater than $1/2$.
+		element that appears most often in $A$.  The base case, when $i = 1$, occures when $A$ has only one element and the algorithm returns ``YES'' because $n/2 = 1/2$ and the element occures one time which is greater than $1/2$.
 		\\
 		For the inductive step we assume $n > 1$ and $i,j \le n$.  Each iteration through the loop, we compare the $i$th element with the $j$th element.  If they are the same we increment the counter otherwise we decrement the counter.  The counter helps to determine if after having gone through the elements in the array there is an element $x$ that occurs $> n/2$ times.  The counter would need to be greater than 1 in order for there to be an element that occurs $> n/2$ times.  We can think of this as breaking the array into comparisons between pairs.  $x$ would occur in a lot of pairs because it is the element that occurs the most so the counter would end up being higher after the completion of the for loop.\\
 		\\
-		This algorithm will return 'NO' when there isn't an element that occurs $> n/2$ times but it will also return 'NO' in some cases when there is an element $> n/2$.  This also occurs for 'YES' so I am unable to prove it correctly says 'NO' if there is no such element and 'YES' with probability $1-p$.\\      
+		This algorithm will return ``NO'' when there isn't an element that occurs $> n/2$ times but it will also return ``NO'' in some cases when there is an element $> n/2$.  This also occurs for ``YES'' so I am unable to prove it correctly says ``NO'' if there is no such element and ``YES'' with probability $1-p$.\\      
 		\\
 		\textbf{Runtime}\\
 		\\
@@ -224,6 +224,51 @@ No Collaborators\\
 		    I let $c_1 = 1.5$ and $c_2 = .5$.
 		\end{enumerate}
 
+		\newpage
+		\item \textit{Implementation of Karger's min-cut algorithm using Kruskal's algorithm.}
+		\begin{enumerate}
+			\item \textit{Explain how to view Karger’s algorithm as constructing a spanning tree.}\\
+			\\
+			A spanning tree is a subgraph that is a tree that includes all of the vertices in the graph \cite{6}.  It won't necessarily include all of the edges in a graph.  Karger's randomly chooses an edge and contracts it making the two vertices at the endpoints of the edge into one vertex.  It then reconnects all of the edges from those two vertices to the now single vertex except the one edge it contracted.  By the end of the algorithm it will have chosen enough edges to contract that all of the vertices in the graph would have been one of the endpoints of a contraction.  Karger's returns a subgraph made up of two vertices of the original graph which can be said to be a spanning tree of the original graph.\\   
+			\\
+			\item \textit{Show that the probability of spanning tree T being selected is the same in both.}\\
+			\\
+			When Karger's algorithm chooses a random edge and then contracts it, it almost like running Kruskal's with uniform random weights \cite{5}.  Kruskal's algorithm will choose the minimum weight edge which has the same probability as Karger's choosing a random edge.\\  
+			\\
+			We can say that in a uniform distribution the probability of choosing an edge is the same for every edge.  In the case of Karger's if we have $k$ edges then in a uniform probability distribution the probability of choosing any edge is $1/k$.  In the case of Kruskal's algorithm, if we have $k$ edges and each with a uniformly random weight choosed the probability of choosing the lowest weight will be $1/k$ assuming there are no duplicate weights.\\
+			\\
+			Let $X$ be the random variable that the spanning tree $T$ will be selected by Karger's and $Y$ be the random variable that the spanning tree $T$ will be selected by Kruskal's.  For their distributions to be the same \cite{7}
+			$$
+			P(X \le x) = P(Y \le x) \,\text{for all}\, x
+			$$
+			This means the moment generating functions for these variables need to be the same in order for the their distributions to be the same.  Since we know both are continous uniform distributions and the probability of selecting an edge is the same, their moment generating funcitons are the same and the probability of selecting $T$ is the same.\\
+			\\
+			\item \textit{Assuming T was chosen by both algorithms, explain why the max-weight edge of T in Kruskal defines the final cut output by Karger.}\\
+			\\
+			In Kruskal's the max-weight edge will be the last edge chosen since Kruskal's algorithm chooses edges that are the minimum weight left in the graph.  In Karger's algorithm the final cut is involves the last edge left after all contractions of the graph have taken place.  If the probabilities are uniform for choosing an edge in both algorithm's, the max-weight edge in Kruskal's will be the final cut edge in Karger's since it is the last edge remaining in the graph.\\ 
+			\\
+			\item \textit{Put the above three steps together to prove the equivalence of the two algorithms: the distribution over cuts they return is the same.}\\
+			\\
+			Kruskal's algorithm produces a spanning tree and in part (a) we showed that Karger's algorithm also produces a spanning tree.  In part (b) we showed that the probability of selecting a spanning tree is the same.  In part (c) we showed that the last (max-weight) edge chosen by Kruskal's is the same as the edge chosen by Karger's that the min-cut crosses.\\
+			\\
+			Combining all three parts we can say both produce a spanning tree, both produce the same spanning tree, and if we were to remove the max-weight edge from the spanning tree Kruskal's algorithm produces it would be the same edge that the min-cut crosses in Karger's.  All things being equal, randomized Kruskal's with max-weight edge removal is the same a Karger's min-cut algorithm because they both return the same cut of vertices.\\
+		\end{enumerate}
+
+		\newpage
+		\item \textit{Implement Karger's min-cut algorithm.}
+
+		\newpage
+		\item \textit{Help minion captain A maximize the sum of the player's abilities on his team.}\\
+		\\
+		\textbf{Pseudocode}\\
+		\begin{verbatim}
+		def PlayerSelection():
+		\end{verbatim}
+		\textbf{Correctness}\\
+		\\
+		\textbf{Runtime}\\
+		\\
+
 \end{enumerate}
 
 \newpage
@@ -232,6 +277,9 @@ No Collaborators\\
 	\bibitem{2} https://en.wikipedia.org/wiki/Binomial\_distribution
 	\bibitem{3} https://en.wikipedia.org/wiki/Geometric\_distribution
     \bibitem{4} http://tuvalu.santafe.edu/~aaronc/courses/5454/csci5454\_spring2013\_L4.pdf
+    \bibitem{5} https://en.wikipedia.org/wiki/Karger\%27s\_algorithm
+    \bibitem{6} https://en.wikipedia.org/wiki/Spanning\_tree
+    \bibitem{7} https://en.wikipedia.org/wiki/Random\_variable\#Equality\_in\_distribution
 \end{thebibliography}
 
 \end{document}
