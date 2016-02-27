@@ -260,14 +260,76 @@ No Collaborators\\
 		\newpage
 		\item \textit{Help minion captain A maximize the sum of the player's abilities on his team.}\\
 		\\
-		\textbf{Pseudocode}\\
+		\textbf{Pseudocode}
 		\begin{verbatim}
-		def PlayerSelection():
+		def PlayerSelection(L):
+		// L is the line of players organized like an array
+		// of size n where L[0] is the front of the line and L[n-1] is the end
+		// and those are the abilities of those players
+
+		i = 0
+		j = |L| - 1 // j = n - 1
+
+		// This will be a list of the order to choose players
+		// Assuming there is an even number of players
+		optimal_player_selection[j/2] 
+
+		while True:
+		  // Find the max ability when choosing the current first player in line
+		  // Look ahead to A's next turn
+		  first = max(L[i] + max(L[i+2], L[j]), L[i]+max(L[i+1],L[j-1]))
+
+		  // Find the max ability when choosing the current last player in line
+		  // Look ahead to A's next turn
+		  last = max(L[j] + max(L[i+1], L[j-1]), L[j]+max(L[i],L[j-2]))
+
+		  // Find the max ability out of choosing the first and last player
+		  // By adding the ability of this player plus the next turn's player
+		  if max(first, last) == first:
+		    // Choose first player in line
+		    optimal_player_selection.append(i)
+		    i++
+		    // B chooses next highest ability player
+		    m = max(L[i],L[j])
+		    if L[i+1] == m:
+		  	  i += 1
+		    else:
+		      j -= 1
+		  else:
+		    // Choose last player in line
+		    optimal_player_selection.append(j)
+		    j--
+		    // B chooses next highest ability player
+		    m = max(L[i],L[j-1])
+		    if L[i] == m:
+		  	  i += 1
+		    else:
+		      j -= 1
+		  // If we have two players left then choose the player with the 
+		  // highest ability and return the array of players 
+		  if i == j-1:
+		    m = max(L[i],L[j-1])
+		    if L[i] == m:
+		  	  optimal_player_selection.append(i)
+		    else:
+		      optimal_player_selection.append(j)
+		    return optimal_player_selection
 		\end{verbatim}
 		\textbf{Correctness}\\
 		\\
+		I found that greedily choosing the player at the front or end of the line with the highest ability when it is $A$'s turn does not maximize the sum of the player's abilities on the team.  Neither does trying to minimize the player's abilites that $B$ can choose from when it is $B$'s turn to go after $A$.\\
+		\\
+		The optimal strategy for this problem is a dynamic programming algorithm.  I assume $B$'s strategy is the greedy approach where the player with the highest ability is chosen from the front or end of the line when it is $B$'s turn.  I could not figure out a way to maximize the sums of the player's ability if $B$ used the same strategy I did.\\
+		\\
+		The key to my algorithm is to look ahead to $A$'s next move and make the current choice of a player based on maximizing the sum of the current player's ability with the next player's ability that I choose.\\
+		Given a line $L$ and it is $A$'s turn to choose a player and there are $j - i$ players, where $j = |L|$, remaining in line, $A$ can either choose the first player in line, $L[i]$, or the last player in line, $L[j]$.  $B$, depending on the choice $A$ makes, will then be able to choose between $L[j], L[i+1], L[j-1], L[i]$.  $B$ will choose the player with the highest ability if $B$ is following the greedy strategy.  This means that we can see what players will be availabe in turn number two for $A$ because we know $B$'s choice for its turn.  We then decide which future player will maximize the sum of the abilities of the the current player with the future player.  Doing this every turn gaurantees that we will maximize the sum of the abilities of all the future players with the current players giving $A$ the maximized sum of player abilites on his final team.\\    
+		\\
 		\textbf{Runtime}\\
 		\\
+		If the line of players is size $n$ then this algorithm has a runtime of $O(n)$.  It will loop through the line of players until there are only two players left.
+
+		\newpage
+		\item
 
 \end{enumerate}
 
