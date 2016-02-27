@@ -329,7 +329,31 @@ No Collaborators\\
 		If the line of players is size $n$ then this algorithm has a runtime of $O(n)$.  It will loop through the line of players until there are only two players left.
 
 		\newpage
-		\item
+		\item \textit{Describe the probability that Gru can launch...}
+		\begin{enumerate}
+			\item \textit{With a recursive formulation that expresses the problem in terms of smaller verions of the problem.}\\
+			\\
+			The first minion has a probability of $1/n$ of standing in his correct position because he chooses randomly.  The probability of a minion that doesn't choose randomly standing in his correct position is 1.  He will always stand in his correct position.\\
+			\\  
+			We define $P(i)$ as the probability of the ith minion being in its correct position. We define $y_i=0$ if the position of the ith minion is not occupied and $y_i=1$ if the position is occupied.  Since the probability of a minion being in its correct position depends on the minions before it being in their correct positions we can define the recursive formula of the probabilty of a minion being in its correct position as 
+			$$
+			P(i) =
+			\begin{cases}
+			1/n & \quad \text{if } i = 1\\
+			P(i-1) \cdot 1 & \quad \text{if } i > 1 \text{ and } y==0\\
+			P(i-1) \cdot 1/n & \quad \text{if } i > 1 \text{ and } y==1\\
+			\end{cases}
+			$$
+			The probability of Gru lauching is the probability of the last minion being in its correct position which is the probability $P(n)$ defined by the recursive formula above.
+
+			\item \textit{Without a recurrence in a short paragraph.}\\
+			\\
+			Because the first minion chooses his position randomly the first minion has a probability of $1/n$ of choosing the correct position.  If he does then all of the other minions will be in their correct positions including the final minion and Gru will lauch with a probability of $1/n$.\\
+			\\
+			If the first minion does not choose his correct postion then we can assume that at least a second minion will a choose a position randomly.  This shows that the probability of a minion choosing his correct position depends on the probability of previous minions choosing their correct position.  If a minion's position is occupied then he will choose someone else's position.  A minion choosing his position is a dependent event so the probabilities of each minion choosing his position is mulitplied.\\
+			\\
+			Gru's probability of lauching is the probability of the last minion $n$ being in his correct position which is the product of the probabilities of all of the other minions being in their correct positions.
+		\end{enumerate}
 
 \end{enumerate}
 
