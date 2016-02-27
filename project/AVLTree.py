@@ -68,15 +68,19 @@ class AVLTree(object):
       print 'Find: Tree is empty.'
       return
 
-    current_node = self.root # Start looking for the key at the root node
+    node = self.root # Start looking for the key at the root node
 
-    while current_node is not None:
-      if key == current_node.key:
-        return current_node
-      elif key < current_node.key:
-        current_node = current_node.left_child
+    while node is not None:
+    	# If we find the a node that has the same key we are looking for
+    	# return it
+      if key == node.key:
+        return node
+      elif key < node.key:
+        node = node.left_child
       else:
-        current_node = current_node.right_child
+        node = node.right_child
+    # If we don't find a node in the tree with the
+    # key we are looking for return none
     return None
 
 
@@ -91,38 +95,51 @@ class AVLTree(object):
       return
 
     # Node to be removed
-    r_node = self.Find(key)
+    node = self.Find(key)
 
-    if r_node is None:
+    if node is None:
     	print 'Delete: Key not found in tree.'
     	return
 
     # If the key is found in a leaf node
-    if r_node.right_child is None and r_node.left_child is None:
+    if node.right_child is None and node.left_child is None:
     	# Check the which child the leaf node belongs to and delete it
-    	self.Transplant(r_node, None)
+    	self.Transplant(node, None)
       
     # If the key is found in a node with only a left child
-    elif r_node.right_child is None and r_node.left_child is not None:
-      self.Transplant(r_node, r_node.left_child)
+    elif node.right_child is None and node.left_child is not None:
+      self.Transplant(node, node.left_child)
 
     # If the key is found in a node with only a right child
-    elif r_node.right_child is not None and r_node.left_child is None:
-      self.Transplant(r_node, r_node.right_child)
+    elif node.right_child is not None and node.left_child is None:
+      self.Transplant(node, node.right_child)
 
     # If the key is found in a node with both a left and a right child
     else:
-      successor = self.FindSuccessor(r_node)
+      successor = self.FindSuccessor(node)
 
       # Check if the successor is not the right child of the node we are deleting
-      if successor.parent is not r_node:
+      # This means we have to traverse down the left tree of the right child
+      # to find the successor to the node we are deleting
+      if successor.parent is not node:
+      	# Move the right child of the successor into the successor's place
       	self.Transplant(successor, successor.right_child)
-      	successor.right_child = r_node.right_child
+      	# Move successor into place of the node we are deleting
+      	# Set the successor's right child to the right child 
+      	# of the node we are deleting
+      	successor.right_child = node.right_child
+      	# Set the node's right child parent to the successor
       	successor.right_child.parent = successor
 
-      self.Transplant(r_node,successor)
-      successor.left_child = r_node.left_child
+      # Move the successor into the node we are going to remove's place
+      self.Transplant(node,successor)
+      # Set the left child of the successor to the node's left child
+      successor.left_child = node.left_child
+      # Set the parent of the left child to the successor
       successor.left_child.parent = successor
+
+    # Fix the height of the nodes in the tree
+    self.UpdateHeights(self.root)
 
 
 
@@ -131,13 +148,14 @@ class AVLTree(object):
   		# Set node to its right child
   		node = node.right_child
   		while node.left_child is not None:
+  			# Traverse down left side of right child
+  			# to find successor at the end
   			node = node.left_child
   		return node
 
 
   def Transplant(self, node, node_child):
     # Check which child of the parent the current node belongs to
-
     # If the node we are looking at is a leaf node no transplant necessary
     if node_child is None:
       if node.parent.right_child is node:
@@ -192,8 +210,18 @@ class AVLTree(object):
         print '\t' * current_node.height + '    \\'
         self.PrintTree(current_node.left_child)
 
-  def UpdateHeights(self):
-  	pass
+  def UpdateHeights(self, node):
+
+    if node is self.root:
+      self.root.height = 0
+    else:
+      node.height = node.parent.height + 1  		
+
+    if node.right_child is not None:
+      self.UpdateHeights(node.right_child)
+
+    if node.left_child is not None:
+      self.UpdateHeights(node.left_child)  	
 
   def Balance(self):
   	pass
