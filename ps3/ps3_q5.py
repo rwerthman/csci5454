@@ -23,7 +23,7 @@ def CreateGraph(n):
   Returns:
     a graph with n nodes and random edges
   '''
-  p = 1.0/n # Probability of creating an edge between two vertices
+  p = 0.5 # Probability of creating an edge between two vertices
   G = nx.gnp_random_graph(n, p)
 
   # Create a connected graph
@@ -224,5 +224,4 @@ def main():
   ReadCSV('ps3_q5_output.txt')  
 
 if __name__ == '__main__':
-  #main()
-  ReadCSV('ps3_q5_output.txt')
+  main()
