@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt # Draw a graph from networkx
 import random
 import csv
 
-def CreateGraph(n):
+def CreateGraph(n, p):
   '''
   Description:
     Creates a random networkx graph and then
@@ -19,11 +19,11 @@ def CreateGraph(n):
 
   Args:
     n number of nodes to be in graph
+    p probability of creating an edge between two vertices
 
   Returns:
     a graph with n nodes and random edges
   '''
-  p = 0.5 # Probability of creating an edge between two vertices
   G = nx.gnp_random_graph(n, p)
 
   # Create a connected graph
@@ -178,10 +178,69 @@ def ProducePlot(graph_size, probs):
   plt.xlabel('Number of nodes in the graph')
   plt.ylabel('Probability of finding min cut with 10*n^2 runs')
   plt.savefig('q3_5a.png')
-  
-  
 
-def main():
+def RunProbabilityTest(G):
+  '''
+  Description:
+    Finds the probability of running Karger's on the
+    same graph 10*n**2 times with n = 20 and finding
+    the min cut correctly.
+
+  Args:
+    G networkx graph of 20 nodes
+    
+  Returns:
+    probability of running Karger's algo
+    on the same graph and finding the min cut
+  '''
+  min_cuts_found = 0.0
+  
+  min_edge_cut = len(nx.minimum_edge_cut(G))
+  for i in range(1, (10*20**2)+1):
+    H = G.copy()
+
+    H = RunKarger(H)
+
+    # See if karger's returns the correct min cut
+    if H.number_of_edges() == min_edge_cut:
+      min_cuts_found += 1
+
+  # For every n node sized graph find the probability 
+  # of getting the min cut each time karger's is run
+  # for a total of 10*n**2 runs
+  print min_cuts_found, i
+  return float('{0:.3f}'.format(min_cuts_found/i))
+  
+def FiveB():
+  '''
+  Description:  
+    Code for question 5b.  Creates two graphs 
+    that have different probabilities for successfully
+    finding the min cut.
+  '''
+  n = 20
+  
+  p = 1.0
+  G = CreateGraph(n, p)
+  plt.figure(1)
+  DrawGraph(G, 'graph1_ps3_q5b.png')
+
+  prob = RunProbabilityTest(G)
+  
+  print p, prob
+
+  p = 1.0/n
+  G = CreateGraph(n, p)
+  plt.figure(2)
+  DrawGraph(G, 'graph2_ps3_q5b.png')
+
+  prob = RunProbabilityTest(G)
+
+  print p, prob
+  
+    
+
+def FiveA():
   '''
   Description:
     Runs Karger's algorithm on random graphs.
@@ -190,6 +249,7 @@ def main():
   '''
   
   prob_min_cut = {}
+  p = 0.5
 
   # Create random graphs of 5,...,20 nodes
   for n in range(5, 21):
@@ -198,7 +258,7 @@ def main():
 
     for i in range(1, (10*(n**2))+1):
   
-      G = CreateGraph(n)
+      G = CreateGraph(n, p)
       #plt.figure(1)
       #DrawGraph(G, 'ps3_q5.png')
 
@@ -224,4 +284,5 @@ def main():
   ReadCSV('ps3_q5_output.txt')  
 
 if __name__ == '__main__':
-  main()
+  #FiveA()
+  FiveB()
