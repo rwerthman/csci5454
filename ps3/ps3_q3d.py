@@ -81,6 +81,8 @@ def GraphOutput(pods_with_num_minions):
 	plt.xlim(0, 3000)
 	plt.title("Numerical Plot of 3c, c1f(k), c2f(k)")
 	plt.legend((a,b,c),('3c', 'c1f(k)', 'c2f(k)'), loc=2)
+	plt.xlabel('k')
+	plt.ylabel('klogk')
 	plt.savefig('q3_3d.png')
 
 def main():
