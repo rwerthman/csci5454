@@ -1,11 +1,13 @@
+'''
+TODO: delete root node
+
+'''
 
 from AVLTree import AVLTree
 
-def CreateTree():
+def CreateBasicTree():
   tree = AVLTree()
-
   tree.Insert(5) # Root node
-
   tree.Insert(3)
   tree.Insert(4)
   tree.Insert(6)
@@ -18,6 +20,23 @@ def CreateTree():
 
   return tree
 
+def CreateRightUnBalancedTree():
+  tree = AVLTree()
+  tree.Insert(3)
+  tree.Insert(5)
+  tree.Insert(7)
+  return tree
+
+def TestLeftRotate():
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Left Rotate Tree' + bcolors.ENDC
+  tree = CreateRightUnBalancedTree()
+
+  root = tree.Find(5)
+  Test('Rotate method new root node is 5', tree.root.key == root.key)
+  Test('Rotate method height of root node is 1', root.height == 1)
+  
+  Test('Rotate method left child of root is 3', tree.root.left_child.key == 3)
+  Test('Rotate method right child of root is 7', tree.root.left_child.key == 3)
 
 def TestFind():
 
@@ -26,7 +45,7 @@ def TestFind():
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Find a node' + bcolors.ENDC
   
-  tree = CreateTree()
+  tree = CreateBasicTree()
 
   node = tree.Find(10)
   Test('Find method with key 10 not in tree.', node is None)
@@ -36,7 +55,7 @@ def TestFind():
 
 def TestFindSuccessor():
 	print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: FindSuccessor of a node' + bcolors.ENDC
-	tree = CreateTree()
+	tree = CreateBasicTree()
 	#tree.PrintTree(tree.root)
 
 	node = tree.Find(6)
@@ -57,7 +76,7 @@ def TestDelete():
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete a leaf node' + bcolors.ENDC
 
-  tree = CreateTree()
+  tree = CreateBasicTree()
 
   tree.Delete(8)
   #tree.PrintTree(tree.root)
@@ -79,7 +98,7 @@ def TestDelete():
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete node with single child' + bcolors.ENDC
 
-  tree = CreateTree()
+  tree = CreateBasicTree()
   tree.Delete(2)
   #tree.PrintTree(tree.root)
   node = tree.Find(2)
@@ -104,7 +123,7 @@ def TestDelete():
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete node with two children' + bcolors.ENDC
 
-  tree = CreateTree()
+  tree = CreateBasicTree()
   tree.Delete(6)
   #tree.PrintTree(tree.root)
 
@@ -130,21 +149,22 @@ def TestUpdateHeights():
   # Tests for updating the heights in a tree after a deletion of a node
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: UpdateHeights after node is deleted' + bcolors.ENDC
-  tree = CreateTree()
+  tree = CreateBasicTree()
   tree.Delete(6)
-  #tree.PrintTree(tree.root)
+  #tree.UpdateHeights(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
 
   n = tree.Find(6.5)
-  Test('Height of node with key 6.5 should be 1.', n.height == 1)
+  Test('Height of node with key 6.5 should be 2.', n.height == 2)
 
   n = tree.Find(7)
-  Test('Height of node with key 7 should be 2.', n.height == 2)
+  Test('Height of node with key 7 should be 1.', n.height == 1)
 
   n = tree.Find(5.5)
-  Test('Height of node with key 5.5 should be 2.', n.height == 2)
+  Test('Height of node with key 5.5 should be 0.', n.height == 0)
 
   n = tree.root
-  Test('Height of root node should be 0.', n.height == 0)
+  Test('Height of root node should be 3.', n.height == 3)
 
 class bcolors:
   HEADER = '\033[95m' # Purple
@@ -164,8 +184,13 @@ def Test(testName, bool):
 
 
 def main():
-  tree = CreateTree()
-  tree.PrintTree(tree.root)
+  #tree = CreateBasicTree()
+  #tree.PrintTree(tree.root)
+  
+  #tree = CreateRightUnBalancedTree()
+  #tree.PrintTree(tree.root)
+
+  #TestLeftRotate()
 
   TestFind()
   TestFindSuccessor()

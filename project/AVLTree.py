@@ -8,14 +8,14 @@ class AVLTree(object):
     Insert a key into an AVL tree
 
     Args:
-    self
-    key 
+      self
+      key 
 
     Returns:
 
     Sources:
-    Introduction to Algorithms, Third Edition (page 294)
-    - Non-recursive insert of a node into a binary tree
+      Introduction to Algorithms, Third Edition (page 294)
+      - Non-recursive insert of a node into a binary tree
 
     '''
 
@@ -49,15 +49,17 @@ class AVLTree(object):
     # Set the left child of the parent node to the new node
     elif new_node.key < parent_node.key:
     # Set the height of the new node
-      new_node.height = parent_node.height + 1 
+      #new_node.height = parent_node.height + 1 
       parent_node.left_child = new_node
     # Set the right child of the parent to the new node
     else:
     # Set the height of the new node
-      new_node.height = parent_node.height + 1 
+      #new_node.height = parent_node.height + 1 
       parent_node.right_child = new_node
 
     # TODO: Need to balance the tree after an insert
+
+    # TODO: Update the heights after balancing the tree
 
 
 
@@ -138,6 +140,9 @@ class AVLTree(object):
       # Set the parent of the left child to the successor
       successor.left_child.parent = successor
 
+    # TODO: Need to balance the tree after delete
+
+
     # Fix the height of the nodes in the tree
     self.UpdateHeights(self.root)
 
@@ -175,7 +180,7 @@ class AVLTree(object):
       # Set the child's of the node to it the node's parent
       node_child.parent = node.parent
 
-  def PrintTree(self, current_node):
+  def PrintTree(self, current_node, depth):
     '''
 
     Description:
@@ -189,7 +194,6 @@ class AVLTree(object):
 										structure-in-python
     - How to print a tree data structure that is understandable
     '''
-
     # Check if the tree is empty
     if self.root is None:
       print 'PrintTree: Tree is empty.'
@@ -197,31 +201,44 @@ class AVLTree(object):
 
     if current_node is not None:
 
+       # Print the left side of the parent
+      if current_node.left_child is not None:
+        self.PrintTree(current_node.left_child, depth-1)
+        print '\t' * (depth-1) + '    \\'
+      
+      # Print the parent node
+      print '\t' * depth + str(current_node.key)
+
       # Print the right side of the parent
       if current_node.right_child is not None:
-        self.PrintTree(current_node.right_child)
-        print '\t' * current_node.height + '    /'
-
-      # Print the parent node
-      print '\t' * current_node.height + str(current_node.key)
-
-      # Print the left side of the parent
-      if current_node.left_child is not None:
-        print '\t' * current_node.height + '    \\'
-        self.PrintTree(current_node.left_child)
-
+        print '\t' * (depth-1) + '    /'
+        self.PrintTree(current_node.right_child, depth-1)
+    
   def UpdateHeights(self, node):
 
-    if node is self.root:
-      self.root.height = 0
-    else:
-      node.height = node.parent.height + 1  		
+    if self.root is None:
+      print 'UpdateHeights: Tree is empty.'
+      return
 
+    # Traverse down the right subtree
     if node.right_child is not None:
       self.UpdateHeights(node.right_child)
 
+    # Traverse down the left subtree
     if node.left_child is not None:
-      self.UpdateHeights(node.left_child)  	
+      self.UpdateHeights(node.left_child)
+    
+    # If we are at a leaf node then the height is 0
+    # Otherwise we add 1 to the max height of the node's children
+    if node.left_child is None and node.right_child is None:
+      node.height = 0
+    elif node.left_child is None and node.right_child is not None:
+      node.height = node.right_child.height + 1
+    elif node.left_child is not None and node.right_child is None:
+      node.height = node.left_child.height + 1
+    else:
+      node.height = max(node.left_child.height, node.right_child.height) + 1
+        	
 
   def Balance(self):
   	pass

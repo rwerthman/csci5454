@@ -284,5 +284,5 @@ def FiveA():
   ReadCSV('ps3_q5_output.txt')  
 
 if __name__ == '__main__':
-  #FiveA()
+  FiveA()
   FiveB()

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 FEB 2016 16:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  1 MAR 2016 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -304,108 +304,118 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--104
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 108--122
+Underfull \hbox (badness 10000) in paragraph at lines 108--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--122
+Underfull \hbox (badness 10000) in paragraph at lines 108--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--122
+Underfull \hbox (badness 10000) in paragraph at lines 108--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--146
+Underfull \hbox (badness 10000) in paragraph at lines 108--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--146
+Underfull \hbox (badness 10000) in paragraph at lines 108--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--146
+Underfull \hbox (badness 10000) in paragraph at lines 124--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--146
+Underfull \hbox (badness 10000) in paragraph at lines 124--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--146
+Underfull \hbox (badness 10000) in paragraph at lines 124--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--146
+Underfull \hbox (badness 10000) in paragraph at lines 124--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--138
 
  []
 
 [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 150--153
+Underfull \hbox (badness 10000) in paragraph at lines 142--145
 
  []
 
 
-Overfull \hbox (22.74493pt too wide) in paragraph at lines 174--174
- []    \OT1/cmtt/m/n/12 return 'YES' # Single element in the array so it must o
-ccur > n/2 times[] 
+Overfull \hbox (53.61995pt too wide) in paragraph at lines 168--168
+ []        \OT1/cmtt/m/n/12 return 'YES' // Single element in the array so it m
+ust occur > n/2 times[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--190
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--190
+Underfull \hbox (badness 10000) in paragraph at lines 169--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--190
+Underfull \hbox (badness 10000) in paragraph at lines 169--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--190
+Underfull \hbox (badness 10000) in paragraph at lines 169--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--188
 
  []
 
 [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 194--197
+Underfull \hbox (badness 10000) in paragraph at lines 192--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--204
+Underfull \hbox (badness 10000) in paragraph at lines 199--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--212
+Underfull \hbox (badness 10000) in paragraph at lines 207--210
 
  []
 
 [8] <q3_3d.png, id=38, 578.16pt x 433.62pt>
 File: q3_3d.png Graphic file (type png)
  <use q3_3d.png>
-Package pdftex.def Info: q3_3d.png used on input line 222.
+Package pdftex.def Info: q3_3d.png used on input line 220.
 (pdftex.def)             Requested size: 256.0748pt x 192.05052pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--223
+Underfull \hbox (badness 10000) in paragraph at lines 216--221
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--223
+Underfull \hbox (badness 10000) in paragraph at lines 216--221
 
  []
 
@@ -414,174 +424,179 @@ Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--234
+Underfull \hbox (badness 10000) in paragraph at lines 228--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--234
+Underfull \hbox (badness 10000) in paragraph at lines 228--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--234
+Underfull \hbox (badness 10000) in paragraph at lines 228--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--241
+Underfull \hbox (badness 10000) in paragraph at lines 232--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--241
+Underfull \hbox (badness 10000) in paragraph at lines 232--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--241
+Underfull \hbox (badness 10000) in paragraph at lines 232--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--246
+Underfull \hbox (badness 10000) in paragraph at lines 241--244
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--246
+Underfull \hbox (badness 10000) in paragraph at lines 241--244
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 246--250
+Underfull \hbox (badness 10000) in paragraph at lines 244--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--250
+Underfull \hbox (badness 10000) in paragraph at lines 244--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--250
+Underfull \hbox (badness 10000) in paragraph at lines 244--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--255
+Underfull \hbox (badness 10000) in paragraph at lines 248--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--255
+Underfull \hbox (badness 10000) in paragraph at lines 248--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--255
+Underfull \hbox (badness 10000) in paragraph at lines 248--253
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 258--260
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
 
  []
 
 <q3_5a.png, id=50, 578.16pt x 433.62pt>
 File: q3_5a.png Graphic file (type png)
  <use q3_5a.png>
-Package pdftex.def Info: q3_5a.png used on input line 263.
+Package pdftex.def Info: q3_5a.png used on input line 261.
 (pdftex.def)             Requested size: 256.0748pt x 192.05052pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--264
+Underfull \hbox (badness 10000) in paragraph at lines 258--262
 
  []
 
 <graph1_ps3_q5b.png, id=51, 578.16pt x 433.62pt>
 File: graph1_ps3_q5b.png Graphic file (type png)
  <use graph1_ps3_q5b.png>
-Package pdftex.def Info: graph1_ps3_q5b.png used on input line 275.
+Package pdftex.def Info: graph1_ps3_q5b.png used on input line 273.
 (pdftex.def)             Requested size: 256.0748pt x 192.05052pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--276
+Underfull \hbox (badness 10000) in paragraph at lines 263--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--276
+Underfull \hbox (badness 10000) in paragraph at lines 263--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--276
+Underfull \hbox (badness 10000) in paragraph at lines 263--274
 
  []
 
 <graph2_ps3_q5b.png, id=52, 578.16pt x 433.62pt>
 File: graph2_ps3_q5b.png Graphic file (type png)
  <use graph2_ps3_q5b.png>
-Package pdftex.def Info: graph2_ps3_q5b.png used on input line 280.
+Package pdftex.def Info: graph2_ps3_q5b.png used on input line 278.
 (pdftex.def)             Requested size: 256.0748pt x 192.05052pt.
 
 [12 <./q3_5a.png>] [13 <./graph1_ps3_q5b.png> <./graph2_ps3_q5b.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 285--288
+Underfull \hbox (badness 10000) in paragraph at lines 283--286
 
  []
 
 
-Overfull \hbox (4.21992pt too wide) in paragraph at lines 341--341
+Overfull \hbox (4.21992pt too wide) in paragraph at lines 339--339
  []  \OT1/cmtt/m/n/12 // Find the max ability when choosing the current first p
 layer in line[] 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 342--354
+Underfull \hbox (badness 10000) in paragraph at lines 340--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--354
+Underfull \hbox (badness 10000) in paragraph at lines 340--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--354
+Underfull \hbox (badness 10000) in paragraph at lines 340--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--354
+Underfull \hbox (badness 10000) in paragraph at lines 340--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--354
+Underfull \hbox (badness 10000) in paragraph at lines 340--353
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--353
 
  []
 
 [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 358--363
+Underfull \hbox (badness 10000) in paragraph at lines 357--362
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--363
+Underfull \hbox (badness 10000) in paragraph at lines 357--362
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--380
+Underfull \hbox (badness 10000) in paragraph at lines 372--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--380
+Underfull \hbox (badness 10000) in paragraph at lines 372--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--380
+Underfull \hbox (badness 10000) in paragraph at lines 372--379
 
  []
 
@@ -593,7 +608,7 @@ Here is how much of TeX's memory you used:
  5939 multiletter control sequences out of 15000+600000
  9714 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,9n,24p,886b,376s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,9n,24p,1024b,376s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
@@ -605,7 +620,7 @@ ts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt12.pfb>
-Output written on ps3.pdf (19 pages, 394711 bytes).
+Output written on ps3.pdf (19 pages, 394500 bytes).
 PDF statistics:
  115 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
