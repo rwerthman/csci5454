@@ -17,7 +17,7 @@ def CreateBasicTree():
   tree.Insert(8)
   tree.Insert(2)
   tree.Insert(1)
-
+  
   return tree
 
 def CreateRightUnBalancedTree():
@@ -25,6 +25,7 @@ def CreateRightUnBalancedTree():
   tree.Insert(3)
   tree.Insert(5)
   tree.Insert(7)
+
   return tree
 
 def TestLeftRotate():
@@ -151,7 +152,6 @@ def TestUpdateHeights():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: UpdateHeights after node is deleted' + bcolors.ENDC
   tree = CreateBasicTree()
   tree.Delete(6)
-  #tree.UpdateHeights(tree.root)
   #tree.PrintTree(tree.root, tree.root.height)
 
   n = tree.Find(6.5)
@@ -165,6 +165,9 @@ def TestUpdateHeights():
 
   n = tree.root
   Test('Height of root node should be 3.', n.height == 3)
+
+  n = tree.Find(4)
+  Test('Height of node with key 4 should be 0.', n.height == 0)
 
 class bcolors:
   HEADER = '\033[95m' # Purple
@@ -187,8 +190,8 @@ def main():
   #tree = CreateBasicTree()
   #tree.PrintTree(tree.root)
   
-  #tree = CreateRightUnBalancedTree()
-  #tree.PrintTree(tree.root)
+  tree = CreateRightUnBalancedTree()
+  tree.PrintTree(tree.root, tree.root.height)
 
   #TestLeftRotate()
 

@@ -60,6 +60,7 @@ class AVLTree(object):
     # TODO: Need to balance the tree after an insert
 
     # TODO: Update the heights after balancing the tree
+    self.UpdateHeights(self.root)
 
 
 
@@ -239,7 +240,6 @@ class AVLTree(object):
     else:
       node.height = max(node.left_child.height, node.right_child.height) + 1
         	
-
   def Balance(self):
   	pass
 
