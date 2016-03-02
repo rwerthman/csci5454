@@ -28,16 +28,45 @@ def CreateRightUnBalancedTree():
 
   return tree
 
+def CreateLeftUnBalancedTree():
+  tree = AVLTree()
+  tree.Insert(7)
+  tree.Insert(5)
+  tree.Insert(3)
+
+  return tree
+
 def TestLeftRotate():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Left Rotate Tree' + bcolors.ENDC
   tree = CreateRightUnBalancedTree()
+
+  tree.LeftRotate(tree.root)
+
+  tree.PrintTree(tree.root, tree.root.height)
 
   root = tree.Find(5)
   Test('Rotate method new root node is 5', tree.root.key == root.key)
   Test('Rotate method height of root node is 1', root.height == 1)
   
   Test('Rotate method left child of root is 3', tree.root.left_child.key == 3)
-  Test('Rotate method right child of root is 7', tree.root.left_child.key == 3)
+  Test('Rotate method right child of root is 7', tree.root.right_child.key == 7)
+
+def TestRightRotate():
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Right Rotate Tree' + bcolors.ENDC
+  tree = CreateLeftUnBalancedTree()
+  tree.PrintTree(tree.root, tree.root.height)
+
+  tree.RightRotate(tree.root)
+
+  tree.PrintTree(tree.root, tree.root.height)
+
+  root = tree.Find(5)
+  Test('Rotate method new root node is 5', tree.root.key == root.key)
+  Test('Rotate method height of root node is 1', root.height == 1)
+  
+  Test('Rotate method left child of root is 3', tree.root.left_child.key == 3)
+  Test('Rotate method right child of root is 7', tree.root.right_child.key == 7)
+
 
 def TestFind():
 
@@ -145,6 +174,26 @@ def TestDelete():
   Test('Delete method with both children: Right child of 6.5 is 7.', parent.right_child is child)
   Test('Delete method with both children: Parent of 7 is 6.5.', child.parent is parent)
 
+  #
+  # Tests for deleting node with both children
+  #
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete root node' + bcolors.ENDC
+  tree = CreateBasicTree()
+  tree.Delete(5)
+  #tree.PrintTree(tree.root, tree.root.height)
+
+  n = tree.Find(5.5)
+
+  Test('Delete method with root: 5.5 is new root.', tree.root.key == n.key)
+  Test('Delete method with root: height of 5.5 is now 3.', n.height == 3)
+  Test('Delete method with root: parent of 5.5 is none.', n.parent is None)
+  Test('Delete method with root: right child of 5.5 is 6.', n.right_child.key == 6)
+  Test('Delete method with root: left child of 5.5 is 3.', n.left_child.key == 3)
+  
+  
+
+  
+
 def TestUpdateHeights():
 	#
   # Tests for updating the heights in a tree after a deletion of a node
@@ -188,17 +237,20 @@ def Test(testName, bool):
 
 def main():
   #tree = CreateBasicTree()
-  #tree.PrintTree(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
   
-  tree = CreateRightUnBalancedTree()
-  tree.PrintTree(tree.root, tree.root.height)
+  #tree = CreateRightUnBalancedTree()
+  #tree.PrintTree(tree.root, tree.root.height)
 
-  #TestLeftRotate()
+  TestLeftRotate()
 
-  TestFind()
-  TestFindSuccessor()
-  TestDelete()
-  TestUpdateHeights()
+  
+  TestRightRotate()
+
+  #TestFind()
+  #TestFindSuccessor()
+  #TestDelete()
+  #TestUpdateHeights()
 
 
 if __name__ == '__main__':

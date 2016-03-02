@@ -1,24 +1,24 @@
+'''
+
+Sources:
+---------
+  Introduction to Algorithms, Third Edition (page 294)
+    - Insert, rotate, delete, find successor methods of binary tree
+  https://stackoverflow.com/questions/20242479/printing-a-tree-data-structure-in-python
+    - How to print a tree data structure that is understandable
+  https://www.youtube.com/watch?v=FNeL18KsWPc
+    - MIT video lecture on AVL trees
+
+'''
+
+
 class AVLTree(object):
 
   def __init__(self):
     self.root = None
 
   def Insert(self, key):
-    '''
-    Insert a key into an AVL tree
-
-    Args:
-      self
-      key 
-
-    Returns:
-
-    Sources:
-      Introduction to Algorithms, Third Edition (page 294)
-      - Non-recursive insert of a node into a binary tree
-
-    '''
-
+  
     # Create a new node with the key argument of insert
     new_node = AVLNode(key) 
 
@@ -49,17 +49,15 @@ class AVLTree(object):
     # Set the left child of the parent node to the new node
     elif new_node.key < parent_node.key:
     # Set the height of the new node
-      #new_node.height = parent_node.height + 1 
       parent_node.left_child = new_node
     # Set the right child of the parent to the new node
     else:
     # Set the height of the new node
-      #new_node.height = parent_node.height + 1 
       parent_node.right_child = new_node
 
     # TODO: Need to balance the tree after an insert
 
-    # TODO: Update the heights after balancing the tree
+    # Update the heights after balancing the tree
     self.UpdateHeights(self.root)
 
 
@@ -106,8 +104,11 @@ class AVLTree(object):
 
     # If the key is found in a leaf node
     if node.right_child is None and node.left_child is None:
-    	# Check the which child the leaf node belongs to and delete it
-    	self.Transplant(node, None)
+      # Check the which child of the parent the leaf node belongs to and delete it
+      if node.parent.right_child is node:
+        node.parent.right_child = None
+      else:
+        node.parent.left_child = None
       
     # If the key is found in a node with only a left child
     elif node.right_child is None and node.left_child is not None:
@@ -161,40 +162,26 @@ class AVLTree(object):
 
 
   def Transplant(self, node, node_child):
-    # Check which child of the parent the current node belongs to
-    # If the node we are looking at is a leaf node no transplant necessary
-    if node_child is None:
-      if node.parent.right_child is node:
-        node.parent.right_child = None
-      else:
-        node.parent.left_child = None
+    # If the node we are deleting is the root
+    # The root is now the child of that node (could be none)
+    if node.parent is None:
+       self.root = node_child
+    # Check which child of the parent the current node we want to delete belongs to
     # If the node is the parent's right child
     elif node.parent.right_child is node:
-    	# Set the parent's right child to the child of the node
+    	# Set the parent's right child to the child of the node to be deleted
       node.parent.right_child = node_child
-      # Set the child's of the node to it the node's parent
-      node_child.parent = node.parent
     # If the node is the parent's left child
     else:
-    	# Set the parent's right child to the child of the node
+    	# Set the parent's right child to the child of the node to be deleted
       node.parent.left_child = node_child
-      # Set the child's of the node to it the node's parent
+    # Set the parent of node that will take over
+    # the deleted nodes position
+    if node_child is not None:
       node_child.parent = node.parent
 
   def PrintTree(self, current_node, depth):
-    '''
-
-    Description:
-
-    Args:
-
-    Returns:
-
-    Sources: 
-    https://stackoverflow.com/questions/20242479/printing-a-tree-data-
-										structure-in-python
-    - How to print a tree data structure that is understandable
-    '''
+    
     # Check if the tree is empty
     if self.root is None:
       print 'PrintTree: Tree is empty.'
@@ -208,7 +195,7 @@ class AVLTree(object):
         print '\t' * (depth-1) + '    \\'
       
       # Print the parent node
-      print '\t' * depth + str(current_node.key)
+      print '\t' * depth + str(current_node.key) + '(' + str(current_node.height) + ')'
 
       # Print the right side of the parent
       if current_node.right_child is not None:
@@ -229,18 +216,76 @@ class AVLTree(object):
     if node.left_child is not None:
       self.UpdateHeights(node.left_child)
     
-    # If we are at a leaf node then the height is 0
+    # If we are at a leaf node (no children) then the height is 0
     # Otherwise we add 1 to the max height of the node's children
     if node.left_child is None and node.right_child is None:
       node.height = 0
+    # Left child only
     elif node.left_child is None and node.right_child is not None:
       node.height = node.right_child.height + 1
+    # Right child only
     elif node.left_child is not None and node.right_child is None:
       node.height = node.left_child.height + 1
     else:
+    # Both children exist
       node.height = max(node.left_child.height, node.right_child.height) + 1
+
+  def UpdateBalances(self,node):
+    pass
+    
+    
         	
-  def Balance(self):
+  def LeftRotate(self,x):
+    if self.root is None:
+      print 'LeftRotate: Tree is empty.'
+      return
+    
+    y = x.right_child
+    x.right_child = y.left_child
+    
+    if y.left_child is not None:
+      y.left_child.parent = x
+    
+    y.parent = x.parent
+
+    if x.parent is None:
+      self.root = y
+    elif x.parent.left_child is x:
+      x.parent.left_child = y
+    elif x.parent.right_child is x:
+      x.parent.right_child = y
+
+    y.left_child = x
+    x.parent = y
+    
+    self.UpdateHeights(self.root)
+
+  def RightRotate(self,y):
+    if self.root is None:
+      print 'RightRotate: Tree is empty.'
+      return
+    
+    x = y.left_child
+    y.left_child = x.right_child
+
+    if x.right_child is not None:
+       x.right_child.parent = y
+
+    x.parent = y.parent
+
+    if y.parent is None:
+      self.root = x
+    elif y is y.parent.left_child:
+      y.parent.left_child = x
+    elif y is y.parent.right_child:
+      y.parent.right_child = x
+
+    x.right_child = y
+    y.parent = x
+
+    self.UpdateHeights(self.root) 
+    
+  def Balance(self, x):
   	pass
 
 
@@ -252,3 +297,7 @@ class AVLNode(object):
 	self.parent = None
 	self.key = key
 	self.height = 0
+
+class NullAVLNode(object):
+  self.key = 'null'
+  self.height = -1
