@@ -4,6 +4,7 @@ TODO: delete root node
 '''
 
 from AVLTree import AVLTree
+from AVLTree import NullAVLNode
 
 def CreateBasicTree():
   tree = AVLTree()
@@ -13,6 +14,7 @@ def CreateBasicTree():
   tree.Insert(6)
   tree.Insert(5.5)
   tree.Insert(7)
+  tree.Insert(6.6)
   tree.Insert(6.5)
   tree.Insert(8)
   tree.Insert(2)
@@ -36,13 +38,26 @@ def CreateLeftUnBalancedTree():
 
   return tree
 
+def TestInsert():
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Insert Nodes into tree' + bcolors.ENDC
+  tree = CreateBasicTree()
+  #tree.PrintTree(tree.root, tree.root.height)
+  
+  root = tree.Find(5)
+  Test('Insert method root is 5', tree.root.key == root.key)
+
+  Test('Insert method right child of root is 6', root.right_child.key == tree.root.right_child.key)
+  Test('Insert method left child of root is 3', root.left_child.key == tree.root.left_child.key)
+  
+
 def TestLeftRotate():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Left Rotate Tree' + bcolors.ENDC
   tree = CreateRightUnBalancedTree()
+  #tree.PrintTree(tree.root, tree.root.height)
 
   tree.LeftRotate(tree.root)
 
-  tree.PrintTree(tree.root, tree.root.height)
+  #tree.PrintTree(tree.root, tree.root.height)
 
   root = tree.Find(5)
   Test('Rotate method new root node is 5', tree.root.key == root.key)
@@ -50,15 +65,17 @@ def TestLeftRotate():
   
   Test('Rotate method left child of root is 3', tree.root.left_child.key == 3)
   Test('Rotate method right child of root is 7', tree.root.right_child.key == 7)
+
+  Test('Rotate method height of left child of new root is 0', tree.root.left_child.height == 0)
 
 def TestRightRotate():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Right Rotate Tree' + bcolors.ENDC
   tree = CreateLeftUnBalancedTree()
-  tree.PrintTree(tree.root, tree.root.height)
+  #tree.PrintTree(tree.root, tree.root.height)
 
   tree.RightRotate(tree.root)
 
-  tree.PrintTree(tree.root, tree.root.height)
+  #tree.PrintTree(tree.root, tree.root.height)
 
   root = tree.Find(5)
   Test('Rotate method new root node is 5', tree.root.key == root.key)
@@ -66,6 +83,8 @@ def TestRightRotate():
   
   Test('Rotate method left child of root is 3', tree.root.left_child.key == 3)
   Test('Rotate method right child of root is 7', tree.root.right_child.key == 7)
+  
+  Test('Rotate method height of right child of new root is 0', tree.root.right_child.height == 0)
 
 
 def TestFind():
@@ -78,7 +97,7 @@ def TestFind():
   tree = CreateBasicTree()
 
   node = tree.Find(10)
-  Test('Find method with key 10 not in tree.', node is None)
+  Test('Find method with key 10 not in tree.', isinstance(node, NullAVLNode))
 
   node = tree.Find(2)
   Test('Find method with key 2 in tree.', node.key == 2)
@@ -107,21 +126,22 @@ def TestDelete():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete a leaf node' + bcolors.ENDC
 
   tree = CreateBasicTree()
+  #tree.PrintTree(tree.root, tree.root.height)
 
   tree.Delete(8)
-  #tree.PrintTree(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
   node = tree.Find(8)
-  Test('Delete method with leaf node: 8 is removed.', node is None)
+  Test('Delete method with leaf node: 8 is removed.', isinstance(node, NullAVLNode))
 
   tree.Delete(4)
   #tree.PrintTree(tree.root)
   node = tree.Find(4)
-  Test('Delete method with leaf node: 4 is removed.', node is None)
+  Test('Delete method with leaf node: 4 is removed.', isinstance(node, NullAVLNode))
 
   tree.Delete(1)
-  #tree.PrintTree(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
   node = tree.Find(1)
-  Test('Delete method with leaf node: 1 is removed.', node is None)
+  Test('Delete method with leaf node: 1 is removed.', isinstance(node, NullAVLNode))
 
   #
   # Tests for deleting node with single child
@@ -129,23 +149,28 @@ def TestDelete():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete node with single child' + bcolors.ENDC
 
   tree = CreateBasicTree()
+  #tree.PrintTree(tree.root, tree.root.height)
   tree.Delete(2)
-  #tree.PrintTree(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
   node = tree.Find(2)
-  Test('Delete method with left child: 2 is removed.', node is None)
+  Test('Delete method with left child: 2 is removed.', isinstance(node, NullAVLNode))
   parent = tree.Find(3)
   child = tree.Find(1)
   Test('Delete method with left child: Left child of 3 is 1.', parent.left_child is child)
   Test('Delete method with left child: Parent of 1 is 3.', child.parent is parent)
-
   tree.Delete(7)
-  #tree.PrintTree(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
   node = tree.Find(7)
-  Test('Delete method with right child: 7 is removed.', node is None)
+  Test('Delete method with right child: 7 is removed.', isinstance(node, NullAVLNode))
   parent = tree.Find(6)
   child = tree.Find(8)
   Test('Delete method with right child: Right child of 6 is 8.', parent.right_child is child)
   Test('Delete method with right child: Parent of 8 is 6.', child.parent is parent)
+
+  node = tree.Find(6.6)
+
+  Test('Delete method with right child: Left child of 8 is 6.6.', child.left_child is node)  
+  Test('Delete method with right child: Height of 8 is 2.', child.height == 2)
 
 
   #
@@ -154,11 +179,13 @@ def TestDelete():
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete node with two children' + bcolors.ENDC
 
   tree = CreateBasicTree()
+  #tree.PrintTree(tree.root, tree.root.height)
+
   tree.Delete(6)
-  #tree.PrintTree(tree.root)
+  #tree.PrintTree(tree.root, tree.root.height)
 
   node = tree.Find(6)
-  Test('Delete method with both children: 6 no longer exists.', node is None)
+  Test('Delete method with both children: 6 no longer exists.', isinstance(node, NullAVLNode))
   parent = tree.Find(5)
   child = tree.Find(6.5)
   Test('Delete method with both children: Right child of 5 is 6.5.', parent.right_child is child)
@@ -179,14 +206,14 @@ def TestDelete():
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Delete root node' + bcolors.ENDC
   tree = CreateBasicTree()
+  #tree.PrintTree(tree.root, tree.root.height)
   tree.Delete(5)
   #tree.PrintTree(tree.root, tree.root.height)
-
   n = tree.Find(5.5)
 
   Test('Delete method with root: 5.5 is new root.', tree.root.key == n.key)
-  Test('Delete method with root: height of 5.5 is now 3.', n.height == 3)
-  Test('Delete method with root: parent of 5.5 is none.', n.parent is None)
+  Test('Delete method with root: height of 5.5 is now 4.', n.height == 4)
+  Test('Delete method with root: parent of 5.5 is none.', isinstance(n.parent, NullAVLNode))
   Test('Delete method with root: right child of 5.5 is 6.', n.right_child.key == 6)
   Test('Delete method with root: left child of 5.5 is 3.', n.left_child.key == 3)
   
@@ -194,12 +221,13 @@ def TestDelete():
 
   
 
-def TestUpdateHeights():
+def TestUpdateHeight():
 	#
   # Tests for updating the heights in a tree after a deletion of a node
   #
   print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: UpdateHeights after node is deleted' + bcolors.ENDC
   tree = CreateBasicTree()
+  #tree.PrintTree(tree.root, tree.root.height)
   tree.Delete(6)
   #tree.PrintTree(tree.root, tree.root.height)
 
@@ -236,21 +264,14 @@ def Test(testName, bool):
 
 
 def main():
-  #tree = CreateBasicTree()
-  #tree.PrintTree(tree.root, tree.root.height)
-  
-  #tree = CreateRightUnBalancedTree()
-  #tree.PrintTree(tree.root, tree.root.height)
 
+  TestFind()
+  TestFindSuccessor()
+  TestDelete()
+  TestUpdateHeight()
+  TestInsert()
   TestLeftRotate()
-
-  
   TestRightRotate()
-
-  #TestFind()
-  #TestFindSuccessor()
-  #TestDelete()
-  #TestUpdateHeights()
 
 
 if __name__ == '__main__':
