@@ -139,7 +139,6 @@ class AVLTree(object):
       if successor.parent is not node:
         # Move the right child of the successor into the successor's place
         self.Transplant(successor, successor.right_child)
-        self.UpdateHeight(successor.parent)
         # Move successor into place of the node we are deleting
         # Set the successor's right child to the right child 
         # of the node we are deleting
@@ -303,6 +302,8 @@ class AVLNode(object):
 
 
 class NullAVLNode(object):
+
+
   def __init__(self):
     self.key = 'null'
     self.height = -1
