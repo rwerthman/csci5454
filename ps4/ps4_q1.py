@@ -8,6 +8,7 @@ https://web.eecs.umich.edu/~jabernet/eecs598course/fall2013/web/notes/lec4_09161
   -
 '''
 from numpy.random import choice
+from random import randint
 import math
 
 def ChooseAction(weights):
@@ -66,11 +67,17 @@ def Hedge(learning_rate, payoff_matrix, rounds):
   
 
 def main():
-  payoff_matrix = [[1,2,5],
-                   [3,4,6],
+  
+  payoff_matrix = [[randint(-10,10),randint(-10,10),randint(-10,10)],
+                   [randint(-10,10),randint(-10,10),randint(-10,10)],
+                   [randint(-10,10),randint(-10,10),randint(-10,10)]
                   ]
-  rounds = 2
+  rounds = 3
   learning_rate = 1.0
+  
+  print 'Payoff Matrix'
+  for row in payoff_matrix:
+    print row
   
   Hedge(learning_rate, payoff_matrix, rounds)
 
