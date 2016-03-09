@@ -10,6 +10,7 @@ https://web.eecs.umich.edu/~jabernet/eecs598course/fall2013/web/notes/lec4_09161
 from numpy.random import choice
 from random import random
 import math
+import matplotlib.pyplot as plt
 
 def UpdateWeights(learning_rate, weights, loss_vector):
   for i in range(len(weights)):
@@ -42,36 +43,50 @@ def AlgorithmLoss(weights, loss_vector):
 
 def Hedge(learning_rate, rounds, num_actions):
   weights = [1.0]*num_actions
-  total_min_loss = 0.0
+  min_loss = 0.0
+  loss_per_action = [0.0]*num_actions
   algorithm_loss = 0.0
   for t in range(rounds):
-    print '##########'
-    print 'Round', t
-    print '##########'
+    #print '##########'
+    #print 'Round', t
+    #print '##########'
     # Have nature create a random loss vector
     loss_vector = NatureChoosesLossVector(num_actions)
     # Choose the smallest loss out of all of the actions
-    total_min_loss += min(loss_vector)
+    for i in range(len(loss_per_action)):
+      loss_per_action[i] += loss_vector[i]
+    #min_loss += min(loss_vector)
     # Caclulate the algorithm loss for the round
     algorithm_loss += AlgorithmLoss(weights, loss_vector)
     weights = UpdateWeights(learning_rate, weights, loss_vector)
-    print 'Weight vector', weights   
-    print 'Loss vector', loss_vector
-    print 'Total minimum loss', total_min_loss
-    print 'Total algorithm loss', algorithm_loss
-   
+    #print 'Weight vector', weights   
+    #print 'Loss vector', loss_vector
+    #print 'Total minimum loss', total_min_loss
+    #print 'Total algorithm loss', algorithm_loss   
   
-  regret = algorithm_loss - total_min_loss
-  print 'Total regret', regret
+  #regret = algorithm_loss - min_loss
+  regret = algorithm_loss - min(loss_per_action)
+  #print 'Total regret', regret
+  return regret
 
 def main():
-  
-  rounds = 400
-  learning_rate = 1.0/math.sqrt(rounds)
+  regrets = []
+  T = []
   num_actions = 2
+  for i in range(1,50001,100):
+    rounds = i
+    T.append(rounds)
+    learning_rate = 1.0/math.sqrt(rounds)
   
   
-  Hedge(learning_rate, rounds, num_actions)
+    regrets.append(Hedge(learning_rate, rounds, num_actions))
+ 
+  sqrt_T = [math.sqrt(x) for x in T]
+  plt.figure()
+  a = plt.scatter(T, regrets, color='b')
+  b = plt.scatter(T,sqrt_T, color='g')
+  plt.savefig('q1b.png')
+  
 
   
   
