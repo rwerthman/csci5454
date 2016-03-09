@@ -73,7 +73,7 @@ def main():
                    [randint(-10,10),randint(-10,10),randint(-10,10)]
                   ]
   rounds = 3
-  learning_rate = 1.0
+  learning_rate = 1.0/math.sqrt(rounds)
   
   print 'Payoff Matrix'
   for row in payoff_matrix:
