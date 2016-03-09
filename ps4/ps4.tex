@@ -62,7 +62,40 @@ No Collaborators
 		old user score 2.0 , new user score -6.0 , difference -8.0
   		\end{verbatim}
   	  	\normalsize
-  	  \item
+  	  \item \textit{Give a plot that exhibits $\Theta{(\sqrt{T})}$ regret.}
+  	    \begin{figure}[H]
+  	    \centering
+  	    \includegraphics[width=9cm]{q1b.png}
+  	    \end{figure}
+  	    I let $c_1 = .5$ and $c_2 = .01$ and $\eta = \sqrt{\frac{8ln\,N}{T}}$. 
+  	    The graph shows that regret is bounded by $\Theta{(\sqrt{T})}$ where T is the number of rounds. Regret remained
+  	    $\le \sqrt(\frac{T}{2}ln\,N)$.  At times regret would get really close to
+  	    the bound but other times it would not be close.  It never went above the
+  	    bound. Example output of regret in the first column and
+  	    $\sqrt(\frac{T}{2}ln\,N)$ in the second column is below.
+  	    \scriptsize
+  	    \begin{verbatim}
+		0.0854754326956 1.16388787282
+		0.711207959794 1.55185049709
+		0.915738476176 1.93981312136
+		1.86659059913 2.32777574563
+		1.11868740447 2.7157383699
+		0.942107984927 3.10370099418
+		1.20108924348 3.49166361845
+		2.33209799223 3.87962624272
+		2.39799236386 4.26758886699
+		3.71141140061 4.65555149126
+		3.10138106514 5.04351411554
+		1.19507429131 5.43147673981
+		3.95892727292 5.81943936408
+		0.926603427611 6.20740198835
+		2.69832933191 6.59536461262
+		0.594289924894 6.9833272369
+		6.25916816147 7.37128986117
+		3.62512254793 7.75925248544
+		0.855690231446 8.14721510971
+  	    \end{verbatim}
+  	    \normalsize
   	\end{enumerate}
   \item
   \item

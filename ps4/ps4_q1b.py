@@ -120,6 +120,7 @@ def CreateGraph(regrets, T):
 
 def main():
   regrets = []
+  regret_bounds = []
   T = []
   num_actions = 2
   for i in range(2,300,1):
@@ -127,7 +128,12 @@ def main():
     T.append(rounds)
     learning_rate = math.sqrt((8*math.log10(num_actions))/rounds)
     regrets.append(Hedge(learning_rate, rounds, num_actions))
- 
+    x = (rounds/2.0)*math.log10(num_actions)
+    regret_bounds.append(math.sqrt(x))
+  
+  # Output the regret and its bound sqrt((T/2)*ln(N))
+  for regret, bound in zip(regrets, regret_bounds):
+    print regret, bound
   CreateGraph(regrets, T)
 
 if __name__ == '__main__':
