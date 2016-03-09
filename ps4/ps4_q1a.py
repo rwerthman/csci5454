@@ -1,17 +1,30 @@
 '''
+Robert Werthman
+CSCI 5454
+PS4 Question 1 Part a
 
 Sources
 ---------
 https://stackoverflow.com/questions/3679694/a-weighted-version-of-random-choice
-  - 
+  - Showed me how to create and choose an element with a probability
 https://web.eecs.umich.edu/~jabernet/eecs598course/fall2013/web/notes/lec4_091613.pdf
-  -
+  - Describes how to implement hedge
+https://stackoverflow.com/questions/10271484/python-element-wise-multiplication-of-two-lists
+  - Show me how to do the dot product of two lists
 '''
 from numpy.random import choice
 from random import randint
 import math
 
 def ChooseAction(weights):
+  '''
+  Choose an action based on a probability distribution
+  for each action which was created by the weights for each action.
+  
+  Returns:
+    action integer of index in list
+    probability_distribution probabilities for each action
+  '''
   # The AI can choose a column in the matrix
   actions = [i for i in range(len(weights))]
   # Create probabilities for each weight/column of the matrix
@@ -21,12 +34,19 @@ def ChooseAction(weights):
   return action, probability_distribution
 
 def UpdateWeights(learning_rate, weights, loss_vector):
+  '''
+  Update the weights for each action given the loss vector for 
+  a particular round.
+  '''
   for i in range(len(weights)):
     x = -learning_rate*loss_vector[i]
     weights[i] = weights[i]*math.exp(x)
   return weights
 
 def UpdateScores(ai_score, ai_action, user_score, user_action, payoff_matrix):
+  '''
+  Displays the scores of the human player and AI after each round.
+  '''
   old_ai_score = ai_score
   ai_score = old_ai_score - payoff_matrix[user_action][ai_action]
   print 'old AI score', old_ai_score, ', new AI score', ai_score, ', difference', \
@@ -40,6 +60,9 @@ def UpdateScores(ai_score, ai_action, user_score, user_action, payoff_matrix):
   return ai_score, user_score
 
 def Hedge(learning_rate, payoff_matrix, rounds):
+  '''
+  Implementation of the Hedge/action setting for game playing.
+  '''
   user_score = 0.0
   ai_score = 0.0
   weights = [1.0]*len(payoff_matrix[0])
@@ -68,6 +91,7 @@ def Hedge(learning_rate, payoff_matrix, rounds):
 
 def main():
   
+  # Create a random payoff matrix
   payoff_matrix = [[randint(-10,10),randint(-10,10),randint(-10,10)],
                    [randint(-10,10),randint(-10,10),randint(-10,10)],
                    [randint(-10,10),randint(-10,10),randint(-10,10)]
