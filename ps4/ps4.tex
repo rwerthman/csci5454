@@ -97,9 +97,99 @@ No Collaborators
   	    \end{verbatim}
   	    \normalsize
   	\end{enumerate}
-  \item
-  \item
-  \item
+  	
+  \newpage
+  \item \textit{Show that squared loss guarantees that the best prediction
+  in terms of expected loss is going to be x = p.  Give a distribution where
+  this is not the case for absolute loss.}\\
+  \\
+  We want to prove that the expected loss $E[L(x,y)]$ is minimized by letting
+  $x=p$.  If $y = 1$ with probability $p$ and $y = 0$ with probability $1-p$
+  then 
+  \begin{align*}
+  E[L(x,y)] &= p \cdot L(x,1) + (1-p) \cdot L(x,0)\\
+  &= p \cdot (x-1)^2 + (1-p) \cdot x^2\\
+  &= p \cdot (x^2 - 2x + 1) + (1-p)\cdot x^2\\
+  &= px^2 - 2px + p + x^2 - px^2\\
+  & = x^2 - 2px + p\\
+  \end{align*}
+  The minimum of a quadratic function of the form $f(x) = ax^2 + bx +c$ can be
+  found with the equation 
+  $$
+  x = -\frac{b}{2a}
+  $$
+  Solving for $x$ we get 
+  $$
+  -1 \cdot \frac{(-2px)}{2 \cdot 1} = \frac{2p}{2} = p
+  $$
+  This shows that the minimum expected loss occurs when is $x=p$.\\
+  \\
+  Now we want to show that there is a probability distribution for $y=1$ and
+  $y=0$ where the expected value of the absolute loss function is not minimized
+  when $x=p$.  We can write the expected value of the absolute loss function
+  when $y=1,0$ as $$
+  E[L(x,y=1,0)] = z|x-1| + w|x-0|
+  $$
+  where $z$ is the probability of $y=1$ and $w$ is the probability of $y=0$. 
+  Since we can assume $x \ge 0$ we can write the expected value of the
+  absolute loss function above as
+  \begin{align*}
+  E[L(x,y=1,0)] &= z(x-1) + wx\\
+  \end{align*}
+  If we let $z=p$ and $w=1-p$ then the expected value of the absolute
+  loss function is
+  \begin{align}
+  (p)(x-1) + (1-p)x = px - p + x -px = -p + x 
+  \end{align}
+  
+  I have no solution for this part of the problem.
+  
+  \newpage
+  \item \textit{Use hedge as a subroutine and give an algorithm with will
+  always achieve $O(\sqrt{T})$ regret without knowing T ahead of time.}\\
+  \\
+  \textbf{Pseudocode}\\
+  \begin{verbatim}
+  def MetaHedge():
+    set learning rate to the 1/sqrt(time_horizon_guess).
+    start Hedge with inputs time_horizon_guess and learning_rate.
+    update the learning rate with a new time_horizon_guess everytime 
+    the rounds (T) of the learning algorithm exceed time_horizon_guess. 
+  \end{verbatim}
+  \textbf{Correctness}\\
+  \\
+  The solution to this question is using the time horizon guess $\hat{T}$ change
+  the learning rate $\eta$ as the algorithm runs in order to keep the regret $O(\sqrt{T})$.  Two cases arise
+  with this algorithm when we don't know how many rounds it will run for.
+  \begin{enumerate}
+    \item The algorithm stops before or at the time horizon guess
+    $\hat{T}$.  In this case $\hat{T}$ will be $\ge T$, where $T$ is the
+    actual number of rounds the algorithm ran for.  Since we overestimate or
+    extimate exactly $T$ with $\hat{T}$, the learning rate $\eta$ and the
+    weights and the losses will be as expected or smaller then expected. 
+    Because of this when we sum the algorithm loss and the minimum loss of the
+    single best predition/action to get regret it will be bounded by
+    $O(\sqrt{T})$.
+    \item The number of rounds $T$ the algorithm runs for exceeds the time
+    horizon guess $\hat{T}$.  An example of this is if we set $\hat{T} = 3$ but
+    $T$ ends up running for 4 rounds instead.  In this case once $T=3$ we would
+    guess $\hat{T} > 3$ taking us back to the first case above.  We would do
+    this over and over again until the algorithm stopped.
+  \end{enumerate}
+  In both of these cases the regret remains below $\sqrt{T}$ because we
+  overestimate the number of rounds $T$ the algorithm runs for with
+  time horizon guess $\hat{T}$ which gives us a smaller learning rate $eta$ and
+  consistently smaller loss and weight vectors.
+  \newpage
+  \item \textit{Design an online selling algorithm which will maximize the
+  number of customers helped in a hardward store with limited supplies.}
+    \begin{enumerate}
+      \item
+      \item
+      \item
+    \end{enumerate}
+    
+  \newpage
   \item \textit{Find a mixed nash equilibrium of the zero-sum game.  Give both
   strategies and the value of the game and show the vector of expected payoffs
   for player 2 under player 1's strategy and vice versa.}
@@ -112,6 +202,9 @@ No Collaborators
         1 & 8 & 0 & 5 & 8\\
         \end{bmatrix}
     $$
+  Nash equilibrium means that player 1 and player 2 won't want to deviate from
+  their strategies.  The row player wants to minimize and the column player
+  wants to maximize.
     
 \end{enumerate}
 
