@@ -131,16 +131,6 @@ No Collaborators
   E[L(x,y=1,0)] = z|x-1| + w|x-0|
   $$
   where $z$ is the probability of $y=1$ and $w$ is the probability of $y=0$. 
-  Since we can assume $x \ge 0$ we can write the expected value of the
-  absolute loss function above as
-  \begin{align*}
-  E[L(x,y=1,0)] &= z(x-1) + wx\\
-  \end{align*}
-  If we let $z=p$ and $w=1-p$ then the expected value of the absolute
-  loss function is
-  \begin{align}
-  (p)(x-1) + (1-p)x = px - p + x -px = -p + x 
-  \end{align}
   
   I have no solution for this part of the problem.
   
@@ -158,9 +148,9 @@ No Collaborators
   \end{verbatim}
   \textbf{Correctness}\\
   \\
-  The solution to this question is using the time horizon guess $\hat{T}$ change
-  the learning rate $\eta$ as the algorithm runs in order to keep the regret $O(\sqrt{T})$.  Two cases arise
-  with this algorithm when we don't know how many rounds it will run for.
+  The solution to this question is using the time horizon guess $\hat{T}$
+  to change the learning rate $\eta$ as the algorithm runs in order to keep the
+  regret $O(\sqrt{T})$.  Two cases arise with this algorithm when we don't know how many rounds it will run for.
   \begin{enumerate}
     \item The algorithm stops before or at the time horizon guess
     $\hat{T}$.  In this case $\hat{T}$ will be $\ge T$, where $T$ is the
@@ -184,9 +174,67 @@ No Collaborators
   \item \textit{Design an online selling algorithm which will maximize the
   number of customers helped in a hardward store with limited supplies.}
     \begin{enumerate}
-      \item
-      \item
-      \item
+      \item \textit{Give a deterministic algorithm with a competitive ratio
+      $\le 2$ between the cost of itself and the cost of the optimal offline
+      solution like vertex cover.}\\
+      \\
+      \textbf{Pseudocode}
+      \begin{verbatim}
+      def OnlineHelpCustomer(customers, store_inventory):
+        for each customer:
+          for item in customer.set:
+            if item in store_inventory:
+              return item to sell to customer
+          return nothing to sell to customer
+      \end{verbatim}
+      \textbf{Correctness}\\
+      \\
+      OnlineCustomerHelp acts like maximal matching.  It chooses
+      an item in a customers set and and if that item has not already been
+      chosen that item is then sold to that customer.  The customer and item are
+      never seen again. In maximal matching the item and customer represent
+      vertices and once they have been matched the vertices cannot be used again
+      in another match.  For each customer we want to choose an item in their
+      set that maximizes the ability of other customers to choose items in
+      their sets that have not already been chosen by other customers.\\
+      \\
+      The difference between the online solution and the optimal offline
+      solution is that the offline solution knows all of the items in the sets
+      of all the customers.  It can then choose which items are sold to which
+      customer to maximize the number of customers who walk away with an item sold to them.\\
+      \\
+      The offline optimal solution is as follows.  
+      \begin{verbatim}
+      def OfflineHelpCustomer(customers):
+        create a graph G that contains customers and items
+        find the maximal matching in the graph
+        for each customer sell them the item found in the maximal matching
+      \end{verbatim}
+      The worst case either of these aglorithms is when one customer has all of
+      the items in their set and the other customers have just one item and that
+      item is the same for everyone else.  This leads to the smallest amount of
+      customers helped.  For instance if we have two items x and y and customers
+      A = \{y,x\}, B = \{y\}, C=\{y\}.
+      In this case OfflineCustomerHelp would at worst sell two items -- item y to
+      customer A and then item x either to customer B or C.  The
+      OnlineCustomerHelp would at worst sell item y because it saw customer
+      A first and chose the first item that had not been sold yet.
+      OnlineHelpCustomer ends up selling one item which is at least half of
+      the items sold in OfflineCustomerHelp's solution.\\
+      \\
+      We can generalize this and say that the cost for the optimal offline
+      algorithm OfflineCustomerHelp gives optimal solution $n$ which means
+      if there are $n$ customers and $n$ items all customers are matched with
+      at least one item.
+      The cost of the solution for the online algorithm OnlineCustomerHelp is at
+      worst $n/2$ which means if there are $n$ items and $n$ customers at least
+      half of the customers will be matched with an item.
+      This gives a competitive ratio of OPT/ALG = n/(n/2) = 2.
+
+      \item \textit{Show that every deterministic algorithm has competitive
+      ratio $\le 2$.}
+      \item \textit{Prove that the expected value of the competitive ratio of
+      randomized version of the online selling algorithm is $\le 2$.}
     \end{enumerate}
     
   \newpage
