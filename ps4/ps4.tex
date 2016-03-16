@@ -241,25 +241,20 @@ No Collaborators
       $$
 
       \item \textit{Show that every deterministic algorithm has competitive
-      ratio $\ge 2$.}\\
+      ratio $\le 2$.}\\
+      \\
+      \textbf{Problem Statement}\\
       \\
       ALG is the cost found by a deterministic algorithm for a solution and
-      OPT is the cost of the optimal solution.  In order for every deterministic
-      algorithm to have a competitive ratio of at least 2 we have to assume that
-      $$
+      OPT is the cost of the optimal solution.  OPT will give the minimized cost
+      to the solution. In order for every deterministic algorithm to have a
+      competitive ratio of at least 2 we have to assume that $$
       OPT/ALG \le 2
       $$
-      This means that
-      $$
-      OPT/2 \le ALG
-      $$
-      This says that the cost of the solution returned by the deterministic
-      algorithm is at least half of the cost of the optimal solution.  We showed
-      this was the case for the single deterministic algorithm found in 4a.  How
-      do we show that this is the case for every deterministic algorithm?\\
+      \textbf{Proof}\\
       \\
       We know that the cost of a solution given by a deterministic algorithm
-      will either be worse or the same as the cost of the optimal solution. 
+      will be either greater or the same as the cost of the optimal solution. 
       This gives us the inequality
       $$
       OPT \le ALG
@@ -271,11 +266,15 @@ No Collaborators
       $$
       OPT \le c \cdot ALG
       $$
-      I do not have a solution for why $c=2$.
+      This says that the OPT will produce a cost less than or equal to the cost
+      produced by the deterministic algorithm.  If we let $c=2$ than
+      $$
+      OPT/ALG \le 2
+      $$
       \item \textit{Prove that the expected value of the competitive ratio of
       randomized version of the online selling algorithm is $< 2$.}\\
       \\
-      If customer $i$ arrives at the shop and wishes to purchase an item the
+      If customer $i$ arrives at the shop and wishes to purchase an item, the
       probability of them receiving any item from their set is 
       $$
       p_i = \frac{1}{S_i \cup U_i}
@@ -294,26 +293,27 @@ No Collaborators
       which is the number of customers that do not receive an item.\\
       \\
       We want to show that the competitive ratio of the expectation of this
-      randomized algorithm is less than 2 show in the equation below 
+      randomized algorithm is less than 2 as shown in the equation below 
       $$
       \frac{OPT}{ALG} < 2 \Longrightarrow \frac{OPT}{n-E[X]} < 2
       $$
       From 4a, we said $OPT = n-mean(|S_n|)$ which means the cost of the optimal
       solution is equal to the total number of customers $n$ minus the average
-      number of items in a customer's set.  This makes out equation above
+      number of items in the customers' sets.  This makes the equation above
       $$
       \frac{OPT}{ALG} = \frac{n-mean(|S_n|)}{n-E[X]} < 2
       $$
-      Because you can say the $E[X]$ is the average if we have $n$ customers
-      than we can expect $n/2$ customers to receive an item.  This simplifies
-      our competitive ration equation to 
+      Because you can say the $E[X]$ is the average of the random variable $X$,
+      if we have $n$ customers than we can expect $n/2$ customers to receive an item.  This simplifies
+      our competitive ratio equation to 
       $$
       \frac{n-mean(|S_n|)}{n-E[X]} = \frac{n-mean(|S_n|)}{n-n/2} =
       \frac{n-mean(|S_n|)}{n/2} < 2 
       $$
-      Furthermore the averge number of items in the customers' sets will $\ge 1$
-      and $\le n$.  This gives us two boundaries to test for the competitive
-      ration.  Setting $mean(|S_n|) = n$ the competive ratio holds.
+      Furthermore the averge number of items in the customers' sets
+      $mean(|S_i|)$ will be $\ge 1$ (all customers have only one item in their
+      set) and $\le n$ (all customers have all the items in their set).
+      This gives us two boundaries to test for the competitive ratio.  Setting $mean(|S_n|) = n$ the competive ratio holds.
       $$
       \frac{n-n}{n/2} = 0 < 2
       $$
@@ -322,7 +322,10 @@ No Collaborators
       \frac{n-1}{n/2} = \frac{2n-2}{n} < 2
       $$
       If we take the limit of $\frac{2n-2}{n}$ in regards to $n$, it approaches
-      2.\\
+      2 so we can say that 
+      $$
+      \frac{2n-2}{n} < 2.
+      $$
       \\Because the competitive ratio holds for both these cases the
       competitive ratio of the expection of the cost of the randomized algorithm
       for online selling is $< 2$.
