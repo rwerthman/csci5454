@@ -132,7 +132,7 @@ No Collaborators
   $$
   where $z$ is the probability of $y=1$ and $w$ is the probability of $y=0$. 
   
-  I have no solution for this part of the problem.
+  I do not have a solution for this part of the problem.
   
   \newpage
   \item \textit{Use hedge as a subroutine and give an algorithm with will
@@ -206,35 +206,99 @@ No Collaborators
       The offline optimal solution is as follows.  
       \begin{verbatim}
       def OfflineHelpCustomer(customers):
-        create a graph G that contains customers and items
+        create a bipartite graph G that contains customers and items
         find the maximal matching in the graph
-        for each customer sell them the item found in the maximal matching
+        sort the customers in descending order by their set size
+        start with the customer with the largest set and sell them 
+          the item found in the maximal matching
+        do this for every customer possible
       \end{verbatim}
-      The worst case either of these aglorithms is when one customer has all of
-      the items in their set and the other customers have just one item and that
+      The worst case for either of these aglorithms is when one customer has all
+      of the items in their set and the other customers have just one item and that
       item is the same for everyone else.  This leads to the smallest amount of
       customers helped.  For instance if we have two items x and y and customers
-      A = \{y,x\}, B = \{y\}, C=\{y\}.
-      In this case OfflineCustomerHelp would at worst sell two items -- item y to
-      customer A and then item x either to customer B or C.  The
+      A = \{y,x,z\} , B = \{y\}, C = \{y\}.
+      In this case OfflineCustomerHelp would at worst sell two items -- item x
+      or z to customer A and then item y to customer B or C.  The
       OnlineCustomerHelp would at worst sell item y because it saw customer
-      A first and chose the first item that had not been sold yet.
-      OnlineHelpCustomer ends up selling one item which is at least half of
-      the items sold in OfflineCustomerHelp's solution.\\
+      A first and chose the first item that had not been sold which was y.
+      In this case, OnlineHelpCustomer ends up selling one item which is at
+      least half of the items sold in OfflineCustomerHelp's solution.\\
       \\
-      We can generalize this and say that the cost for the optimal offline
-      algorithm OfflineCustomerHelp gives optimal solution $n$ which means
-      if there are $n$ customers and $n$ items all customers are matched with
-      at least one item.
-      The cost of the solution for the online algorithm OnlineCustomerHelp is at
-      worst $n/2$ which means if there are $n$ items and $n$ customers at least
-      half of the customers will be matched with an item.
-      This gives a competitive ratio of OPT/ALG = n/(n/2) = 2.
+      The cost of the solution to these algorithms is the number of customers
+      who don't walk away with an item sold to them.  If you sold $k$ items you
+      saw at least $k$ customers which means that if there are $n$ customers
+      then $n-k$ customers were not sold an item.
+      The pattern for the cost of the solution of OfflineCustomerHelp depends on
+      the ceiling of the mean size of the all the customers' sets which indicates
+      how many items could be sold.
+      The cost of the solution for the online algorithm OnlineCustomerHelp
+      depends on the median of the size of all the customer's sets.  The median
+      gives the number of items sold to customers.  These patterns for the
+      offline and online algorithms give a competitive cost ratio of $$
+      OPT/ALG = \frac{n-mean(|S_n|)}{n-median(|S_n|)}
+      \le 2.
+      $$
 
       \item \textit{Show that every deterministic algorithm has competitive
-      ratio $\le 2$.}
+      ratio $\ge 2$.}\\
+      \\
+      ALG is the cost found by a deterministic algorithm for a solution and
+      OPT is the cost of the optimal solution.  In order for every deterministic
+      algorithm to have a competitive ratio of at least 2 we have to assume that
+      $$
+      OPT/ALG \le 2
+      $$
+      This means that
+      $$
+      OPT/2 \le ALG
+      $$
+      This says that the cost of the solution returned by the deterministic
+      algorithm is at least half of the cost of the optimal solution.  We showed
+      this was the case for the single deterministic algorithm found in 4a.  How
+      do we show that this is the case for every deterministic algorithm?\\
+      \\
+      We know that the cost of a solution given by a deterministic algorithm
+      will either be worse or the same as the cost of the optimal solution. 
+      This gives us the inequality
+      $$
+      OPT \le ALG
+      $$
+      In fact the cost of the solution given by a deterministic algorithm could
+      be any constant $c$, $c > 1$, times the optimal
+      solution.
+      This produces the inequality
+      $$
+      OPT \le c \cdot ALG
+      $$
+      I do not have a solution for why $c=2$.
       \item \textit{Prove that the expected value of the competitive ratio of
-      randomized version of the online selling algorithm is $\le 2$.}
+      randomized version of the online selling algorithm is $< 2$.}\\
+      \\
+      If customer $i$ arrives at the shop and wishes to purchase an item the
+      probability of them receiving any item from their set is 
+      $$
+      p_i = \frac{1}{S_i \cup U_i}
+      $$
+      If $X$ is the random variable that represents the number of customers
+      that receive an item from the store, the expected value of all $n$
+      customers receiving an item is 
+      $$ 
+      E[X] = \sum_{i=1}^{n} i \cdot p_i = \sum_{i=1}^{n} i \cdot \frac{1}{S_i
+      \cup U_i} $$
+      The cost of the randomized version of the online selling algorithm is then
+      equal to
+      $$
+      n - E[X]
+      $$
+      which is the number of customers that do not receive an item.\\
+      \\
+      We want to show that the competitive ratio of the expectation of this
+      randomized algorithm is less than 2 show in the equation below 
+      $$
+      \frac{OPT}{ALG} < 2 \Rightarrow \frac{OPT}{n-E[X]} < 2
+      $$
+      
     \end{enumerate}
     
   \newpage
