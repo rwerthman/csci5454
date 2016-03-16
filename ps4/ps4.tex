@@ -265,7 +265,7 @@ No Collaborators
       OPT \le ALG
       $$
       In fact the cost of the solution given by a deterministic algorithm could
-      be any constant $c$, $c > 1$, times the optimal
+      be any constant $c$, $c \ge 1$, times the optimal
       solution.
       This produces the inequality
       $$
@@ -296,9 +296,36 @@ No Collaborators
       We want to show that the competitive ratio of the expectation of this
       randomized algorithm is less than 2 show in the equation below 
       $$
-      \frac{OPT}{ALG} < 2 \Rightarrow \frac{OPT}{n-E[X]} < 2
+      \frac{OPT}{ALG} < 2 \Longrightarrow \frac{OPT}{n-E[X]} < 2
       $$
-      
+      From 4a, we said $OPT = n-mean(|S_n|)$ which means the cost of the optimal
+      solution is equal to the total number of customers $n$ minus the average
+      number of items in a customer's set.  This makes out equation above
+      $$
+      \frac{OPT}{ALG} = \frac{n-mean(|S_n|)}{n-E[X]} < 2
+      $$
+      Because you can say the $E[X]$ is the average if we have $n$ customers
+      than we can expect $n/2$ customers to receive an item.  This simplifies
+      our competitive ration equation to 
+      $$
+      \frac{n-mean(|S_n|)}{n-E[X]} = \frac{n-mean(|S_n|)}{n-n/2} =
+      \frac{n-mean(|S_n|)}{n/2} < 2 
+      $$
+      Furthermore the averge number of items in the customers' sets will $\ge 1$
+      and $\le n$.  This gives us two boundaries to test for the competitive
+      ration.  Setting $mean(|S_n|) = n$ the competive ratio holds.
+      $$
+      \frac{n-n}{n/2} = 0 < 2
+      $$
+      Setting $mean(|S_n|) = 1$ the competitve ratio also holds.
+      $$
+      \frac{n-1}{n/2} = \frac{2n-2}{n} < 2
+      $$
+      If we take the limit of $\frac{2n-2}{n}$ in regards to $n$, it approaches
+      2.\\
+      \\Because the competitive ratio holds for both these cases the
+      competitive ratio of the expection of the cost of the randomized algorithm
+      for online selling is $< 2$.
     \end{enumerate}
     
   \newpage
