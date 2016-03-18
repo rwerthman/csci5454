@@ -344,9 +344,74 @@ No Collaborators
         1 & 8 & 0 & 5 & 8\\
         \end{bmatrix}
     $$
-  Nash equilibrium means that player 1 and player 2 won't want to deviate from
-  their strategies.  The row player wants to minimize and the column player
-  wants to maximize.
+  A mixed nash equilibrium means that player 1 and player 2 won't want to
+  deviate from strategies that they choose and those strategies will lead to the same
+  value of the game.  Those strategies are based on probabilities for each
+  decision they can make. The row player wants to minimize the value in the
+  row he chooses from the matrix and the column player wants to
+  maximize the value in the column he chooses from the matrix.\\
+  \\
+  I used hedge to find the mixed nash equilibrium.  The strategy for the row
+  player was the row distribution after 25 rounds of hedge [[  9.99985259e-01  
+  6.52573142e-07 1.34647736e-05   6.23766866e-07 4.42372909e-11]].  The row
+  payoff was [[ 25.43045603][ 25.43045603][ 25.43045603][25.43045603][ 25.43045603]] for each row.\\
+  \\ 
+  The strategy for the column player was the column distribution [[ 
+  4.67085924e-02] [  2.39700681e-01] [  2.90734717e-03][  3.45778443e-13][  7.10683379e-01]].  
+  The column payoff vector ended up being [[-25.43045603 -25.43045603
+  -25.43045603 -25.43045603 -25.43045603]].\\
+  \\
+  The value for the game approached 0.0019868 which was the time-averaged
+  expected payoff of both the row and column players.  As you can see the sum
+  of the row and column payoff vectors equals 0 resulting in a zero-sum game.
+  
+  A sample run of two rounds from my program is below.
+  \scriptsize
+  \begin{verbatim}
+  ##########
+Round 0
+##########
+row distribution [[ 0.2  0.2  0.2  0.2  0.2]]
+column distribution [[ 0.2]
+ [ 0.2]
+ [ 0.2]
+ [ 0.2]
+ [ 0.2]]
+row payoff [[ 3.64]
+ [ 3.64]
+ [ 3.64]
+ [ 3.64]
+ [ 3.64]]
+column payoff [[-3.64 -3.64 -3.64 -3.64 -3.64]]
+row loss [[ 2. ]
+ [ 5. ]
+ [ 2.8]
+ [ 4. ]
+ [ 4.4]]
+column loss [[ 3.   5.2  4.   3.2  2.8]]
+##########
+Round 1
+##########
+row distribution [[ 0.27099839  0.14872707  0.23092959  0.18165565  0.1676893 ]]
+column distribution [[ 0.2239959 ]
+ [ 0.14426152]
+ [ 0.18339233]
+ [ 0.2152129 ]
+ [ 0.23313735]]
+row payoff [[ 6.93206598]
+ [ 6.93206598]
+ [ 6.93206598]
+ [ 6.93206598]
+ [ 6.93206598]]
+column payoff [[-6.93206598 -6.93206598 -6.93206598 -6.93206598 -6.93206598]]
+row loss [[ 2.12909141]
+ [ 4.58816581]
+ [ 2.77708693]
+ [ 3.67231845]
+ [ 4.31925133]]
+column loss [[ 2.63556824  4.39716141  3.82029004  3.48554339  2.64488944]]
+  \end{verbatim}
+  \normalsize
     
 \end{enumerate}
 
