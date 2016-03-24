@@ -59,13 +59,14 @@ class AVLTree(object):
     self.UpdateHeight(new_node)
 
     # TODO: Need to balance the tree after an insert
+    self.UpdateBalance(new_node)
 
 
   def Find(self, key):
   
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
-      print 'PrintTree: Tree is empty.'
+      print 'Find: Tree is empty.'
       return
 
     node = self.root # Start looking for the key at the root node
@@ -221,16 +222,16 @@ class AVLTree(object):
       print 'UpdateHeight: Tree is empty.'
       return
 
-    # Both children exist
+    self.UpdateBalance(node)
+
+    # Calculate the height by comparing the height of both children
     node.height = max(node.left_child.height, node.right_child.height) + 1
+
+    #self.UpdateBalance(node)
 
     if not isinstance(node.parent, NullAVLNode):
       self.UpdateHeight(node.parent)
 
-
-  def UpdateBalances(self,node):
-    pass
-    
         	
   def LeftRotate(self,x):
     # Check if the tree is empty
@@ -256,13 +257,14 @@ class AVLTree(object):
     y.left_child = x
     x.parent = y
 
-    self.UpdateHeight(x)
+    #self.UpdateHeight(x)
+    x.height = max(x.left_child.height, x.right_child.height) + 1
 
 
   def RightRotate(self,y):
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
-      print 'LeftRotate: Tree is empty.'
+      print 'RightRotate: Tree is empty.'
       return
     
     x = y.left_child
@@ -283,11 +285,31 @@ class AVLTree(object):
     x.right_child = y
     y.parent = x
     
-    self.UpdateHeight(y)
-    
+    #self.UpdateHeight(y)
+    y.height = max(y.left_child.height, y.right_child.height) + 1
+  
 
-  def Balance(self, x):
-  	pass
+  def UpdateBalance(self, x):
+    if abs(x.left_child.height - x.right_child.height) <= 1:
+      pass
+    # Left heavy child sub tree
+    elif x.left_child.height > x.right_child.height:
+      y = x.left_child
+      if y.left_child.height < y.right_child.height:
+        self.LeftRotate(y)
+      self.RightRotate(x)
+    # Right heavy child sub tree
+    elif x.left_child.height < x.right_child.height:
+      y = x.right_child
+      if y.left_child.height > y.right_child.height:
+        self.RightRotate(y)
+      self.LeftRotate(x)
+      
+    
+    # if isinstance(x.parent, NullAVLNode):
+    #   return
+    # else:
+    #   return self.UpdateBalance(x.parent)
 
 
 class AVLNode(object):

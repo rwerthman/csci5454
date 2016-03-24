@@ -1,8 +1,3 @@
-'''
-TODO: delete root node
-
-'''
-
 from AVLTree import AVLTree
 from AVLTree import NullAVLNode
 
@@ -217,9 +212,6 @@ def TestDelete():
   Test('Delete method with root: right child of 5.5 is 6.', n.right_child.key == 6)
   Test('Delete method with root: left child of 5.5 is 3.', n.left_child.key == 3)
   
-  
-
-  
 
 def TestUpdateHeight():
 	#
@@ -246,6 +238,41 @@ def TestUpdateHeight():
   n = tree.Find(4)
   Test('Height of node with key 4 should be 0.', n.height == 0)
 
+def TestBalance():
+  
+  # Tests for balancing a tree
+  
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Balance left heavy child tree' + bcolors.ENDC
+ 
+  tree = AVLTree()
+  tree.Insert(7)
+  tree.Insert(5)
+  tree.Insert(6)
+
+  #tree.PrintTree(tree.root, tree.root.height)
+
+  parent = tree.Find(6)
+  n = tree.Find(7)
+  Test('Right child of 6 should be 7', parent.right_child is n)
+  Test('7 should have 6 as the parent', n.parent is parent)
+  Test('Height of 7 should be 0', n.height == 0)
+
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Balance left heavy child tree' + bcolors.ENDC
+
+  tree = AVLTree()
+  tree.Insert(3)
+  tree.Insert(5)
+  tree.Insert(4)
+  #tree.PrintTree(tree.root, tree.root.height)
+
+  root = tree.Find(4)
+  n = tree.Find(5)
+  Test('Right child of 4 should be 5', root.right_child is n)
+  Test('5 should have 4 as the parent', n.parent is root)
+  Test('Height of 5 should be 0', n.height == 0)
+  Test('Root of tree should be 4', tree.root is root)
+  
+
 class bcolors:
   HEADER = '\033[95m' # Purple
   OKBLUE = '\033[94m' # Blue
@@ -265,13 +292,14 @@ def Test(testName, bool):
 
 def main():
 
-  TestFind()
-  TestFindSuccessor()
-  TestDelete()
-  TestUpdateHeight()
-  TestInsert()
-  TestLeftRotate()
-  TestRightRotate()
+  # TestFind()
+  # TestFindSuccessor()
+  # TestDelete()
+  # TestUpdateHeight()
+  # TestInsert()
+  # TestLeftRotate()
+  # TestRightRotate()
+  TestBalance()
 
 
 if __name__ == '__main__':
