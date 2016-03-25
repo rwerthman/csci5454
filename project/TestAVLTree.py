@@ -272,8 +272,8 @@ def TestBalance():
   Test('Height of 5 should be 0', n.height == 0)
   Test('Root of tree should be 4', tree.root is root)
 
-  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Balance large tree' + bcolors.ENDC
-  # 9, 4, 1, 2, 8, 6, 5, 7, 10, 11, 12
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Balance large tree insert' + bcolors.ENDC
+  # Insert: 9, 4, 1, 2, 8, 6, 5, 7, 10, 11, 12
 
   tree = AVLTree()
   tree.Insert(9)
@@ -288,10 +288,46 @@ def TestBalance():
   tree.Insert(11)
   tree.Insert(12)
 
-  tree.PrintTree(tree.root, tree.root.height)
+  #tree.PrintTree(tree.root, tree.root.height)
 
   root = tree.Search(8)
   Test('Root should be 8', root is tree.root)
+  Test('Root should have a height of 4', root.height == 3)
+
+  n = tree.Search(7)
+  Test('7 should have null avl nodes as children', (isinstance(n.right_child, NullAVLNode) and isinstance(n.left_child, NullAVLNode)))
+  a = tree.Search(6)
+  b = tree.Search(4)
+  Test('The parent of 7 should be 6', n.parent is a)
+  Test('The parent of 6 should be 4', a.parent is b)
+
+  c = tree.Search(10)
+  d = tree.Search(11)
+  e = tree.Search(9)
+  Test('10 should have children 11 and 9', c.left_child is e and c.right_child is d)
+  Test('The height of 10 should be 2', c.height == 2)
+  
+
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: Balance large tree delete' + bcolors.ENDC
+  # Delete: 9, 10, 12, 2
+  tree.Delete(9)
+  tree.Delete(10)
+  tree.Delete(12)
+  tree.Delete(2)
+
+  # tree.PrintTree(tree.root, tree.root.height)
+
+  root = tree.Search(6)
+  a = tree.Search(4)
+  b = tree.Search(8)
+  c = tree.Search(7)
+  Test('Root should be 6', tree.root is root)
+  Test('Height of root should be 2', root.height == 2)
+  Test('Children of root should be 4 and 8', root.left_child is a and root.right_child is b)
+  
+  Test('7 should have null avl nodes as children', (isinstance(n.right_child, NullAVLNode) and isinstance(n.left_child, NullAVLNode)))
+  Test('7 parent should be 8', c.parent is b)
+  
 
   
 

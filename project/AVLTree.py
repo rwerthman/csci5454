@@ -10,6 +10,8 @@ Sources:
     - MIT video lecture on AVL trees
   https://en.wikipedia.org/wiki/AVL_tree
     - AVL Tree cases
+  https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
+    - Visualization of an avl tree for creating my tests
 '''
 
 
