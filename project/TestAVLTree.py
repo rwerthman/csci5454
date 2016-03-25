@@ -213,11 +213,11 @@ def TestDelete():
   Test('Delete method with root: left child of 5.5 is 3.', n.left_child.key == 3)
   
 
-def TestUpdateHeight():
+def TestUpdateHeightAndBalance():
 	#
   # Tests for updating the heights in a tree after a deletion of a node
   #
-  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: UpdateHeights after node is deleted' + bcolors.ENDC
+  print '\n' + bcolors.BOLD + bcolors.UNDERLINE + bcolors.OKBLUE + 'Test: UpdateHeightAndBalances after node is deleted' + bcolors.ENDC
   tree = CreateBasicTree()
   #tree.PrintTree(tree.root, tree.root.height)
   tree.Delete(6)
@@ -295,7 +295,7 @@ def main():
   # TestFind()
   # TestFindSuccessor()
   # TestDelete()
-  # TestUpdateHeight()
+  # TestUpdateHeightAndBalance()
   # TestInsert()
   # TestLeftRotate()
   # TestRightRotate()

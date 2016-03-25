@@ -16,7 +16,7 @@ class AVLTree(object):
 
   def __init__(self):
     self.root = NullAVLNode()
-  
+
 
   def Insert(self,key): 
     # Create a new node with the key argument of insert
@@ -56,7 +56,7 @@ class AVLTree(object):
       parent_node.right_child = new_node
 
     # Update heights of the new node and the nodes above it
-    self.UpdateHeight(new_node)
+    self.UpdateHeightAndBalance(new_node)
 
     # TODO: Need to balance the tree after an insert
     self.UpdateBalance(new_node)
@@ -83,7 +83,7 @@ class AVLTree(object):
     # If we don't find a node in the tree with the
     # key we are looking for return empty node
     return NullAVLNode()
-  
+
 
   def Delete(self, key):
 
@@ -107,18 +107,18 @@ class AVLTree(object):
       else:
         node.parent.left_child = NullAVLNode()
       
-      self.UpdateHeight(node.parent)
+      self.UpdateHeightAndBalance(node.parent)
     # If the key is found in a node with only a left child
     # Left child takes the nodes place
     elif not isinstance(node.left_child, NullAVLNode) and isinstance(node.right_child, NullAVLNode):
       self.Transplant(node, node.left_child)
-      self.UpdateHeight(node.left_child)
+      self.UpdateHeightAndBalance(node.left_child)
 
     # If the key is found in a node with only a right child
     # Right child takes the nodes place
     elif not isinstance(node.right_child, NullAVLNode) and isinstance(node.left_child, NullAVLNode):
       self.Transplant(node, node.right_child)
-      self.UpdateHeight(node.right_child)
+      self.UpdateHeightAndBalance(node.right_child)
 
     # If the key is found in a node with both a left and a right child
     # Successor node takes the nodes place
@@ -132,7 +132,6 @@ class AVLTree(object):
         x = successor.parent
       else:
         x = successor
-
 
       # Check if the successor is not the right child of the node we are deleting
       # This means we have to traverse down the left tree of the right child
@@ -154,11 +153,9 @@ class AVLTree(object):
       # Set the parent of the left child to the successor
       successor.left_child.parent = successor
       
-      self.UpdateHeight(x)
+      self.UpdateHeightAndBalance(x)
 
-    # TODO: Need to balance the tree after delete
 
-  
   def FindSuccessor(self, node):
     # Set node to its right child
     node = node.right_child
@@ -168,7 +165,7 @@ class AVLTree(object):
       node = node.left_child
     return node
 
-  
+
   def Transplant(self, node, node_successor):
     # If the node we are deleting is the root
     # The root is now the child of that node (could be none)
@@ -215,22 +212,21 @@ class AVLTree(object):
         self.PrintTree(current_node.right_child, depth-1)
 
 
-  def UpdateHeight(self, node):
+  def UpdateHeightAndBalance(self, node):
 
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
-      print 'UpdateHeight: Tree is empty.'
+      print 'UpdateHeightAndBalance: Tree is empty.'
       return
 
     self.UpdateBalance(node)
 
-    # Calculate the height by comparing the height of both children
+    # Calculate the height by taking the maximum height of the children
+    # and adding 1
     node.height = max(node.left_child.height, node.right_child.height) + 1
 
-    #self.UpdateBalance(node)
-
     if not isinstance(node.parent, NullAVLNode):
-      self.UpdateHeight(node.parent)
+      self.UpdateHeightAndBalance(node.parent)
 
         	
   def LeftRotate(self,x):
@@ -257,7 +253,6 @@ class AVLTree(object):
     y.left_child = x
     x.parent = y
 
-    #self.UpdateHeight(x)
     x.height = max(x.left_child.height, x.right_child.height) + 1
 
 
@@ -285,9 +280,8 @@ class AVLTree(object):
     x.right_child = y
     y.parent = x
     
-    #self.UpdateHeight(y)
     y.height = max(y.left_child.height, y.right_child.height) + 1
-  
+
 
   def UpdateBalance(self, x):
     if abs(x.left_child.height - x.right_child.height) <= 1:
@@ -304,12 +298,6 @@ class AVLTree(object):
       if y.left_child.height > y.right_child.height:
         self.RightRotate(y)
       self.LeftRotate(x)
-      
-    
-    # if isinstance(x.parent, NullAVLNode):
-    #   return
-    # else:
-    #   return self.UpdateBalance(x.parent)
 
 
 class AVLNode(object):
