@@ -3,11 +3,13 @@
 Sources:
 ---------
   Introduction to Algorithms, Third Edition (page 294)
-    - Insert, rotate, delete, find successor methods of binary tree
+    - Insert, rotate, delete, Search successor methods of binary tree
   https://stackoverflow.com/questions/20242479/printing-a-tree-data-structure-in-python
     - How to print a tree data structure that is understandable
   https://www.youtube.com/watch?v=FNeL18KsWPc
     - MIT video lecture on AVL trees
+  https://en.wikipedia.org/wiki/AVL_tree
+    - AVL Tree cases
 '''
 
 
@@ -16,7 +18,7 @@ class AVLTree(object):
 
   def __init__(self):
     self.root = NullAVLNode()
-
+  
 
   def Insert(self,key): 
     # Create a new node with the key argument of insert
@@ -62,17 +64,17 @@ class AVLTree(object):
     self.UpdateBalance(new_node)
 
 
-  def Find(self, key):
+  def Search(self, key):
   
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
-      print 'Find: Tree is empty.'
+      print 'Search: Tree is empty.'
       return
 
     node = self.root # Start looking for the key at the root node
 
     while not isinstance(node, NullAVLNode):
-      # If we find the a node that has the same key we are looking for
+      # If we Search the a node that has the same key we are looking for
       # return it
       if key == node.key:
         return node
@@ -80,10 +82,9 @@ class AVLTree(object):
         node = node.left_child
       else:
         node = node.right_child
-    # If we don't find a node in the tree with the
+    # If we don't Search a node in the tree with the
     # key we are looking for return empty node
     return NullAVLNode()
-
 
   def Delete(self, key):
 
@@ -93,7 +94,7 @@ class AVLTree(object):
       return
 
     # Node to be removed
-    node = self.Find(key)
+    node = self.Search(key)
 
     if isinstance(node, NullAVLNode):
       print 'Delete: Key not found in tree.'
@@ -123,7 +124,7 @@ class AVLTree(object):
     # If the key is found in a node with both a left and a right child
     # Successor node takes the nodes place
     else:
-      successor = self.FindSuccessor(node)
+      successor = self.SearchSuccessor(node)
 
       # Choose the correct node to start the height update 
       # from after removing a node
@@ -135,7 +136,7 @@ class AVLTree(object):
 
       # Check if the successor is not the right child of the node we are deleting
       # This means we have to traverse down the left tree of the right child
-      # to find the successor to the node we are deleting
+      # to Search the successor to the node we are deleting
       if successor.parent is not node:
         # Move the right child of the successor into the successor's place
         self.Transplant(successor, successor.right_child)
@@ -156,12 +157,12 @@ class AVLTree(object):
       self.UpdateHeightAndBalance(x)
 
 
-  def FindSuccessor(self, node):
+  def SearchSuccessor(self, node):
     # Set node to its right child
     node = node.right_child
     while not isinstance(node.left_child, NullAVLNode):
       # Traverse down left side of right child
-      # to find successor at the end
+      # to Search successor at the end
       node = node.left_child
     return node
 
