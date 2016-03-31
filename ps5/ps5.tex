@@ -22,7 +22,47 @@ No Collaborators
   \\
   \textbf{Integer Programming Problem}\\
   \\
+  Assume each drone can communicate with any number of the $k$ stations. The
+  constraint for this problem is that we have to use every drone but we don't
+  have to use every station.  For this problem we want to minimize the sum of
+  the cost of activating a station $a_j$ and the cost $c_{ij}$ of each of the
+  drones communicating with that station.  In mathematical terms we are trying to 
+  $$ 
+  minimize\,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n} c_{ij}
+  $$ 
+  subject to the constraints
+  \begin{enumerate} 
+  \item
+  $$
+  x_j = 
+  \begin{cases}
+  1 & \text{ if we activate station }j\\
+  0 & \text{ if we don't activate station }j\\
+  \end{cases}
+  $$
+  \item
+  Let $d_{ij} = 1$ if drone $i$ is communicating with station $j$ 
+  then the mathematical notation for ensuring all drones are communicating with
+  at least one station is 
+  $$
+  \forall d \quad \sum_{j=1}^{k} d_{ij}x_j \ge 1
+  $$
+  \end{enumerate}
+
   \textbf{Linear Programming Relaxation}\\
+  \\
+  The linear programming relaxation of this problem is still trying to
+  $$ 
+  minimize\,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n} c_{ij}
+  $$
+  but instead of $x_j \in \mathbb{Z}$ and being only 1 or 0 it can now be any
+  number between 1 and 0.  $x_j$ is now $\in \mathbb{R}$.  The problem now
+  though how do you round $x_j$ to make sure the constraint
+  $$
+  \forall d \quad \sum_{j=1}^{k} d_{ij}x_j \ge 1
+  $$
+  is still satisfied.  As was discussed in lecture you should use randomized
+  rounding.
   
   \newpage
   \item \textit{}
