@@ -56,8 +56,8 @@ No Collaborators
   minimize\,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n} c_{ij}
   $$
   but instead of $x_j \in \mathbb{Z}$ and being only 1 or 0 it can now be any
-  number between 1 and 0.  $x_j$ is now $\in \mathbb{R}$.  The problem now
-  though how do you round $x_j$ to make sure the constraint
+  number between 1 and 0.  $x_j$ is now $\in \mathbb{R}$.  The question now
+  though is how do you round $x_j$ to make sure the constraint
   $$
   \forall d \quad \sum_{j=1}^{k} d_{ij}x_j \ge 1
   $$
@@ -65,7 +65,35 @@ No Collaborators
   rounding.
   
   \newpage
-  \item \textit{}
+  \item \textit{Find an $s-t$ flow of amount at least $d$ that minimizes the
+  total cost, or report that such a flow does not exist.}
+  \begin{enumerate}
+    \item \textit{Show how to solve this problem using linear programming.}\\
+    \\
+    In this problem we want to send the target amount of flow $d$ from $s$ to
+    $t$.  At the same time we want to minimize the total cost and flow
+    $f_e$ for all $e \in E$.  Written mathematically this is 
+    $$
+    minimize \, \sum_{(u,v) \in E} p_{u,v}f_{u,v}
+    $$
+    subject to the contraints
+    \begin{enumerate}
+      
+      \item 
+      $$
+      f_{u,v} \le c_{u,v}
+      $$
+      \text{ The flow of an edge is less than or equal to
+      the capacity of the edge.} 
+      
+      \item
+    \end{enumerate}
+    
+    
+    \item \textit{Show that the $s-t$ shortest path problem and the classic
+    network flow problem are both special cases of this problem.}
+  \end{enumerate}
+
 \end{enumerate}
 
 \end{document}
