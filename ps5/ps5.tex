@@ -71,8 +71,8 @@ No Collaborators
     \item \textit{Show how to solve this problem using linear programming.}\\
     \\
     In this problem we want to send the target amount of flow $d$ from $s$ to
-    $t$.  At the same time we want to minimize the total cost and flow
-    $f_e$ for all $e \in E$.  Written mathematically this is 
+    $t$.  At the same time we want to minimize the total cost of the units
+    of flow $f_e$ for all $e \in E$.  Written mathematically this is 
     $$
     minimize \, \sum_{(u,v) \in E} p_{u,v}f_{u,v}
     $$
@@ -83,11 +83,26 @@ No Collaborators
       $$
       f_{u,v} \le c_{u,v}
       $$
-      \text{ The flow of an edge is less than or equal to
-      the capacity of the edge.} 
+      The flow of an edge is less than or equal to the capacity of the edge. 
       
       \item
+      $$
+      \sum_{v \in V} f_{s,v} = \sum_{v \in V} f_{v,t} = d
+      $$
+      The sum of the flow from the source vertex $s$ to other vertices must
+      equal the target flow $d$ and the sum of the flow from other vertices to
+      the sink vertex $t$ must equal the target flow $d$.
+      
+      \item
+      $$
+      \sum_{(w,u) \in E} f_{w,u} = \sum_{(u,z) \in E} f_{u,z}
+      $$
+      The amount of flow entering $u$ equals the amount of flow leaving $u$.
+      Flow is conserved.
     \end{enumerate}
+    If these constraints are satisfied by a graph with a particular flow then an
+    $s-t$ flow of amount at least $d$ that minimizes the total cost exists,
+    otherwise no such flow exists.
     
     
     \item \textit{Show that the $s-t$ shortest path problem and the classic
