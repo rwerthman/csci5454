@@ -28,8 +28,8 @@ No Collaborators
   the cost of activating a station $a_j$ and the cost $c_{ij}$ of each of the
   drones communicating with that station.  In mathematical terms we are trying to 
   $$ 
-  minimize\,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n} c_{ij}
-  $$ 
+  \text{minimize} \,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n}
+  c_{ij} $$ 
   subject to the constraints
   \begin{enumerate} 
   \item
@@ -53,8 +53,8 @@ No Collaborators
   \\
   The linear programming relaxation of this problem is still trying to
   $$ 
-  minimize\,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n} c_{ij}
-  $$
+  \text{minimize} \,\sum_{j=1}^{k} a_jx_j + \sum_{j = 1}^{k} x_j\sum_{i=1}^{n}
+  c_{ij} $$
   but instead of $x_j \in \mathbb{Z}$ and being only 1 or 0 it can now be any
   number between 1 and 0.  $x_j$ is now $\in \mathbb{R}$.  The question now
   though is how do you round $x_j$ to make sure the constraint
@@ -74,7 +74,7 @@ No Collaborators
     $t$.  At the same time we want to minimize the total cost of the units
     of flow $f_e$ for all $e \in E$.  Written mathematically this is 
     $$
-    minimize \, \sum_{(u,v) \in E} p_{u,v}f_{u,v}
+    \text{minimize} \, \sum_{(u,v) \in E} p_{u,v}f_{u,v}
     $$
     subject to the contraints
     \begin{enumerate}
@@ -98,17 +98,164 @@ No Collaborators
       \sum_{(w,u) \in E} f_{w,u} = \sum_{(u,z) \in E} f_{u,z}
       $$
       The amount of flow entering $u$ equals the amount of flow leaving $u$.
-      Flow is conserved.
+      Flow is conserved \cite{2}.
     \end{enumerate}
     If these constraints are satisfied by a graph with a particular flow then an
     $s-t$ flow of amount at least $d$ that minimizes the total cost exists,
     otherwise no such flow exists.
-    
-    
+     
     \item \textit{Show that the $s-t$ shortest path problem and the classic
-    network flow problem are both special cases of this problem.}
+    network flow problem are both special cases of this problem.}\\
+    \\
+    The classic network flow problem seeks to maximize the flow from $s$ to $t$.
+    This is the same as the problem $2a$ but in this case we want to
+    maximize $f_e$ for all $e \in E$ by letting $d$ be the maximum flow possible
+    in the graph.  We also no longer suffer a penalty $p_{u,v}$ per unit flow
+    for the classic network flow problem as we do in the problem from $2a$.\\
+    \\
+    The $s-t$ shortest path problem seeks to minimize the sum of the cost of the
+    edges involved in the flow $s-t$.  In this case we no longer have a target
+    flow $d$ as in the problem $2a$ but were are still trying to minimize the
+    penalty/cost $p_{u,v}$ per edge per unit flow in the graph.
   \end{enumerate}
-
+  
+  \newpage
+  \item \textit{Give a polynomial time 3-approximation algorithm that, given an
+  undirect graph $G$ with nonnegative edge weights, removes a set of edges of
+  minimum total weight from $G$ so the remaining graph is triangle free. 
+  Return the maximum-weight subgraph which is triangle free.}\\
+  \\
+  \textbf{Algorithm}\\
+  \\
+  I believe you can solve this problem with linear programming specifically
+  integer linear programming.
+  We wish to minimize the total weight of the edges we remove from the graph.  
+  This can
+  written as
+  $$
+  \text{minimize} \sum_{(u,v) \in E} w(u,v)x_{u,v}
+  $$
+  subject to the constraints
+  \begin{enumerate}
+  \item
+  $$
+  x_{u,v} = 
+  \begin{cases}
+  1 & \text{ if we choose to remove edge }(u,v)\\
+  0 & \text{ if we don't choose to remove edge }(u,v)\\
+  \end{cases}
+  $$ 
+  
+  \item
+  $$
+  \forall\{(u,v),(v,x),(u,x)\} \quad x_{u,v} + x_{v,x} + x_{u,x} \ge 1
+  $$
+  This says that for all edges that form a triangle at least one edge has to be
+  removed in order for there not to be a triangle anymore.
+  \end{enumerate}
+  First, we need to find all of the triangles in the graph $G$ and then remove
+  an edge so the traingle no longer exists.
+  This can be done by comparing the adjacency list of vertex $u$ with the
+  adjacency lists of the vertices in $u$'s adjacency list.  For example if $u$'s
+  adjacency list was $[v,x]$, $v$'s adjacency list was $[x,u]$, and $x$'s
+  adjacency list was $[u,v]$ there would be a triangle in the $G$ between
+  $(u,v),\,(v,x),\,(x,u)$.  The psuedocode would look like
+  \begin{verbatim}
+  def FindAndRemoveTraingles(G):
+    for each u in V:
+      for a in u's adjacency list:
+        for b in a's adjacency list:
+          # first iteration: a = v, b = x
+          if u in b's adjacency list:
+            # There is a triangle between (u,a), (a,b), (b,u)
+            # Compare weight of edges and remove lowest weight edge
+            # Update adjacency lists
+     return G
+  \end{verbatim}
+  
+  \textbf{Correctness and Runtime}\\
+  \\
+  The worst case graph $G$ for this problem is a graph 
+  that is connected
+  which means all vertices have edges to all other vertices in the graph.
+  This maximizes the number of triangles a graph will have.\\
+  \\
+  The base case is 
+  when there are 3 vertices in $G$ which forms a single triangle. 
+  FindAndRemoveTriangles will remove a single edge from the triangle that has
+  the lowest weight.
+  Once that edge is removed there is no longer a triangle and the graph is
+  triangle free.\\
+  \\
+  Inductively we can say that since the algorithm removes
+  a single triangle it will remove all of the triangles in a graph.  This is
+  true because FindAndRemoveTriangles visits every vertex and finds every 
+  triangle in the graph.  
+  For every one of these triangles an edge is removed thus removing the
+  triangle.  This will leave any graph with any number of triangles triangle 
+  free.\\
+  \\
+  Because the graph is connected the size of each adjacency list
+  would be $|V|-1$.  The runtime of FindAndRemoveTraingles will then 
+  be $O(|V|^3)$.\\
+  \\
+  \textbf{Approximation Proof}\\
+  \\
+  Since we are trying to minimize for this problem in order to prove that this
+  algorithm is a 3-approximation algorithm, we have to show that the value of 
+  the solution $x$
+  which is the total weight of all the edges removed by the algorithm
+  is at most 3 times the value of the optimal solution.  This statement shown by
+  the inequality 
+  $$
+  \frac{ALG}{OPT} \le 3
+  $$
+  \\
+  As stated above we found a solution with integer linear programming.  But what
+  if we relaxed the ILP problem to just a LP problem.  This means that $x_{u,v}$
+  is now $\in \mathbb{R}$ and could be any real number between and including 0
+  and 1.  What if we also said that the solution to the ILP problem was the
+  optimal solution $OPT$.  This means that $LP \le ILP = OPT$ \cite{1}.\\
+  \\
+  The constraints we have for the $LP$ problem are
+  \begin{enumerate}
+    \item 
+    $0 \le x_{u,v} \le 1$
+    
+    \item
+     $$
+     \forall\{(u,v),(v,x),(u,x)\} \quad x_{u,v} + x_{v,x} + x_{u,x} \ge 1
+     $$
+     This says that for all edges that form a triangle at least one edge has to
+     be removed in order for there not to be a triangle anymore.  
+  \end{enumerate}
+  In the LP
+  problem though we are now dealing with possible fractions for $x_{u,v}$. 
+  This means we will have to round those fractions to a whole number in order
+  for the LP problem solution to still remain a solution to the ILP problem.  
+  To do this we define $x'_{u,v} = 1$ if $x^{*}_{u,v} \ge 1/3$ and $x'_{u,v}
+  = 1$ if $x^{*}_{u,v} < 1/3$ \cite{1}.\\
+  \\
+  Using this rounding scheme we can show that the $LP$ is a 3-approximation
+  algorithm.  The minimal weight produced by the $LP$ solution is
+  \begin{align*}
+  &\sum_{(u,v) \in E} w(u,v)x'_{u,v}\\
+  &\le \sum_{(u,v) \in E} 3w(u,v)x^{*}_{u,v}\\
+  &= 3\sum_{(u,v) \in E} w(u,v)x_{u,v}\\
+  &= 3 \, OPT
+  \end{align*}
+  This shows that 
+  $$
+  \frac{LP=ALG}{ILP=OPT} \le 3
+  $$
+  which means the LP algorithm is a 3-approximation algorithm.
+    
 \end{enumerate}
+
+\newpage
+\begin{thebibliography}{2}
+\bibitem{1} http://www.eecs.berkeley.edu/~luca/cs261/lecture07.pdf
+\bibitem{2} http://beust.com/algorithms.pdf
+\end{thebibliography}
 
 \end{document}
