@@ -13,7 +13,11 @@ Sources:
   https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
     - Visualization of an avl tree for creating my tests
 '''
+import random
+import matplotlib.pyplot as plt
+import math
 
+search_steps_executed = 0.0
 
 class AVLTree(object):
 
@@ -67,6 +71,8 @@ class AVLTree(object):
 
 
   def Search(self, key):
+    
+    global search_steps_executed
   
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
@@ -76,6 +82,9 @@ class AVLTree(object):
     node = self.root # Start looking for the key at the root node
 
     while not isinstance(node, NullAVLNode):
+      
+      search_steps_executed += 1
+      
       # If we Search the a node that has the same key we are looking for
       # return it
       if key == node.key:
@@ -84,7 +93,7 @@ class AVLTree(object):
         node = node.left_child
       else:
         node = node.right_child
-    # If we don't Search a node in the tree with the
+    # If we don't find a node in the tree with the
     # key we are looking for return empty node
     return NullAVLNode()
 
@@ -173,7 +182,7 @@ class AVLTree(object):
     # If the node we are deleting is the root
     # The root is now the child of that node (could be none)
     if isinstance(node.parent, NullAVLNode):
-       self.root = node_successor
+      self.root = node_successor
 
     # Check which child of the parent the current node we want to delete belongs to
     # If the node is the parent's right child
@@ -201,7 +210,7 @@ class AVLTree(object):
 
     if not isinstance(current_node, NullAVLNode):
 
-       # Print the left side of the parent
+      # Print the left side of the parent
       if not isinstance(current_node.left_child, NullAVLNode):
         self.PrintTree(current_node.left_child, depth-1)
         print '\t' * (depth-1) + '    \\'
@@ -231,8 +240,8 @@ class AVLTree(object):
     if not isinstance(node.parent, NullAVLNode):
       self.UpdateHeightAndBalance(node.parent)
 
-        	
-  def LeftRotate(self,x):
+
+  def LeftRotate(self,x):    
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
       print 'LeftRotate: Tree is empty.'
@@ -259,7 +268,7 @@ class AVLTree(object):
     x.height = max(x.left_child.height, x.right_child.height) + 1
 
 
-  def RightRotate(self,y):
+  def RightRotate(self,y):    
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
       print 'RightRotate: Tree is empty.'
@@ -269,7 +278,7 @@ class AVLTree(object):
     y.left_child = x.right_child
 
     if not isinstance(x.right_child, NullAVLNode):
-       x.right_child.parent = y
+      x.right_child.parent = y
 
     x.parent = y.parent
 
@@ -320,3 +329,66 @@ class NullAVLNode(object):
   def __init__(self):
     self.key = 'null'
     self.height = -1
+    
+
+def CreateAVLTree(size):
+  tree = AVLTree()
+  
+  for i in range(size):
+    tree.Insert(i)
+    
+#   tree.PrintTree(tree.root, tree.root.height)
+  
+  return tree
+    
+
+def GraphRuntime(x,y):
+  c1 = .5
+  c2 = 2
+  
+  c1_y = [c1*math.log(i, 2) for i in x]
+  c2_y = [c2*math.log(i, 2) for i in x]
+  
+  a = plt.scatter(x,y,color='r')
+  b = plt.scatter(x,c1_y,color='g')
+  c = plt.scatter(x,c2_y,color='b')
+  
+  plt.yscale('log')
+  plt.xscale('log')
+  plt.show()
+  
+
+def RuntimeOfSearch():
+  global search_steps_executed
+  input_size_and_steps_executed = {}
+  
+  for i in range(4, 16):
+    n = 50
+    average_search_steps_executed = 0.0
+    for _ in range(n):
+      size = 2**i
+      tree = CreateAVLTree(size)
+      key = random.randint(0,size)
+      tree.Search(key)
+      average_search_steps_executed += search_steps_executed
+      search_steps_executed = 0.0
+    
+    average_search_steps_executed = average_search_steps_executed/n
+    input_size_and_steps_executed[size] = average_search_steps_executed
+    print 'Size of tree %d nodes and average search steps executed %f' % (size, average_search_steps_executed)
+    
+  print 'Input size and number of steps executed', input_size_and_steps_executed
+  
+  GraphRuntime(input_size_and_steps_executed.keys(), input_size_and_steps_executed.values())
+  
+
+    
+  
+
+
+def Main():
+  RuntimeOfSearch()
+  
+  
+if __name__ == '__main__':
+  Main()
