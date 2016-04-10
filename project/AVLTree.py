@@ -17,7 +17,16 @@ import random
 import matplotlib.pyplot as plt
 import math
 
-search_steps_executed = 0.0
+steps_executed = 0.0
+space_used = 0.0
+
+xlabel = ''
+ylabel = ''
+title = ''
+filename = ''
+c1 = 0.0
+c2 = 0.0
+
 
 class AVLTree(object):
 
@@ -26,7 +35,9 @@ class AVLTree(object):
     self.root = NullAVLNode()
   
 
-  def Insert(self,key): 
+  def Insert(self,key):
+    global steps_executed, space_used
+     
     # Create a new node with the key argument of insert
     new_node = AVLNode(key) 
 
@@ -35,6 +46,8 @@ class AVLTree(object):
 
     # If there are nodes in the tree
     while not isinstance(current_node, NullAVLNode):
+      
+      steps_executed += 1
 
       parent_node = current_node # Set y to the parent node
 
@@ -63,16 +76,15 @@ class AVLTree(object):
     # Set the height of the new node
       parent_node.right_child = new_node
 
-    # Update heights of the new node and the nodes above it
+    # Update heights and balance of the new node and the nodes around it
     self.UpdateHeightAndBalance(new_node)
-
-    # TODO: Need to balance the tree after an insert
-    self.UpdateBalance(new_node)
+    
+    space_used += 1
 
 
   def Search(self, key):
     
-    global search_steps_executed
+    global steps_executed
   
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
@@ -83,7 +95,7 @@ class AVLTree(object):
 
     while not isinstance(node, NullAVLNode):
       
-      search_steps_executed += 1
+      steps_executed += 1
       
       # If we Search the a node that has the same key we are looking for
       # return it
@@ -98,6 +110,7 @@ class AVLTree(object):
     return NullAVLNode()
 
   def Delete(self, key):
+    global space_used
 
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
@@ -108,7 +121,7 @@ class AVLTree(object):
     node = self.Search(key)
 
     if isinstance(node, NullAVLNode):
-      print 'Delete: Key not found in tree.'
+      print 'Delete: Key not found in tree %d' % key
       return
 
     # If the key is found in a leaf node
@@ -166,12 +179,19 @@ class AVLTree(object):
       successor.left_child.parent = successor
       
       self.UpdateHeightAndBalance(x)
+      
+      space_used -= 1
 
 
   def SearchSuccessor(self, node):
+    global steps_executed
+    
     # Set node to its right child
     node = node.right_child
     while not isinstance(node.left_child, NullAVLNode):
+      
+      steps_executed += 1
+      
       # Traverse down left side of right child
       # to Search successor at the end
       node = node.left_child
@@ -179,6 +199,9 @@ class AVLTree(object):
 
 
   def Transplant(self, node, node_successor):
+    global steps_executed
+    steps_executed += 1
+    
     # If the node we are deleting is the root
     # The root is now the child of that node (could be none)
     if isinstance(node.parent, NullAVLNode):
@@ -225,6 +248,8 @@ class AVLTree(object):
 
 
   def UpdateHeightAndBalance(self, node):
+    global steps_executed
+    steps_executed += 1 
 
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
@@ -235,13 +260,16 @@ class AVLTree(object):
 
     # Calculate the height by taking the maximum height of the children
     # and adding 1
-    node.height = max(node.left_child.height, node.right_child.height) + 1
+    node.height = max(node.left_child.height, node.right_child.height) + 1   
 
     if not isinstance(node.parent, NullAVLNode):
       self.UpdateHeightAndBalance(node.parent)
 
 
-  def LeftRotate(self,x):    
+  def LeftRotate(self,x):
+    global steps_executed
+    steps_executed += 1
+        
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
       print 'LeftRotate: Tree is empty.'
@@ -268,7 +296,10 @@ class AVLTree(object):
     x.height = max(x.left_child.height, x.right_child.height) + 1
 
 
-  def RightRotate(self,y):    
+  def RightRotate(self,y):  
+    global steps_executed
+    steps_executed += 1
+      
     # Check if the tree is empty
     if isinstance(self.root, NullAVLNode):
       print 'RightRotate: Tree is empty.'
@@ -343,8 +374,7 @@ def CreateAVLTree(size):
     
 
 def GraphRuntime(x,y):
-  c1 = .5
-  c2 = 2
+  global xlabel, ylabel, title, filename, c1, c2
   
   c1_y = [c1*math.log(i, 2) for i in x]
   c2_y = [c2*math.log(i, 2) for i in x]
@@ -355,12 +385,138 @@ def GraphRuntime(x,y):
   
   plt.yscale('log')
   plt.xscale('log')
-  plt.show()
+  plt.xlabel(xlabel)
+  plt.ylabel(ylabel)
+  plt.legend((a,b,c), ('f(n)', 'c1*g(n)', 'c2*g(n)'), loc=2)
+  plt.title(title)
+  plt.savefig(filename)
+  plt.close()
   
+def GraphSpace(x,y):
+  global xlabel, ylabel, title, filename, c1, c2
+  
+  c1_y = [c1*i for i in x]
+  c2_y = [c2*i for i in x]
+  
+  a = plt.scatter(x,y,color='r')
+  b = plt.scatter(x,c1_y,color='g')
+  c = plt.scatter(x,c2_y,color='b')
+  
+  plt.yscale('log')
+  plt.xscale('log')
+  plt.xlabel(xlabel)
+  plt.ylabel(ylabel)
+  plt.legend((a,b,c), ('f(n)', 'c1*g(n)', 'c2*g(n)'), loc=2)
+  plt.title(title)
+  plt.savefig(filename)
+  plt.close()
+  
+  
+def SpaceUsed():
+  global space_used
+  global xlabel, ylabel, title, filename, c1, c2
+  input_size_and_space_used = {}
+  
+  for i in range(4, 16):
+    n = 50
+    average_space_used = 0.0
+    for _ in range(n):
+      size = 2**i
+      space_used = 0.0
+      CreateAVLTree(size)
+      average_space_used += space_used
+      space_used = 0.0
+    
+    average_space_used = average_space_used/n
+    input_size_and_space_used[size] = average_space_used
+    print 'Size of tree %d nodes and average space used %f' % (size, average_space_used)
+  
+  
+  
+  xlabel = 'Number of nodes in the avl tree'
+  ylabel = 'Number of operations'
+  title = 'Space used by an avl tree'
+  filename = 'space_used.png'
+  c1 = .5
+  c2 = 2  
+  
+  GraphSpace(input_size_and_space_used.keys(), input_size_and_space_used.values())
+  
+  
+def RuntimeOfDelete():
+  global steps_executed
+  global xlabel, ylabel, title, filename, c1, c2
+  
+  input_size_and_steps_executed = {}
+  
+  for i in range(4, 16):
+    n = 50
+    average_delete_steps_executed = 0.0
+    for _ in range(n):
+      size = 2**i
+      tree = CreateAVLTree(size)
+      steps_executed = 0.0
+      key = random.randint(0,size-1)
+      tree.Delete(key)
+      average_delete_steps_executed += steps_executed
+      steps_executed = 0.0
+     
+    average_delete_steps_executed = average_delete_steps_executed/n
+    input_size_and_steps_executed[size] = average_delete_steps_executed
+    print 'Size of tree %d nodes and average insert steps executed %f' % (size, average_delete_steps_executed)
+      
+#   print 'Input size and number of steps executed', input_size_and_steps_executed
+  
+  xlabel = 'Number of nodes in the avl tree'
+  ylabel = 'Number of operations'
+  title = 'Runtime of deleting a node from an avl tree'
+  filename = 'delete_runtime.png'
+  c1 = 1
+  c2 = 4
+  
+  GraphRuntime(input_size_and_steps_executed.keys(), input_size_and_steps_executed.values())
+
+
+def RuntimeOfInsert():
+  global steps_executed
+  global xlabel, ylabel, title, filename, c1, c2
+    
+  input_size_and_steps_executed = {}
+  
+  for i in range(4, 16):
+    n = 50
+    average_insert_steps_executed = 0.0
+    for _ in range(n):
+      size = 2**i
+      tree = CreateAVLTree(size)
+      steps_executed = 0.0
+      key = random.randint(0,size-1)
+      tree.Insert(key)
+      average_insert_steps_executed += steps_executed
+      steps_executed = 0.0
+     
+    average_insert_steps_executed = average_insert_steps_executed/n
+    input_size_and_steps_executed[size] = average_insert_steps_executed
+    print 'Size of tree %d nodes and average insert steps executed %f' % (size, average_insert_steps_executed)
+      
+#   print 'Input size and number of steps executed', input_size_and_steps_executed
+  
+  xlabel = 'Number of nodes in the avl tree'
+  ylabel = 'Number of operations'
+  title = 'Runtime of inserting a node into an avl tree'
+  filename = 'insert_runtime.png'
+  c1 = 1
+  c2 = 4
+  
+  GraphRuntime(input_size_and_steps_executed.keys(), input_size_and_steps_executed.values())
+
 
 def RuntimeOfSearch():
-  global search_steps_executed
+  global steps_executed
+  global xlabel, ylabel, title, filename, c1, c2
+  
   input_size_and_steps_executed = {}
+
   
   for i in range(4, 16):
     n = 50
@@ -368,26 +524,33 @@ def RuntimeOfSearch():
     for _ in range(n):
       size = 2**i
       tree = CreateAVLTree(size)
-      key = random.randint(0,size)
+      steps_executed = 0.0
+      key = random.randint(0,size-1)
       tree.Search(key)
-      average_search_steps_executed += search_steps_executed
-      search_steps_executed = 0.0
+      average_search_steps_executed += steps_executed
+      steps_executed = 0.0
     
     average_search_steps_executed = average_search_steps_executed/n
     input_size_and_steps_executed[size] = average_search_steps_executed
     print 'Size of tree %d nodes and average search steps executed %f' % (size, average_search_steps_executed)
     
-  print 'Input size and number of steps executed', input_size_and_steps_executed
+#   print 'Input size and number of steps executed', input_size_and_steps_executed
+  
+  xlabel = 'Number of nodes in the avl tree'
+  ylabel = 'Number of operations'
+  title = 'Runtime of searching for a node in an avl tree'
+  filename = 'search_runtime.png'
+  c1 = .5
+  c2 = 2
   
   GraphRuntime(input_size_and_steps_executed.keys(), input_size_and_steps_executed.values())
   
 
-    
-  
-
-
 def Main():
-  RuntimeOfSearch()
+#   RuntimeOfSearch()
+#   RuntimeOfInsert()
+#   RuntimeOfDelete()
+  SpaceUsed()
   
   
 if __name__ == '__main__':
