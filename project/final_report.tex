@@ -18,10 +18,18 @@
 \addcontentsline{toc}{subsection}{What is an AVL Tree?}
 \subsection*{What is an AVL Tree?}
 
-An AVL tree is a binary search tree that is ``self-balancing'' \cite{wiki:avl}.
+An AVL tree is a binary search tree that is ``self-balancing''.  This means
+after each operation on the tree like insertion or deletion, the heights of each
+node's children differ by at most 1.  The height of a node is the number of
+nodes in the longest path from a root node to it.  A root node would have a
+height of 0 while its parent, if the root node was its only child, would have a 
+height of 1.
 
 \addcontentsline{toc}{subsection}{What problems does it solve?}
 \subsection*{What problems does it solve?}
+AVL trees, like binary trees, are used for sorting, storing, and retrieving
+information.  Their advantage is that they can perform these operations faster
+than if the information was stored in an array.
 
 \addcontentsline{toc}{section}{Mathemetical Analysis of Correctness, Runtime, and Space}
 \section*{Mathemetical Analysis of Correctness, Runtime, and Space}
