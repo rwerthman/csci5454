@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 
+\usepackage{graphicx}
+
 \title{CSCI 5454 Final Project: AVL Tree}
 \author{Robert Werthman}
 \date{}
@@ -23,8 +25,8 @@ after each operation, like an insertion or deletion, on the tree the heights of
 each node's children differ by at most 1.  The height of a node is the number of
 nodes in the longest path from a root node to it.  For instance, a root node
 would have a height of 0 while its parent node, if the root node was its only child, would
-have a height of 1.  An AVL tree is ``self-balancing'' after each operation on
-the tree the heights and balance of the nodes are readjusted by the tree,
+have a height of 1.  An AVL tree is ``self-balancing'' because after each
+operation on the tree the heights and balance of the nodes are readjusted by the tree,
 itself \cite{wiki:avl}.
 
 \addcontentsline{toc}{subsection}{What problems does it solve?}
@@ -64,12 +66,13 @@ trees could be used instead.
 To show the numerical characterization of the space and time performance of an
 AVL tree, I created a randomized input generator to show the runtime and space
 of the three operations that can be performed on the AVL tree: insertion,
-deletion, and search.  I ran 12 iterations for each of these operations, varying
-the number of nodes $n$ in the trees by a factor of 2.  $n$ takes on all of
-the values in the set $\{2^4,\,2^5,\ldots,2^{16}\}$ for each operation.  The
-keys for each of the nodes in the $n$ node tree were randomly chosen from the
-set $\{0,\,,1,\ldots,2^n$ and then inserted into the tree to create a tree of
-size $n$.\\
+deletion, and search.  I ran 12 iterations for each of these tree operations,
+varying the number of nodes $n$ in the trees by a factor of 2.  I ran each of
+these iterations 50 times each to find the average number of operations given a
+value of $n$.  $n$ takes on all of the values in the set
+$\{2^4,\,2^5,\ldots,2^{16}\}$ for each tree operation.
+The keys for each of the nodes in the $n$ node tree were randomly chosen from 
+the set $\{0,\,,1,\ldots,2^n$ and then inserted into the tree to create a tree of size $n$.\\
 \\
 Once the tree was generated for an iteration, I then chose a random key
 from the set of keys that were already in the tree, and I either searched for
@@ -83,19 +86,82 @@ iteration.\\
 \\
 Once all the iterations were complete for a specific operation, I took the $n$
 for each iteration and the values of the global variables for each iteration and
-graphed them as a function $g(x)$.  The values of $n$ were placed on the
+graphed them as a function $f(x)$.  The values of $n$ were placed on the
 x-axis and the values of the globabl variables were placed on the y-axis.  The graphs use the logarithmic
 scale instead of the linear scale because the logarthmic scale more clearly
 shows what $n$ and the values of the global variables are doing.
-I then graphed two other lines which represent the function $f(x)$, which is the
-function that bounds $g(x)$. $f(x)$ is then
-multiplied by two different constants, either $c_1$ or $c_2$, producing two
-separate lines.
+I then graphed one other line representing the function $g(x)$, which is
+the function that bounds $f(x)$. $g(x)$ is then
+multiplied by a constant, $c_2$, producing a separate line.
 \addcontentsline{toc}{subsection}{Characterization of Runtime}
 \subsection*{Characterization of Runtime}
 
-\addcontentsline{toc}{subsection}{Characterization of Space}
-\subsection*{Characterization of Space}
+\addcontentsline{toc}{subsubsection}{Runtime of Search}
+\subsubsection*{Runtime of Search}
+\begin{figure}[h]
+\caption{Graph of the runtime for searching for a key in different-sized AVL
+trees}
+\includegraphics[width=9cm]{search_runtime.png}
+\centering
+\end{figure}
+\noindent
+The above graph shows the runtime for searching for a key in different-sized
+avl trees.
+The function that bounds the runtime of search is $g(n)=log(n)$ multiplied by
+the constant $c_2=2$.
+As can be seen in the graph the
+runtime of search is $O(log(n))$, with the function $log(n)$ bounding the
+search runtime from above.  This means given an AVL tree of size $n$, it will
+take $O(log(n))$ operations to search for key in the tree.
+
+\addcontentsline{toc}{subsubsection}{Runtime of Insert}
+\subsubsection*{Runtime of Insert}
+\begin{figure}[h]
+\caption{Graph of the runtime for inserting a key into different-sized AVL
+trees}
+\includegraphics[width=9cm]{insert_runtime.png}
+\centering
+\end{figure}
+\noindent
+The above graph shows the runtime for inserting a key into different-sized AVL
+trees.  The function that bounds the runtime of insert is $g(n)=log(n)$
+multiplied by the constant $c_2=4$.  As can be seen in the graph the runtime of
+insert is $O(log(n))$, with the function $log(n)$ bounding the insert runtime
+from above.  This means given an AVL tree of size $n$, it will take $O(log(n))$
+operations to insert a key into the tree.
+
+\addcontentsline{toc}{subsubsection}{Runtime of Delete}
+\subsubsection*{Runtime of Delete}
+\begin{figure}[h]
+\caption{Graph of the runtime for deleting a key from different-sized AVL
+trees}
+\includegraphics[width=9cm]{delete_runtime.png}
+\centering
+\end{figure}
+\noindent
+The above graph shows the runtime of deleting a key from different-sized AVL
+trees.  The function that bounds the runtime of delete is $g(n)=log(n)$
+multiplied by the constant $c_2=4$.  As can be seen in the graph the runtime of
+delete is $O(log(n))$, with the function $log(n)$ bounding the delete runtime
+from above.  This means given an AVL tree of size $n$, it will take $O(log(n))$
+operations to delete a key from the tree.
+
+\addcontentsline{toc}{subsection}{Characterization of Space Usage}
+\subsection*{Characterization of Space Usage}
+\begin{figure}[h]
+\caption{Graph of the space used by different-size AVL trees}
+\includegraphics[width=9cm]{space_used.png}
+\centering
+\end{figure}
+\noindent
+The above graph shows the space used by different-size AVL trees.  The functions
+that bounds the space used is $g(n) = n$ multiplied by the constant $c_2 = 2$. 
+As can be seen in the graph the space that is used by an AVL tree is $O(n)$,
+with the function $n$ bounding the space used from above.  This means that given
+an AVL tree of size $n$, there will be exaclty $n$ nodes in the tree.  With a
+tree of size $n$, if a node is inserted there will be $n+1$ nodes in the tree. 
+With a tree of size $n$, if a node is deleted there will be $n-1$ nodes in the
+tree.
 
 \addcontentsline{toc}{section}{Extensions, Improvements, and Recent Work}
 \section*{Extensions, Improvements, and Recent Work}

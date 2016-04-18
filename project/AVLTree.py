@@ -376,18 +376,19 @@ def CreateAVLTree(size):
 def GraphRuntime(x,y):
   global xlabel, ylabel, title, filename, c1, c2
   
-  c1_y = [c1*math.log(i, 2) for i in x]
+#   c1_y = [c1*math.log(i, 2) for i in x]
   c2_y = [c2*math.log(i, 2) for i in x]
   
   a = plt.scatter(x,y,color='r')
-  b = plt.scatter(x,c1_y,color='g')
+#   b = plt.scatter(x,c1_y,color='g')
   c = plt.scatter(x,c2_y,color='b')
   
   plt.yscale('log')
   plt.xscale('log')
   plt.xlabel(xlabel)
   plt.ylabel(ylabel)
-  plt.legend((a,b,c), ('f(n)', 'c1*g(n)', 'c2*g(n)'), loc=2)
+#   plt.legend((a,b,c), ('f(n)', 'c1*g(n)', 'c2*g(n)'), loc=2)
+  plt.legend((a,c), ('f(n)', 'c2*g(n)'), loc=2)
   plt.title(title)
   plt.savefig(filename)
   plt.close()
@@ -395,18 +396,19 @@ def GraphRuntime(x,y):
 def GraphSpace(x,y):
   global xlabel, ylabel, title, filename, c1, c2
   
-  c1_y = [c1*i for i in x]
+#   c1_y = [c1*i for i in x]
   c2_y = [c2*i for i in x]
   
-  a = plt.scatter(x,y,color='r')
-  b = plt.scatter(x,c1_y,color='g')
+  a = plt.scatter(x,y,color='g')
+#   b = plt.scatter(x,c1_y,color='g')
   c = plt.scatter(x,c2_y,color='b')
   
   plt.yscale('log')
   plt.xscale('log')
   plt.xlabel(xlabel)
   plt.ylabel(ylabel)
-  plt.legend((a,b,c), ('f(n)', 'c1*g(n)', 'c2*g(n)'), loc=2)
+#   plt.legend((a,b,c), ('f(n)', 'c1*g(n)', 'c2*g(n)'), loc=2)
+  plt.legend((a,c), ('f(n)', 'c2*g(n)'), loc=2)
   plt.title(title)
   plt.savefig(filename)
   plt.close()
