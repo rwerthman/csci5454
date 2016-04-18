@@ -19,17 +19,30 @@
 \subsection*{What is an AVL Tree?}
 
 An AVL tree is a binary search tree that is ``self-balancing''.  This means
-after each operation on the tree like insertion or deletion, the heights of each
-node's children differ by at most 1.  The height of a node is the number of
-nodes in the longest path from a root node to it.  A root node would have a
-height of 0 while its parent, if the root node was its only child, would have a 
-height of 1.
+after each operation, like an insertion or deletion, on the tree the heights of 
+each node's children differ by at most 1.  The height of a node is the number of
+nodes in the longest path from a root node to it.  For instance, a root node
+would have a height of 0 while its parent node, if the root node was its only child, would
+have a height of 1.  An AVL tree is ``self-balancing'' after each operation on
+the tree the heights and balance of the nodes are readjusted by the tree,
+itself \cite{wiki:avl}.
 
 \addcontentsline{toc}{subsection}{What problems does it solve?}
 \subsection*{What problems does it solve?}
-AVL trees, like binary trees, are used for sorting, storing, and retrieving
+AVL trees, like binary trees, are used for storing and retrieving
 information.  Their advantage is that they can perform these operations faster
-than if the information was stored in an array.
+than if the information was stored in an array.  As will be shown later in this
+paper, storing and retrieving takes $log(n)$ time for an AVL tree
+while performing the same operations on an array could take up to $n$ time.
+
+\addcontentsline{toc}{subsection}{Where is it used?}
+\subsection*{Where is it used?}
+Red-black trees, another kind of self-balancing binary search tree, are
+typically used instead of AVL trees in real world applications
+\cite{wiki:red-black}.
+Red-black trees can be found in the C++ Standard Library (std) as the underlying data structure
+for the std::map and std::set containers and it is reasonable to think that AVL
+trees could be used instead.
 
 \addcontentsline{toc}{section}{Mathemetical Analysis of Correctness, Runtime, and Space}
 \section*{Mathemetical Analysis of Correctness, Runtime, and Space}
@@ -48,7 +61,36 @@ than if the information was stored in an array.
 
 \addcontentsline{toc}{subsection}{Description of the code invloved in the Numerical Characterization}
 \subsection*{Description of the code invloved in the Numerical Characterization}
-
+To show the numerical characterization of the space and time performance of an
+AVL tree, I created a randomized input generator to show the runtime and space
+of the three operations that can be performed on the AVL tree: insertion,
+deletion, and search.  I ran 12 iterations for each of these operations, varying
+the number of nodes $n$ in the trees by a factor of 2.  $n$ takes on all of
+the values in the set $\{2^4,\,2^5,\ldots,2^{16}\}$ for each operation.  The
+keys for each of the nodes in the $n$ node tree were randomly chosen from the
+set $\{0,\,,1,\ldots,2^n$ and then inserted into the tree to create a tree of
+size $n$.\\
+\\
+Once the tree was generated for an iteration, I then chose a random key
+from the set of keys that were already in the tree, and I either searched for
+it, insertd it, or deleted it.  To keep track of the runtime when performing
+these operations on the tree, I kept a global variable as a counter and
+incremented it every time an atomic operation occurred.  To keep track of the space used when
+performing these operations on the tree, I kept a global variable as a counter
+and incremented it when a node was inserted and decremented it when a node was
+removed from the tree.  These global variables were reset after each
+iteration.\\
+\\
+Once all the iterations were complete for a specific operation, I took the $n$
+for each iteration and the values of the global variables for each iteration and
+graphed them as a function $g(x)$.  The values of $n$ were placed on the
+x-axis and the values of the globabl variables were placed on the y-axis.  The graphs use the logarithmic
+scale instead of the linear scale because the logarthmic scale more clearly
+shows what $n$ and the values of the global variables are doing.
+I then graphed two other lines which represent the function $f(x)$, which is the
+function that bounds $g(x)$. $f(x)$ is then
+multiplied by two different constants, either $c_1$ or $c_2$, producing two
+separate lines.
 \addcontentsline{toc}{subsection}{Characterization of Runtime}
 \subsection*{Characterization of Runtime}
 
