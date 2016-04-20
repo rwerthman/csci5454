@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\usepackage{graphicx}
+\usepackage{graphicx,amsmath}
 
 \title{CSCI 5454 Final Project: AVL Tree}
 \author{Robert Werthman}
@@ -23,10 +23,10 @@
 An AVL tree is a binary search tree that is ``self-balancing''.  This means
 after each operation, like an insertion or deletion, on the tree the heights of 
 each node's children differ by at most 1.  The height of a node is the number of
-nodes in the longest path from a root node to it.  For instance, a root node
-would have a height of 0 while its parent node, if the root node was its only child, would
-have a height of 1.  An AVL tree is ``self-balancing'' because after each
-operation on the tree the heights and balance of the nodes are readjusted by the tree,
+nodes in the longest path from it to a leaf node.  A leaf node
+always has a height of 0. Its parent node, if the leaf
+node was the parent's only child, would have a height of 1.  An AVL tree is
+``self-balancing'' because after each operation on the tree the heights and balance of the nodes are readjusted by the tree,
 itself \cite{wiki:avl}.
 
 \addcontentsline{toc}{subsection}{What problems does it solve?}
@@ -51,6 +51,44 @@ trees could be used instead.
 
 \addcontentsline{toc}{subsection}{Correctness}
 \subsection*{Correctness}
+The correctness of the AVL tree relies on maintaining two invariants
+\begin{enumerate}
+  \item The height of a node is the number of nodes in the longest path from it
+  to a leaf node.
+  \item The heights of each node's children differ by at most 1.  This is
+  demonstrated by the equation $|x-y| \le 1$ where x is the height of the left
+  child node and y is the height of the right child node.
+\end{enumerate}
+\begin{figure}[h]
+\caption{An AVL tree with a single node}
+\includegraphics[width=9cm]{single_node_tree.png}
+\centering
+\end{figure}
+\noindent
+To show these invariants are maintained we start with a single, leaf node in a
+tree as the base case as shown in Figure 1.  First, we let the height of a non
+existent node be equal to -1.
+This means a single node in a tree has two non existent children nodes each
+with a height of -1.  To find the height of the single node in the tree we take the max of the
+heights of the children and then add 1 to it to always maintain the first
+invariant.  In this case max(-1, -1) = -1 and adding 1 to this result gives a
+height of 0 for the single node in the tree.  To make sure the second invariant
+is maintained we use the given equation
+$$
+|x-y| \le 1
+$$
+In the case of a single, leaf node the height of the left child is
+-1 and the height of the right child is -1.  Substituting these values in for
+$x$ and $y$ produces the equation
+\begin{align*}
+|(-1)-(-1)| &= 0\\
+&\le 1
+\end{align*}
+Since $0 \le 1$ the second invariant is maintained.\\
+\\
+Next it must be inductively shown that the two invariants hold for every AVL
+tree with size greater than 1 node.  Concerning the first invariant, every time
+a new node is inserted it will be leaf node with a height of 0.  
 
 \addcontentsline{toc}{subsection}{Runtime}
 \subsection*{Runtime}
