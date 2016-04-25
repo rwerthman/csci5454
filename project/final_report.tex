@@ -87,39 +87,79 @@ $x$ and $y$ produces the equation
 &\le 1
 \end{align*}
 Since $0 \le 1$ the second invariant is maintained.
-\addcontentsline{toc}{subsubsection}{Inductive Proof of the first invariant}
-\subsubsection*{Inductive Proof of the first invariant}
+\addcontentsline{toc}{subsubsection}{Inductive Proof of the First Invariant}
+\subsubsection*{Inductive Proof of the First Invariant}
 Next it must be inductively shown that the two invariants hold for every AVL
 tree with size greater than 1 node.  Concerning the first invariant, every time
 a new node is inserted into the AVL tree, it will be a leaf node with a height
 of 0 as was demonstrated in the base case.  Once an insertion takes place, the
-AVL tree updates the height of all of the nodes above the node that was 
-just inserted.  This is done by recursing through 
+AVL tree updates the the balances and heights of the new node and all of the
+nodes above it.  This is done by recursing through 
 the parent nodes starting with the inserted node and moving upwards to the
 root.  The height of each parent node is equal to the max of
 the childrens' heights plus 1.  Since this update of the heights takes place for
 every node inserted into the tree, the first invariant holds for any tree of
 size greater than 1 nodes.\\
-\addcontentsline{toc}{subsubsection}{Inductive Proof of the second invariant}
-\subsubsection*{Inductive Proof of the second invariant}
+\addcontentsline{toc}{subsubsection}{Inductive Proof of the Second Invariant}
+\subsubsection*{Inductive Proof of the Second Invariant}
 To show the correctness of the second invariant we have to look at the possible
 cases of a tree being out of balance and how those are corrected.
 \begin{figure}[h]
 \caption{Left and Right Tree Rotations}
-\includegraphics[width=11cm]{tree_rotations.png}
+\includegraphics[width=12cm]{tree_rotations.png}
 \centering
 \end{figure}
 \noindent
 In order for an AVL tree to remain in balance, the tree has to
 perform what are known as tree rotations after nodes are inserted (and deleted)
 \cite{wiki:avl}.
-These can be seen in Figure 2.  During tree rotations, the shape of a tree is
-changed in order to change the heights of subtrees
+The basic two rotations can be seen in Figure 2.  During tree rotations, the
+shape of a tree is changed in order to change the heights of subtrees
 at a particular node.  For example, doing a right rotation of the tree in
 Figure 2 ``increases'' the height of node A while ``decreasing'' the height of
 node B \cite{wiki:tree-rotations}.  These can be judiciously used to rebalance
-the tree and maintain the second invariant of an AVL tree.
-  
+the tree and maintain the second invariant of an AVL tree.\\
+\\
+When a node is inserted, the first thing that the tree does is check
+the balance at the inseted node and all of the nodes above to
+ensure that the equation for the second invariant is maintained.  If the
+balances of any of the nodes do not satsify the second invariant equation, tree
+rotations must take place in order to balance the tree.  
+Four cases of an unbalanced tree may occur, as shown in figures 3-6, after a node
+is inserted into a tree that require one or more rotations to rebalance a tree
+\cite{tutorialspoint:avl}.
+\begin{figure}[h]
+\caption{Right Unbalanced Tree}
+\includegraphics[width=12cm]{right_unbalanced_tree.png}
+\centering
+\end{figure}
+\noindent
+\begin{figure}[h]
+\caption{Left Unbalanced Tree}
+\includegraphics[width=12cm]{left_unbalanced_tree.png}
+\centering
+\end{figure}
+\noindent
+\begin{figure}[h]
+\caption{Right Left Unbalanced Tree}
+\includegraphics[width=12cm]{right_left_unbalanced_tree.png}
+\centering
+\end{figure}
+\noindent
+\begin{figure}[h]
+\caption{Left Right Unbalanced Tree}
+\includegraphics[width=12cm]{left_right_unbalanced_tree.png}
+\centering
+\end{figure}
+\noindent
+Once one or more rotations of the subtrees of a node take place and that node
+is balanced according to the second invariant equation, the height of that node
+and any of the other nodes that participated in the rotation are updated.  The
+tree then recursively checks the node's parents, grandparents, etc. 
+until the root of the tree is reached for correct balances, performing any 
+rotations if necessary, and updating the heights as it goes.  This method
+ensures that given any number of inserted nodes, the tree with always be
+rebalanced and each node will have the correct heights.
 
 \addcontentsline{toc}{subsection}{Runtime}
 \subsection*{Runtime}
