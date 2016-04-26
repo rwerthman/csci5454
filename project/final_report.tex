@@ -163,10 +163,37 @@ rebalanced and each node will have the correct heights.
 
 \addcontentsline{toc}{subsection}{Runtime}
 \subsection*{Runtime}
+The runtime of any of the operations of the AVL tree depend on its height,
+which is the longest path from the root node to a leaf -- also known as its
+longest branch.  When a node is inserted into an AVL tree it will traverse at
+most the number of nodes in the longest branch.  We need to show that the height
+of an AVL tree can be bounded.\\
+\\
+Let the root of the AVL tree have a height of $h$.  
+One child of the root will have a height of $h-1$ and the other, if we follow 
+the property of an AVL tree that says the heights of the children differ by at 
+most 1, will have a minimum height of $h-2$.  Let $n_h$ be the number of nodes
+in the tree including the root.  Let $n_{h-1}$ be the number of nodes underneath
+and including the child of the root with height $h-1$ and $n_{h-2}$ be the
+number of nodes underneath and including the child with height $h-2$.  We can
+construct the total size of the tree $n_h$ by using the recurrence reation
+$$
+n_h = n_{h-1} + n_{h-2} + 1
+$$
+We can bound the height of the AVL tree by unrolling this recurrence relation as
+follows:
+\begin{align*}
+n_h &= n_{h-1} + n_{h-2} + 1\\
+n_{h-1} &= n_{h-2} + n_{h-3} + 1\\
+n_h &= (n_{h-2} + n_{h-3} + 1) + n_{h-2} + 1\\
+\end{align*}
+
 
 \addcontentsline{toc}{subsection}{Space}
 \subsection*{Space}
-The size of an AVL is the size of the nodes inserted and removed from it.
+The size of an AVL is the size of the nodes inserted.  If
+there are $n + 1$ nodes inserted in the tree, its size will be $n + 1$.  If
+there are $n - 1$ nodes removed from the tree, its size will be $n-1$.
 
 \addcontentsline{toc}{section}{Numerical Characterization of Runtime and Space}
 \section*{Numerical Characterization of Runtime and Space}
