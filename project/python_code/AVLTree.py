@@ -1,6 +1,8 @@
-'''
+"""
+Definition of AVL tree class and methods.
+Runtime and Space analysis and graphing functions.
 
-Sources:
+Code Sources:
 ---------
   Introduction to Algorithms, Third Edition (page 294)
     - Insert, rotate, delete, Search successor methods of binary tree
@@ -12,7 +14,7 @@ Sources:
     - AVL Tree cases
   https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
     - Visualization of an avl tree for creating my tests
-'''
+"""
 import random
 import matplotlib.pyplot as plt
 import math
@@ -549,9 +551,9 @@ def RuntimeOfSearch():
   
 
 def Main():
-#   RuntimeOfSearch()
-#   RuntimeOfInsert()
-#   RuntimeOfDelete()
+  RuntimeOfSearch()
+  RuntimeOfInsert()
+  RuntimeOfDelete()
   SpaceUsed()
   
   

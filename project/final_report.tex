@@ -26,8 +26,8 @@ each node's children differ by at most 1.  The height of a node is the number of
 nodes in the longest path from it to a leaf node.  A leaf node
 always has a height of 0. Its parent node, if the leaf
 node was the parent's only child, would have a height of 1.  An AVL tree is
-``self-balancing'' because after each operation on the tree the heights and balance of the nodes are readjusted by the tree,
-itself \cite{wiki:avl}.
+``self-balancing'' because after each tree operation the heights and balance of
+the nodes are readjusted by the tree \cite{wiki:avl}.
 
 \addcontentsline{toc}{subsection}{What problems does it solve?}
 \subsection*{What problems does it solve?}
@@ -69,7 +69,7 @@ The correctness of the AVL tree relies on maintaining two invariants
 \noindent
 We will use the insertion operation to show these invariants are maintained. 
 We first start with a single, leaf node in a tree as the base case as shown in
-Figure 1.  First, we let the height of a non existent node be equal to -1.
+Figure 1.  First, we let the height of any non existent node be equal to -1.
 This means a single node in a tree has two non existent children nodes each
 with a height of -1.  To find the height of the single node in the tree we take the max of the
 heights of the children and then add 1 to it to always maintain the first
@@ -95,10 +95,10 @@ a new node is inserted into the AVL tree, it will be a leaf node with a height
 of 0 as was demonstrated in the base case.  Once an insertion takes place, the
 AVL tree updates the the balances and heights of the new node and all of the
 nodes above it.  This is done by recursing through 
-the parent nodes starting with the inserted node and moving upwards to the
+the parent nodes, starting with the inserted node and moving upwards to the
 root.  The height of each parent node is equal to the max of
-the childrens' heights plus 1.  Since this update of the heights takes place for
-every node inserted into the tree, the first invariant holds for any tree of
+the childrens' heights plus 1.  Since this update of the heights is bottom up
+and takes place for every node inserted into the tree, the first invariant holds for any tree of
 size greater than 1 nodes.\\
 \addcontentsline{toc}{subsubsection}{Inductive Proof of the Second Invariant}
 \subsubsection*{Inductive Proof of the Second Invariant}
@@ -114,7 +114,7 @@ In order for an AVL tree to remain in balance, the tree has to
 perform what are known as tree rotations after nodes are inserted.
 \cite{wiki:avl}.
 The basic two rotations can be seen in Figure 2.  During tree rotations, the
-shape of a tree is changed in order to change the heights of subtrees
+shape of a tree is modified in order to change the heights of subtrees
 at a particular node.  For example, doing a right rotation of the tree in
 Figure 2 ``increases'' the height of node A while ``decreasing'' the height of
 node B \cite{wiki:tree-rotations}.  These can be judiciously used to rebalance
@@ -126,7 +126,7 @@ ensure that the equation for the second invariant is maintained.  If the
 balances of any of the nodes do not satsify the second invariant equation, tree
 rotations must take place in order to balance the tree.  
 Four cases of an unbalanced tree may occur after a node is inserted into a tree,
-as shown in Figures 3-6, that require one or more
+as shown in Figures 3-6.  These may require one or more
 rotations to rebalance a tree \cite{tutorialspoint:avl}.
 \begin{figure}[h]
 \caption{Right Unbalanced Tree}
@@ -154,12 +154,12 @@ rotations to rebalance a tree \cite{tutorialspoint:avl}.
 \noindent
 Once one or more rotations of the subtrees of a node take place and that node
 is balanced according to the second invariant equation, the height of that node
-and any of the other nodes that participated in the rotation are updated.  The
+and any of the other nodes invovled in the rotation are updated.  The
 tree then recursively checks the node's parents, grandparents, etc. 
 until the root of the tree is reached for correct balances, performing any 
-rotations if necessary, and updating the heights as it goes.  This method of
-updating the balances and heights ensures that given any number of inserted
-nodes, the tree with always be rebalanced and each node will
+rotations if necessary, and updating the heights as it moves upwards through
+the tree.  This method of updating the balances and heights ensures that given
+any number of inserted nodes, the tree with always be rebalanced and each node will
 have the correct height.
 
 \addcontentsline{toc}{subsection}{Runtime}
@@ -177,12 +177,12 @@ most 1, will have a minimum height of $h-2$.  Let $n_h$ be the number of nodes
 in the tree including the root.  Let $n_{h-1}$ be the number of nodes underneath
 and including the child of the root with height $h-1$ and $n_{h-2}$ be the
 number of nodes underneath and including the child with height $h-2$.  We can
-construct the total size of the tree $n_h$ by using the equation
+construct the total size of the tree $n_h$ by using the recurrence relation
 $$
 n_h = n_{h-1} + n_{h-2} + 1
 $$
-We can bound the height of the AVL tree by reducing the equation with the
-following setps:
+We can bound the height of the AVL tree by unrolling the recurrence relation
+with the following setps:
 \begin{align}
 n_h &= n_{h-1} + n_{h-2} + 1\\
 n_{h-1} &= n_{h-2} + n_{h-3} + 1\\
@@ -192,13 +192,15 @@ n_h &> 2n_{h-2} > 2(2n_{h-4}) > 2(2(2n_{h-6})) > \ldots > 2^{\frac{h}{2}}\\
 \text{log }n_h &> \frac{h}{2}\\
 2\text{log }n_h &> h
 \end{align}
-This shows that the height $h$ of an AVL tree will always be less than O(log n).
-This means the runtime for any AVL tree operation will take O(log n).
+This shows that the height $h$ of an AVL tree will always be bounded by
+O(log $n$).
+This means the runtime for any AVL tree operation will be bounded by O(log $n$).
 \addcontentsline{toc}{subsection}{Space}
 \subsection*{Space}
-The space an AVL uses is equal the size of the nodes inserted.  If
-there are $n + 1$ nodes inserted in the tree, the space used will be $n + 1$. 
-If there are $n - 1$ nodes removed from the tree, the space used will be $n-1$.
+The space an AVL tree uses is equal the number of the nodes in the tree.  If
+there are $n + 1$ nodes inserted into the tree, the space used will be $n + 1$. 
+If there are $n - 1$ nodes removed from the tree, the space used will be $n-1$. 
+The space is equal to $\theta(n)$.
 
 \addcontentsline{toc}{section}{Numerical Characterization of Runtime and Space}
 \section*{Numerical Characterization of Runtime and Space}
@@ -209,12 +211,13 @@ To show the numerical characterization of the space and time performance of an
 AVL tree, I created a randomized input generator to show the runtime and space
 of the three operations that can be performed on the AVL tree: insertion,
 deletion, and search.  I ran 12 iterations for each of these tree operations,
-varying the number of nodes $n$ in the trees by a factor of 2.  I ran each of
+varying the number of nodes $n$ in the tree by a factor of 2.  I ran each of
 these iterations 50 times each to find the average number of operations given a
 value of $n$.  $n$ takes on all of the values in the set
 $\{2^4,\,2^5,\ldots,2^{16}\}$ for each tree operation.
-The keys for each of the nodes in the $n$ node tree were randomly chosen from 
-the set $\{0,\,,1,\ldots,2^n$ and then inserted into the tree to create a tree of size $n$.\\
+The keys for each of the nodes in the $n$ node-sized tree were randomly chosen
+from the set $\{0,1,\ldots,n\}$ and then inserted into the tree to create a
+tree of size $n$.\\
 \\
 Once the tree was generated for an iteration, I then chose a random key
 from the set of keys that were already in the tree, and I either searched for
@@ -250,11 +253,10 @@ trees}
 Figure 7 shows the runtime for searching for a key in different-sized
 avl trees.
 The function that bounds the runtime of search is $g(n)= \text{log }n$ multiplied by
-the constant $c_2=2$.
-As can be seen in the graph the
+the constant $c_2=2$.  As can be seen in the graph, the
 runtime of search is O(log $n$), with the function log $n$ bounding the
 search runtime from above.  This means given an AVL tree of size $n$, it will
-take  O(log $n$) operations to search for key in the tree.
+take O(log $n$) operations to search for key in the tree.
 
 \addcontentsline{toc}{subsubsection}{Runtime of Insert}
 \subsubsection*{Runtime of Insert}
@@ -296,10 +298,10 @@ operations to delete a key from the tree.
 \centering
 \end{figure}
 \noindent
-Figure 10 shows the space used by different-size AVL trees.  The functions
-that bounds the space used is $g(n) = n$ multiplied by the constant $c_2 = 2$. 
-As can be seen in the graph the space that is used by an AVL tree is O($n$),
-with the function $n$ bounding the space used from above.  This means that given
+Figure 10 shows the space used by different-size AVL trees.  The function
+that bounds the space used by an AVl tree is $g(n) = n$ multiplied by the
+constant $c_2 = 2$.  As can be seen in the graph the space that is used by an
+AVL tree is O($n$), with the function $n$ bounding the space used from above.  This means that given
 an AVL tree of size $n$, there will be exaclty $n$ nodes in the tree.  With a
 tree of size $n$, if a node is inserted there will be $n+1$ nodes in the tree. 
 With a tree of size $n$, if a node is deleted there will be $n-1$ nodes in the
@@ -307,6 +309,18 @@ tree.
 
 \addcontentsline{toc}{section}{Extensions, Improvements, and Recent Work}
 \section*{Extensions, Improvements, and Recent Work}
+There has been work done recently to improve the time it takes to rebalance an
+AVL tree.  A relaxation of AVL tree balance constraints produces a new data
+structure called a weak AVL tree (wavl).  It has been shown that insert and delete take at
+most ``two rotations'' in the worst case and ``O(1)'' amortized time.  This is
+fewer rotations than the number of rotations a regular AVL tree and red-black
+tree need to perform to rebalance \cite{avl-improvments}.\\
+\\
+A relaxed version of an AVL tree was also proposed to be used in a 
+``concurrent tree algorithm'' to improve thread throughput.  In this case, an
+AVL tree acts like a map object with operations like ``get, put, remove.'' 
+An AVL tree is relaxed because balancing of the tree is delayed until after the 
+map operations take place on the tree \cite{avl-concurrent}.
 
 \newpage
 \addcontentsline{toc}{section}{References}

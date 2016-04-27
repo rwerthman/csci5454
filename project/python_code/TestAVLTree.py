@@ -1,3 +1,7 @@
+"""
+Unit tests for the AVL tree class.
+"""
+
 from AVLTree import AVLTree
 from AVLTree import NullAVLNode
 
