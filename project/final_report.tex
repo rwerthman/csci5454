@@ -34,7 +34,7 @@ itself \cite{wiki:avl}.
 AVL trees, like binary trees, are used for storing and retrieving
 information.  Their advantage is that they can perform these operations faster
 than if the information was stored in an array.  As will be shown later in this
-paper, storing and retrieving takes $log(n)$ time for an AVL tree
+paper, storing and retrieving takes log $n$ time for an AVL tree
 while performing the same operations on an array could take up to $n$ time.
 
 \addcontentsline{toc}{subsection}{Where is it used?}
@@ -67,8 +67,8 @@ The correctness of the AVL tree relies on maintaining two invariants
 \centering
 \end{figure}
 \noindent
-We will use the operate to to show these invariants are maintained.  We
-first start with a single, leaf node in a tree as the base case as shown in
+We will use the insertion operation to show these invariants are maintained. 
+We first start with a single, leaf node in a tree as the base case as shown in
 Figure 1.  First, we let the height of a non existent node be equal to -1.
 This means a single node in a tree has two non existent children nodes each
 with a height of -1.  To find the height of the single node in the tree we take the max of the
@@ -111,7 +111,7 @@ cases of a tree being out of balance and how those are corrected.
 \end{figure}
 \noindent
 In order for an AVL tree to remain in balance, the tree has to
-perform what are known as tree rotations after nodes are inserted (and deleted)
+perform what are known as tree rotations after nodes are inserted.
 \cite{wiki:avl}.
 The basic two rotations can be seen in Figure 2.  During tree rotations, the
 shape of a tree is changed in order to change the heights of subtrees
@@ -121,13 +121,13 @@ node B \cite{wiki:tree-rotations}.  These can be judiciously used to rebalance
 the tree and maintain the second invariant of an AVL tree.\\
 \\
 When a node is inserted, the first thing that the tree does is check
-the balance at the inseted node and all of the nodes above to
+the balance at the inserted node and all of the nodes above to
 ensure that the equation for the second invariant is maintained.  If the
 balances of any of the nodes do not satsify the second invariant equation, tree
 rotations must take place in order to balance the tree.  
-Four cases of an unbalanced tree may occur, as shown in figures 3-6, after a node
-is inserted into a tree that require one or more rotations to rebalance a tree
-\cite{tutorialspoint:avl}.
+Four cases of an unbalanced tree may occur after a node is inserted into a tree,
+as shown in Figures 3-6, that require one or more
+rotations to rebalance a tree \cite{tutorialspoint:avl}.
 \begin{figure}[h]
 \caption{Right Unbalanced Tree}
 \includegraphics[width=12cm]{right_unbalanced_tree.png}
@@ -157,17 +157,18 @@ is balanced according to the second invariant equation, the height of that node
 and any of the other nodes that participated in the rotation are updated.  The
 tree then recursively checks the node's parents, grandparents, etc. 
 until the root of the tree is reached for correct balances, performing any 
-rotations if necessary, and updating the heights as it goes.  This method
-ensures that given any number of inserted nodes, the tree with always be
-rebalanced and each node will have the correct heights.
+rotations if necessary, and updating the heights as it goes.  This method of
+updating the balances and heights ensures that given any number of inserted
+nodes, the tree with always be rebalanced and each node will
+have the correct height.
 
 \addcontentsline{toc}{subsection}{Runtime}
 \subsection*{Runtime}
-The runtime of any of the operations of the AVL tree depend on its height,
-which is the longest path from the root node to a leaf -- also known as its
-longest branch.  When a node is inserted into an AVL tree it will traverse at
-most the number of nodes in the longest branch.  We need to show that the height
-of an AVL tree can be bounded.\\
+Since an AVL tree is a binary search tree any AVL tree operations' runtime
+depends on the trees height, which is the longest path from the root node to a
+leaf -- also known as its longest branch \cite{avl-runtime}.  In order to prove
+the runtime any AVL tree operations is O(log n) we need to show that the height of an AVL tree
+can be bounded by O(log n).\\
 \\
 Let the root of the AVL tree have a height of $h$.  
 One child of the root will have a height of $h-1$ and the other, if we follow 
@@ -176,24 +177,28 @@ most 1, will have a minimum height of $h-2$.  Let $n_h$ be the number of nodes
 in the tree including the root.  Let $n_{h-1}$ be the number of nodes underneath
 and including the child of the root with height $h-1$ and $n_{h-2}$ be the
 number of nodes underneath and including the child with height $h-2$.  We can
-construct the total size of the tree $n_h$ by using the recurrence reation
+construct the total size of the tree $n_h$ by using the equation
 $$
 n_h = n_{h-1} + n_{h-2} + 1
 $$
-We can bound the height of the AVL tree by unrolling this recurrence relation as
-follows:
-\begin{align*}
+We can bound the height of the AVL tree by reducing the equation with the
+following setps:
+\begin{align}
 n_h &= n_{h-1} + n_{h-2} + 1\\
 n_{h-1} &= n_{h-2} + n_{h-3} + 1\\
 n_h &= (n_{h-2} + n_{h-3} + 1) + n_{h-2} + 1\\
-\end{align*}
-
-
+n_h &> 2n_{h-2} > 2(2n_{h-4}) > 2(2(2n_{h-6})) > \ldots > 2^{\frac{h}{2}}\\
+\text{log }n_h &> \text{log }2^{\frac{h}{2}}\\
+\text{log }n_h &> \frac{h}{2}\\
+2\text{log }n_h &> h
+\end{align}
+This shows that the height $h$ of an AVL tree will always be less than O(log n).
+This means the runtime for any AVL tree operation will take O(log n).
 \addcontentsline{toc}{subsection}{Space}
 \subsection*{Space}
-The size of an AVL is the size of the nodes inserted.  If
-there are $n + 1$ nodes inserted in the tree, its size will be $n + 1$.  If
-there are $n - 1$ nodes removed from the tree, its size will be $n-1$.
+The space an AVL uses is equal the size of the nodes inserted.  If
+there are $n + 1$ nodes inserted in the tree, the space used will be $n + 1$. 
+If there are $n - 1$ nodes removed from the tree, the space used will be $n-1$.
 
 \addcontentsline{toc}{section}{Numerical Characterization of Runtime and Space}
 \section*{Numerical Characterization of Runtime and Space}
@@ -213,7 +218,7 @@ the set $\{0,\,,1,\ldots,2^n$ and then inserted into the tree to create a tree o
 \\
 Once the tree was generated for an iteration, I then chose a random key
 from the set of keys that were already in the tree, and I either searched for
-it, insertd it, or deleted it.  To keep track of the runtime when performing
+it, inserted it, or deleted it.  To keep track of the runtime when performing
 these operations on the tree, I kept a global variable as a counter and
 incremented it every time an atomic operation occurred.  To keep track of the space used when
 performing these operations on the tree, I kept a global variable as a counter
@@ -242,14 +247,14 @@ trees}
 \centering
 \end{figure}
 \noindent
-The above graph shows the runtime for searching for a key in different-sized
+Figure 7 shows the runtime for searching for a key in different-sized
 avl trees.
-The function that bounds the runtime of search is $g(n)=log(n)$ multiplied by
+The function that bounds the runtime of search is $g(n)= \text{log }n$ multiplied by
 the constant $c_2=2$.
 As can be seen in the graph the
-runtime of search is $O(log(n))$, with the function $log(n)$ bounding the
+runtime of search is O(log $n$), with the function log $n$ bounding the
 search runtime from above.  This means given an AVL tree of size $n$, it will
-take $O(log(n))$ operations to search for key in the tree.
+take  O(log $n$) operations to search for key in the tree.
 
 \addcontentsline{toc}{subsubsection}{Runtime of Insert}
 \subsubsection*{Runtime of Insert}
@@ -260,11 +265,11 @@ trees}
 \centering
 \end{figure}
 \noindent
-The above graph shows the runtime for inserting a key into different-sized AVL
-trees.  The function that bounds the runtime of insert is $g(n)=log(n)$
+Figure 8 shows the runtime for inserting a key into different-sized AVL
+trees.  The function that bounds the runtime of insert is $g(n)= \text{log }n$
 multiplied by the constant $c_2=4$.  As can be seen in the graph the runtime of
-insert is $O(log(n))$, with the function $log(n)$ bounding the insert runtime
-from above.  This means given an AVL tree of size $n$, it will take $O(log(n))$
+insert is O(log $n$), with the function log $n$ bounding the insert runtime
+from above.  This means given an AVL tree of size $n$, it will take O(log $n$)
 operations to insert a key into the tree.
 
 \addcontentsline{toc}{subsubsection}{Runtime of Delete}
@@ -276,11 +281,11 @@ trees}
 \centering
 \end{figure}
 \noindent
-The above graph shows the runtime of deleting a key from different-sized AVL
-trees.  The function that bounds the runtime of delete is $g(n)=log(n)$
+Figure 9 shows the runtime of deleting a key from different-sized AVL
+trees.  The function that bounds the runtime of delete is $g(n)= \text{log }n$
 multiplied by the constant $c_2=4$.  As can be seen in the graph the runtime of
-delete is $O(log(n))$, with the function $log(n)$ bounding the delete runtime
-from above.  This means given an AVL tree of size $n$, it will take $O(log(n))$
+delete is O(log $n$), with the function log $n$ bounding the delete runtime
+from above.  This means given an AVL tree of size $n$, it will take O(log $n$)
 operations to delete a key from the tree.
 
 \addcontentsline{toc}{subsection}{Characterization of Space Usage}
@@ -291,9 +296,9 @@ operations to delete a key from the tree.
 \centering
 \end{figure}
 \noindent
-The above graph shows the space used by different-size AVL trees.  The functions
+Figure 10 shows the space used by different-size AVL trees.  The functions
 that bounds the space used is $g(n) = n$ multiplied by the constant $c_2 = 2$. 
-As can be seen in the graph the space that is used by an AVL tree is $O(n)$,
+As can be seen in the graph the space that is used by an AVL tree is O($n$),
 with the function $n$ bounding the space used from above.  This means that given
 an AVL tree of size $n$, there will be exaclty $n$ nodes in the tree.  With a
 tree of size $n$, if a node is inserted there will be $n+1$ nodes in the tree. 
@@ -307,7 +312,7 @@ tree.
 \addcontentsline{toc}{section}{References}
 
 \bibliographystyle{unsrt}
-\bibliography{sample}
+\bibliography{sources}
 
 
 \end{document}
